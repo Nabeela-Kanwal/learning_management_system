@@ -3,48 +3,43 @@
 namespace App\Http\Controllers\Instructor;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Services\ProfileService;
 
 class ProfileController extends Controller
 {
+    protected $profileService;
+    public function __construct(ProfileService $profileService)
+    {
+        $this->profileService = $profileService;
+    }
     public function profile()
     {
-        return view('backend.instructor.profile.index');
+        $instructor = auth('instructor')->user();
+        return view('backend.instructor.profile.index', compact('instructor'));
     }
 
-    public function update(ProfileRequest $request)
+
+    public function updateProfile(ProfileRequest $request)
     {
-        $instructor = Auth::guard('instructor')->user();
+        $this->profileService->updateProfile($request->validated(), $request->file('image'));
+        return redirect()->back()->with('success', 'Profile Updated Successfully');
+    }
 
-        $instructor->first_name = $request->first_name;
-        $instructor->last_name = $request->last_name;
-        $instructor->email = $request->email;
-        $instructor->gender = $request->gender;
-        $instructor->phone = $request->phone;
-        $instructor->address = $request->address;
-        $instructor->city = $request->city;
-        $instructor->country = $request->country;
-        $instructor->country = $request->country;
-        $instructor->bio = $request->bio;
-        $instructor->experience = $request->experience;
+    public function showPasswordForm()
+    {
+        $instructor = auth('instructor')->user();
+        return view('backend.instructor.profile.password', compact('instructor'));
+    }
 
-        if ($request->hasFile('image')) {
-            if ($instructor->image && file_exists(public_path('images/profile/' . $instructor->image))) {
-                unlink(public_path('images/profile/' . $instructor->image));
-            }
-
-            $image = $request->file('image');
-            $filename = Str::random(20) . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images/profile'), $filename);
-
-            $instructor->image = $filename;
-        }
-
-        $instructor->save();
-
-        return redirect()->back()->with('success', 'Profile updated successfully.');
+    public function updatePassword(PasswordUpdateRequest $request)
+    {
+        $instructor = auth('instructor')->user();
+        $this->profileService->updatePassword($instructor, $request->validated());
+        return redirect()->back()->with('success', 'Password Updated Successfully');
     }
 }
