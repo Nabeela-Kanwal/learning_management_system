@@ -28,7 +28,7 @@
              <a href="javascript:void(0);" class="menu-link menu-toggle">
                  <i class="menu-icon tf-icons bx bx-category"></i>
 
-                 <div data-i18n="Layouts">Categories</div>
+                 <div data-i18n="Layouts">Manage Categories</div>
              </a>
              <ul class="menu-sub">
                  <li class="menu-item">

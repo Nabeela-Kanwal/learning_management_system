@@ -20,7 +20,8 @@ class SubCategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.admin.sub-categories.create');
+
     }
 
     /**

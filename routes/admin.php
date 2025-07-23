@@ -32,6 +32,7 @@ Route::middleware(['web', 'auth_guard:admin'])
 
         Route::prefix('categories')->name('category.')->group(function () {
             Route::get('/', [CategoryController::class, 'index'])->name('index');
+            Route::get('create', [CategoryController::class, 'create'])->name('create');
             Route::post('store', [CategoryController::class, 'store'])->name('store');
             Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit');
             Route::post('update/{id}', [CategoryController::class, 'update'])->name('update');
@@ -40,6 +41,7 @@ Route::middleware(['web', 'auth_guard:admin'])
 
         Route::prefix('sub-categories')->name('sub-category.')->group(function () {
             Route::get('/', [SubCategoryController::class, 'index'])->name('index');
+            Route::get('create', [SubCategoryController::class, 'create'])->name('create');
             Route::post('store', [SubCategoryController::class, 'store'])->name('store');
             Route::get('edit/{id}', [SubCategoryController::class, 'edit'])->name('edit');
             Route::post('update/{id}', [SubCategoryController::class, 'update'])->name('update');
