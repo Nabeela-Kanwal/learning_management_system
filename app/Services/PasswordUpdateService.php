@@ -15,13 +15,24 @@ class PasswordUpdateService
         $this->passwordUpdateRepository = $passwordUpdateRepository;
     }
 
-    public function updatePassword(User $instructor, array $data): void
+    public function updateUserPassword(User $user, array $data): void
     {
-        if (!Hash::check($data['current_password'], $instructor->password)) {
-            throw new \Exception('Current password is incorrect.');
+        if (!$this->isAllowedRole($user)) {
+            throw new \Exception('Unauthorized role for password update.');
         }
 
         $hashedPassword = Hash::make($data['new_password']);
-        $this->passwordUpdateRepository->updatePassword($instructor, $hashedPassword);
+        $this->passwordUpdateRepository->updateUserPassword($user, $hashedPassword);
+    }
+
+    /**
+     * Check if the user's role is allowed to update password.
+     */
+    protected function isAllowedRole(User $user): bool
+    {
+        // You can customize allowed roles here
+        $allowedRoles = ['admin', 'instructor'];
+
+        return in_array($user->role, $allowedRoles);
     }
 }

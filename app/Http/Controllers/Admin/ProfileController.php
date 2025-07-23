@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Instructor;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PasswordUpdateRequest;
@@ -23,8 +23,8 @@ class ProfileController extends Controller
     }
     public function profile()
     {
-        $instructor = auth('instructor')->user();
-        return view('backend.instructor.profile.index', compact('instructor'));
+        $admin = auth('admin')->user();
+        return view('backend.admin.profile.index', compact('admin'));
     }
 
 
@@ -36,14 +36,14 @@ class ProfileController extends Controller
 
     public function showPasswordForm()
     {
-        $instructor = auth('instructor')->user();
-        return view('backend.instructor.profile.password', compact('instructor'));
+        $admin = auth('admin')->user();
+        return view('backend.admin.profile.password', compact('admin'));
     }
 
     public function updatePassword(PasswordUpdateRequest $request)
     {
-        $instructor = auth('instructor')->user();
-        $this->passwordUpdateService->updateUserPassword($instructor, $request->validated());
+        $admin = auth('admin')->user();
+        $this->passwordUpdateService->updateUserPassword($admin, $request->validated());
         return redirect()->back()->with('success', 'Password Updated Successfully');
     }
 }

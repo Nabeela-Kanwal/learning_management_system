@@ -26,19 +26,19 @@
          <!-- Layouts -->
          <li class="menu-item">
              <a href="javascript:void(0);" class="menu-link menu-toggle">
-                 <i class="menu-icon tf-icons bx bx-layout"></i>
-                 <div data-i18n="Layouts">Layouts</div>
-             </a>
+                 <i class="menu-icon tf-icons bx bx-category"></i>
 
+                 <div data-i18n="Layouts">Categories</div>
+             </a>
              <ul class="menu-sub">
                  <li class="menu-item">
-                     <a href="layouts-without-menu.html" class="menu-link">
-                         <div data-i18n="Without menu">Without menu</div>
+                     <a href="{{ route('admin.category.index') }}" class="menu-link">
+                         <div data-i18n="Without menu">Categories</div>
                      </a>
                  </li>
                  <li class="menu-item">
-                     <a href="layouts-without-navbar.html" class="menu-link">
-                         <div data-i18n="Without navbar">Without navbar</div>
+                     <a href="{{ route('admin.sub-category.index') }}" class="menu-link">
+                         <div data-i18n="Without navbar">Sub Categories</div>
                      </a>
                  </li>
                  <li class="menu-item">

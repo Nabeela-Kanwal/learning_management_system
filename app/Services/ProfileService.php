@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\ProfileRepository;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileService
 {
@@ -13,7 +14,7 @@ class ProfileService
         $this->profileRepository = $profileRepository;
     }
 
-    public function updateProfile(array $data, $image = null)
+    public function updateUserProfile(array $data, $image = null)
     {
         $instructor = $this->profileRepository->findProfile();
 
@@ -29,4 +30,6 @@ class ProfileService
 
         return $this->profileRepository->createOrUpdateProfile($data);
     }
+
+
 }

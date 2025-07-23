@@ -6,9 +6,14 @@ use App\Models\User;
 
 class PasswordUpdateRepository
 {
-    public function updatePassword(User $instructor, string $hashedPassword): void
+    public function updateUserPassword(User $user, string $hashedPassword): void
     {
-        $instructor->password = $hashedPassword;
-        $instructor->save();
+        // Optionally check role here if needed
+        if (!in_array($user->role, ['admin', 'instructor'])) {
+            throw new \Exception('User role not authorized to update password.');
+        }
+
+        $user->password = $hashedPassword;
+        $user->save();
     }
 }

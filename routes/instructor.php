@@ -18,7 +18,7 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
             Route::get('/', [ProfileController::class, 'profile'])->name('index');
             Route::post('update', [ProfileController::class, 'updateProfile'])->name('update');
             Route::get('show/update/password', [ProfileController::class, 'showPasswordForm'])->name('show.update.password');
-            Route::get('update/password', [ProfileController::class, 'updatePassword'])->name('update.password');
+            Route::post('update/password', [ProfileController::class, 'updatePassword'])->name('update.password');
         });
 
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');

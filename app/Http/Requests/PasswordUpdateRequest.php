@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Hash;
 
 class PasswordUpdateRequest extends FormRequest
 {
@@ -24,7 +25,23 @@ class PasswordUpdateRequest extends FormRequest
         return [
             'current_password' => 'required|string',
             'new_password' => 'required|string|min:8|confirmed',
-            'confirm_password' => 'required|string|same:new_password',
         ];
     }
+
+  protected function withValidator($validator)
+{
+    $validator->after(function ($validator) {
+        // Get authenticated user from either guard, fallback to default auth
+        $user = auth('instructor')->user() ?? auth('admin')->user() ?? auth()->user();
+
+        if (!$user) {
+            $validator->errors()->add('current_password', 'User not authenticated.');
+            return;
+        }
+
+        if (!Hash::check($this->current_password, $user->password)) {
+            $validator->errors()->add('current_password', 'Current password is incorrect.');
+        }
+    });
+}
 }

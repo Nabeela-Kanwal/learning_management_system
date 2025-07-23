@@ -1,4 +1,4 @@
-@extends('layout.instructorapp')
+@extends('layout.adminapp')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
@@ -6,18 +6,18 @@
             <div class="col-md-12">
                 @include('message')
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    @include('backend.instructor.nav')
+                    @include('backend.admin.nav')
                 </ul>
                 <div class="card mb-4">
                     <h5 class="card-header">Profile Details</h5>
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST" action="{{ route('instructor.profile.update') }}"
+                        <form id="formAccountSettings" method="POST" action="{{ route('admin.profile.update') }}"
                             enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 
                             <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
-                                <img src="{{ asset('images/profile/' . $instructor->image) }}" alt="user-avatar"
+                                <img src="{{ asset('images/profile/' . $admin->image) }}" alt="user-avatar"
                                     class="d-block rounded" height="100" width="100" id="image-preview" />
 
                                 <div class="button-wrapper">
@@ -42,19 +42,19 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="first_name" class="form-label">First Name</label>
                                     <input class="form-control" type="text" id="first_name" name="first_name"
-                                        value="{{ old('first_name', $instructor->first_name) }}" autofocus />
+                                        value="{{ old('first_name', $admin->first_name) }}" autofocus />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="last_name" class="form-label">Last Name</label>
                                     <input class="form-control" type="text" name="last_name" id="last_name"
-                                        value="{{ old('last_name', $instructor->last_name) }}" />
+                                        value="{{ old('last_name', $admin->last_name) }}" />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="email" class="form-label">E-mail</label>
                                     <input class="form-control" type="email" id="email" name="email"
-                                        value="{{ old('email', $instructor->email) }}" placeholder="john.doe@example.com" />
+                                        value="{{ old('email', $admin->email) }}" placeholder="john.doe@example.com" />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
@@ -62,10 +62,10 @@
                                     <select id="gender" class="select2 form-select" name="gender">
                                         <option value="">Select gender</option>
                                         <option value="male"
-                                            {{ old('gender', $instructor->gender) == 'male' ? 'selected' : '' }}>Male
+                                            {{ old('gender', $admin->gender) == 'male' ? 'selected' : '' }}>Male
                                         </option>
                                         <option value="female"
-                                            {{ old('gender', $instructor->gender) == 'female' ? 'selected' : '' }}>Female
+                                            {{ old('gender', $admin->gender) == 'female' ? 'selected' : '' }}>Female
                                         </option>
                                     </select>
                                 </div>
@@ -73,19 +73,19 @@
                                 <div class="mb-3 col-md-6">
                                     <label class="form-label" for="phone">Phone Number</label>
                                     <input type="text" id="phone" name="phone" class="form-control"
-                                        placeholder="202 555 0111" value="{{ old('phone', $instructor->phone) }}" />
+                                        placeholder="202 555 0111" value="{{ old('phone', $admin->phone) }}" />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="address" class="form-label">Address</label>
                                     <input type="text" class="form-control" id="address" name="address"
-                                        placeholder="Address" value="{{ old('address', $instructor->address) }}" />
+                                        placeholder="Address" value="{{ old('address', $admin->address) }}" />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="city" class="form-label">City</label>
                                     <input class="form-control" type="text" id="city" name="city"
-                                        placeholder="California" value="{{ old('city', $instructor->city) }}" />
+                                        placeholder="California" value="{{ old('city', $admin->city) }}" />
                                 </div>
 
                                 <div class="mb-3 col-md-6">
@@ -94,7 +94,7 @@
                                         <option value="">Select</option>
                                         @foreach (['Australia', 'Bangladesh', 'Belarus', 'Brazil', 'Canada', 'China', 'France', 'Germany', 'India', 'Indonesia', 'Israel', 'Italy', 'Japan', 'Korea', 'Mexico', 'Pakistan', 'Russia', 'South Africa', 'Thailand', 'Turkey', 'Ukraine', 'United Arab Emirates', 'United Kingdom', 'United States'] as $country)
                                             <option value="{{ $country }}"
-                                                {{ old('country', $instructor->country) == $country ? 'selected' : '' }}>
+                                                {{ old('country', $admin->country) == $country ? 'selected' : '' }}>
                                                 {{ $country }}
                                             </option>
                                         @endforeach
@@ -102,13 +102,13 @@
                                 </div>
                                 <div class="mb-3 col-md-6">
                                     <label for="bio" class="form-label">Bio</label>
-                                    <textarea class="form-control" id="bio" name="bio" placeholder="Bio">{{ old('bio', $instructor->bio) }}</textarea>
+                                    <textarea class="form-control" id="bio" name="bio" placeholder="Bio">{{ old('bio', $admin->bio) }}</textarea>
                                 </div>
 
                                 <div class="mb-3 col-md-6">
                                     <label for="experience" class="form-label">Experience</label>
-                                    <textarea class="form-control" id="experience" name="experience" placeholder="Experience">{{ old('experience', $instructor->experience) }}</textarea>
-                                </div>
+                                    <textarea class="form-control" id="experience" name="experience" placeholder="Experience">{{ old('experience', $admin->experience) }}</textarea>
+                               </div>
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Save changes</button>

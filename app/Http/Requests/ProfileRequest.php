@@ -26,13 +26,13 @@ class ProfileRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'email' => 'required|email',
             'gender' => 'nullable|in:male,female',
-            'phone' => 'nullable|string|max:20',
+            'phone' => 'required|string|max:20',
             'address' => 'nullable|string|max:255',
             'city' => 'nullable|string|max:100',
             'country' => 'nullable|string|max:100',
             'bio' => 'nullable|string|max:1000',
             'experience' => 'nullable|string|max:1000',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2040',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2040',
         ];
     }
 }

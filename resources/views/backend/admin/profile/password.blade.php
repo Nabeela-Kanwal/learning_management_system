@@ -1,4 +1,4 @@
-@extends('layout.instructorapp')
+@extends('layout.adminapp')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
         <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Account Settings /</span> Account</h4>
@@ -8,11 +8,11 @@
 
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('instructor.profile.index') }}"><i
+                        <a class="nav-link active" href="{{ route('admin.profile.index') }}"><i
                                 class="bx bx-user me-1"></i> Account</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('instructor.profile.update.password') }}"><i
+                        <a class="nav-link" href="{{ route('admin.profile.update.password') }}"><i
                                 class="bx bx-cog me-1"></i>
                             Settings</a>
                     </li>
@@ -30,7 +30,7 @@
                     <h5 class="card-header">Update Password</h5>
                     <div class="card-body">
                         <form id="formAccountSettings" method="POST"
-                            action="{{ route('instructor.profile.update.password') }}" enctype="multipart/form-data">
+                            action="{{ route('admin.profile.update.password') }}" enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 
