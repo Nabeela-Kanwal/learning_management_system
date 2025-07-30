@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 
 function upload_image($image, $path)
 {
-    // Check if the directory exists, if not, create it
+    if (!$image || !$image->isValid()) {
+        return null;
+    }
+
     if (!file_exists(public_path($path))) {
         mkdir(public_path($path), 0755, true);
     }

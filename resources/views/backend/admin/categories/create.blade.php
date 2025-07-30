@@ -1,8 +1,9 @@
 @extends('layout.adminapp')
 @section('content')
     <div class="content-wrapper">
+        @include('message');
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories/</span> Add Category</h4>
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> Add Category</h4>
             <div class="row">
                 <div class="col-xxl">
                     <div class="card mb-4">
@@ -10,65 +11,74 @@
                             <h5 class="mb-0">Add Category</h5>
                         </div>
                         <div class="card-body">
-                            <form>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-fullname">Name</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span id="icon-fullname" class="input-group-text"><i class="bx bx-user"></i></span>
-                                            <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                                placeholder="John Doe" aria-label="John Doe"
-                                                aria-describedby="icon-fullname" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-company">Slug</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span id="icon-company" class="input-group-text"><i class="bx bx-buildings"></i></span>
-                                            <input type="text" id="basic-icon-default-company" class="form-control"
-                                                placeholder="slug" aria-label="slug"
-                                                aria-describedby="icon-company" />
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label" for="basic-icon-default-email">Image</label>
-                                    <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span id="icon-email" class="input-group-text"><i class="bx bx-image"></i></span>
-                                            <input type="file" id="basic-icon-default-email" class="form-control"
-                                                placeholder="image" aria-label="image"
-                                                aria-describedby="icon-email" />
+                            <form action="{{ route('admin.category.store') }}" method="POST" enctype="multipart/form-data">
+                                @csrf
 
-                                        </div>
-                                    </div>
-                                </div>
+                                {{-- Name --}}
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 form-label" for="basic-icon-default-phone">Status</label>
+                                    <label class="col-sm-2 col-form-label">Name</label>
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
-                                            <span id="icon-phone" class="input-group-text"><i class="bx bx-check"></i></span>
-                                            <input type="text" id="basic-icon-default-phone"
-                                                class="form-control phone-mask" placeholder="status"
-                                                aria-label="status" aria-describedby="icon-phone" />
+                                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                                            <input type="text" name="name" class="form-control"
+                                                value="{{ old('name') }}" placeholder="Category Name" />
                                         </div>
+                                        @error('name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
 
+                                {{-- Slug --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Slug</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-buildings"></i></span>
+                                            <input type="text" name="slug" class="form-control"
+                                                value="{{ old('slug') }}" placeholder="slug" />
+                                        </div>
+                                        @error('slug')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Image --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Image</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
+                                            <input type="file" name="image" class="form-control" />
+                                        </div>
+                                        @error('image')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <x-logos.status />
+                                    </div>
+                                </div>
                                 <div class="row justify-content-end">
                                     <div class="col-sm-10">
                                         <button type="submit" class="btn btn-primary">Save</button>
                                     </div>
                                 </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- / Content -->
     </div>
+@endsection
 
+@section('script')
+    <script></script>
 @endsection
