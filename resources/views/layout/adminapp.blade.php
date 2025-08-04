@@ -20,6 +20,8 @@
 <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
 <link rel="stylesheet" href="{{ asset('assets/vendor/libs/apex-charts/apex-charts.css') }}" />
+<link rel="preload" href="{{ asset('assets/img/icons/loader-white.svg') }}" as="image">
+
 <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
 <script src="{{ asset('assets/js/config.js') }}"></script>
 </head>
@@ -57,6 +59,8 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
     <script src="{{ asset('assets/js/dashboards-analytics.js') }}"></script>
     <script async defer src="https://buttons.github.io/buttons.js"></script>
+    @yield('script')
+
 </body>
 
 </html>
