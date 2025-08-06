@@ -3,8 +3,10 @@
 @section('content')
     <div class="content-wrapper">
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Manage Categories</span> /Categories</h4>
-            <!-- Bordered Table -->
+            <h4 class="fw-bold py-3 mb-4">
+                <span class="text-muted fw-light">Manage Categories</span> / Categories
+            </h4>
+
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Categories</h5>
@@ -12,159 +14,99 @@
                         <i class="bx bx-plus"></i> Add Category
                     </a>
                 </div>
+
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
-                        <table class="table table-bordered">
+                        <table id="categoryTable" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>No</th>
-                                    <th>Name</th>
-                                    <th>Slug</th>
                                     <th>Image</th>
+                                    <th>Name</th>
                                     <th>Status</th>
+                                    <th>Created At</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>1</strong>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>Angular Project</strong>
-                                    </td>
-                                    <td>Albert Cook</td>
-                                    <td>
-                                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                                <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                                <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Christina Parker">
-                                                <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-trash me-1"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                <tr>
-                                    <td>
-                                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>1</strong>
-                                    </td>
-                                    <td>
-                                        <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                        <strong>Angular Project</strong>
-                                    </td>
-                                    <td>Albert Cook</td>
-                                    <td>
-                                        <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                                <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                                <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                            <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                                class="avatar avatar-xs pull-up" title="Christina Parker">
-                                                <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                    class="rounded-circle" />
-                                            </li>
-                                        </ul>
-                                    </td>
-                                    <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                    <td>
-                                        <div class="dropdown">
-                                            <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                                data-bs-toggle="dropdown">
-                                                <i class="bx bx-dots-vertical-rounded"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                <a class="dropdown-item" href="javascript:void(0);"><i
-                                                        class="bx bx-trash me-1"></i> Delete</a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <td>
-                                    <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                    <strong>1</strong>
-                                </td>
-                                <td>
-                                    <i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                    <strong>Angular Project</strong>
-                                </td>
-                                <td>Albert Cook</td>
-                                <td>
-                                    <ul class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Lilian Fuller">
-                                            <img src="../assets/img/avatars/5.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Sophia Wilkerson">
-                                            <img src="../assets/img/avatars/6.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                        <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                            class="avatar avatar-xs pull-up" title="Christina Parker">
-                                            <img src="../assets/img/avatars/7.png" alt="Avatar"
-                                                class="rounded-circle" />
-                                        </li>
-                                    </ul>
-                                </td>
-                                <td><span class="badge bg-label-primary me-1">Active</span></td>
-                                <td>
-                                    <div class="dropdown">
-                                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
-                                            data-bs-toggle="dropdown">
-                                            <i class="bx bx-dots-vertical-rounded"></i>
-                                        </button>
-                                        <div class="dropdown-menu">
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
-                                            <a class="dropdown-item" href="javascript:void(0);"><i
-                                                    class="bx bx-trash me-1"></i> Delete</a>
-                                        </div>
-                                    </div>
-                                </td>
-                                </tr>
-                            </tbody>
+                            <tbody></tbody> <!-- Yajra will populate this -->
                         </table>
                     </div>
                 </div>
             </div>
         </div>
-    @endsection
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        $(function() {
+            let categoryTable = $('#categoryTable').DataTable({
+                processing: true,
+                serverSide: true,
+                ajax: '{{ route('admin.category.yajra') }}',
+                columns: [{
+                        data: 'image',
+                        name: 'image'
+                    },
+                    {
+                        data: 'name',
+                        name: 'name'
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'created_at',
+                        name: 'created_at'
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
+                ],
+                responsive: true,
+                language: {
+                    searchPlaceholder: "Search...",
+                    search: "",
+                }
+            });
+
+            // Make deleteCategory accessible globally
+            window.deleteCategory = function(itSelf, id) {
+                Swal.fire({
+                    title: "Are you sure?",
+                    text: "You won't be able to revert this!",
+                    icon: "warning",
+                    showCancelButton: true,
+                    confirmButtonText: "Yes, delete it!",
+                    cancelButtonText: "Cancel"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            url: "{{ route('admin.category.destroy') }}", // Ensure this route accepts POST or DELETE with id in request
+                            method: "DELETE",
+                            data: {
+                                id: id,
+                                _token: "{{ csrf_token() }}"
+                            },
+                            success: function(response) {
+                                // Refresh the datatable
+                                categoryTable.ajax.reload(null,
+                                false); // false to keep pagination
+                                Swal.fire("Deleted!", "Category has been deleted.",
+                                    "success");
+                            },
+                            error: function() {
+                                Swal.fire("Error!", "Something went wrong.", "error");
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+@endsection

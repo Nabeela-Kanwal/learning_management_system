@@ -4,67 +4,54 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoryRequest;
+use App\Models\Category;
 use App\Services\CategoryService;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
-    protected $CategoryService;
+    protected $categoryService;
 
-    public function __construct(CategoryService $CategoryService)
+    public function __construct(CategoryService $categoryService)
     {
-
-        $this->CategoryService = $CategoryService;
+        $this->categoryService = $categoryService;
     }
+
     public function index()
     {
-        return view('backend.admin.categories.index');
+        $allCategories = Category::latest()->get();
+        return view('backend.admin.categories.index', compact('allCategories'));
     }
-
 
     public function create()
     {
         return view('backend.admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CategoryRequest $request)
     {
-        $this->CategoryService->saveCategory($request->validated(), $request->file('image'));
-        return redirect()->back()->with('success', 'Category is created Successfully');
+        $this->categoryService->saveCategory($request->validated(), $request->file('image'));
+        return redirect()->route('admin.category.index')->with('success', 'Category created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $category = Category::findOrFail($id);
+        return view('backend.admin.categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(CategoryRequest $request, string $id)
     {
-        //
+        $this->categoryService->updateCategory($id, $request->validated(), $request->file('image'));
+        return redirect()->route('admin.category.index')->with('success', 'Category updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return response()->json(['success', 'Category deleted successfully.']);
     }
 }

@@ -14,5 +14,17 @@ class CategoryRepository
 
         return Category::create($data);
     }
+
+    public function updateCategory($id, $data, $photo)
+    {
+        $category = Category::findOrFail($id);
+
+        if ($photo && $photo->isValid()) {
+            $data['image'] = upload_image($photo, 'images/categories');
+        }
+
+        $category->update($data);
+
+        return $category;
+    }
 }
-  

@@ -6,14 +6,20 @@ use App\Repositories\CategoryRepository;
 
 class CategoryService
 {
-    protected $CategoryRepository;
+    protected $categoryRepository;
 
-    public function __construct(CategoryRepository $CategoryRepository)
+    public function __construct(CategoryRepository $categoryRepository)
     {
-        $this->CategoryRepository = $CategoryRepository;
+        $this->categoryRepository = $categoryRepository;
     }
+
     public function saveCategory(array $data, $photo = null)
     {
-        return $this->CategoryRepository->createCategory($data, $photo);
+        return $this->categoryRepository->createCategory($data, $photo);
+    }
+
+    public function updateCategory($id, array $data, $photo = null)
+    {
+        return $this->categoryRepository->updateCategory($id, $data, $photo);
     }
 }

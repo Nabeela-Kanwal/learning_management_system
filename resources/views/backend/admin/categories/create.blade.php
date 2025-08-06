@@ -4,7 +4,12 @@
     <div class="content-wrapper">
         @include('message')
         <div class="container-xxl flex-grow-1 container-p-y">
-            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Categories /</span> Add Category</h4>
+            <h4 class="fw-bold py-3 mb-4">
+                <span class="text-muted fw-light">
+                    <a href="{{ route('admin.category.index') }}" class="text-muted">Categories</a> /
+                </span>
+                Add Category
+            </h4>
             <div class="row">
                 <div class="col-xxl">
                     <div class="card mb-4">

@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\YajraController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -35,8 +36,10 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('create', [CategoryController::class, 'create'])->name('create');
             Route::post('store', [CategoryController::class, 'store'])->name('store');
             Route::get('edit/{id}', [CategoryController::class, 'edit'])->name('edit');
-            Route::post('update/{id}', [CategoryController::class, 'update'])->name('update');
-            Route::post('destroy/{id}', [CategoryController::class, 'destroy'])->name('destroy');
+            Route::put('update/{id}', [CategoryController::class, 'update'])->name('update');
+            Route::delete('destroy', [CategoryController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getCategoriesData'])->name('yajra');
+
         });
 
         Route::prefix('sub-categories')->name('sub-category.')->group(function () {
