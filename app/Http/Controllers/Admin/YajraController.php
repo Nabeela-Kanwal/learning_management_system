@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -53,7 +54,33 @@ class YajraController extends Controller
                     return $actions;
                 })
 
-                ->rawColumns(['image', 'status', 'action']) 
+                ->rawColumns(['image', 'status', 'action'])
+                ->make(true);
+        }
+    }
+
+    public function getSubCategoriesData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = SubCategory::with('category')
+                ->select('id', 'category_id', 'name', 'slug', 'created_at')
+                ->latest();
+
+            return DataTables::of($data)
+                ->editColumn('created_at', fn($row) => $row->created_at ? $row->created_at->format('Y-m-d') : '-')
+                ->addColumn('category', fn($row) => $row->category ? $row->category->name : '<span class="text-muted">N/A</span>')
+                ->addColumn('action', function ($row) {
+                    $editUrl = route('admin.sub-category.edit', $row->id);
+                    return '
+                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                        <i class="bx bxs-show"></i>
+                    </a>
+                    <a href="javascript:;" onclick="deleteSubCategory(' . $row->id . ')" class="text-danger" title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>
+                ';
+                })
+                ->rawColumns(['category', 'action'])
                 ->make(true);
         }
     }

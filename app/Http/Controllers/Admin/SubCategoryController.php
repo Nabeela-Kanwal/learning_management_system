@@ -3,64 +3,54 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\SubCategory;
+use App\Services\SubCategoryService;
 use Illuminate\Http\Request;
 
 class SubCategoryController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    protected $subCategoryService;
+
+    public function __construct(SubCategoryService $subCategoryService)
     {
-        return view('backend.admin.sub-categories.index');
+        $this->subCategoryService = $subCategoryService;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
+    public function index()
+    {
+        $allCategories = SubCategory::latest()->get();
+        return view('backend.admin.sub-categories.index', compact('allCategories'));
+    }
+
     public function create()
     {
         return view('backend.admin.sub-categories.create');
-
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function store(SubCategoryRequest $request)
     {
-        //
+        $this->subCategoryService->saveSubCategory($request->validated(), $request->file('image'));
+        return redirect()->route('admin.sub-category.index')->with('success', 'SubCategory created successfully.');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $category = SubCategory::findOrFail($id);
+        return view('backend.admin.sub-categories.edit', compact('category'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function update(SubCategoryRequest $request, string $id)
     {
-        //
+        $this->subCategoryService->updateSubCategory($id, $request->validated(), $request->file('image'));
+        return redirect()->route('admin.sub-category.index')->with('success', 'SubCategory updated successfully.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Request $request)
     {
-        //
+        $id = $request->id;
+        $category = SubCategory::findOrFail($id);
+        $category->delete();
+
+        return response()->json(['success', 'Category deleted successfully.']);
     }
 }

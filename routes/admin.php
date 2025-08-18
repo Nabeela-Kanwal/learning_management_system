@@ -49,5 +49,7 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('edit/{id}', [SubCategoryController::class, 'edit'])->name('edit');
             Route::post('update/{id}', [SubCategoryController::class, 'update'])->name('update');
             Route::post('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getSubCategoriesData'])->name('yajra');
+
         });
     });
