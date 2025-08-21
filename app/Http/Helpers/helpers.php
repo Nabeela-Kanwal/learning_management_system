@@ -20,6 +20,21 @@ function upload_image($image, $path)
     $fileName = time() . rand(1, 999) . '_' . Str::random(45) . "." . $image->getClientOriginalExtension();
     $image->move(public_path($path), $fileName);
 
-    // ✅ Return relative path instead of just filename
     return $path . '/' . $fileName;
+}
+
+
+if (!function_exists('setSidebar')) {
+    function setSidebar(array $routes, string $activeClass = 'open active'): string
+    {
+        $currentRoute = request()->route()?->getName();
+
+        foreach ($routes as $routePattern) {
+            if (Str::is($routePattern, $currentRoute)) {
+                return $activeClass;
+            }
+        }
+
+        return '';
+    }
 }

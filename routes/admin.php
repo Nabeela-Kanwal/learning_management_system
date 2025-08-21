@@ -47,7 +47,7 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('create', [SubCategoryController::class, 'create'])->name('create');
             Route::post('store', [SubCategoryController::class, 'store'])->name('store');
             Route::get('edit/{id}', [SubCategoryController::class, 'edit'])->name('edit');
-            Route::post('update/{id}', [SubCategoryController::class, 'update'])->name('update');
+            Route::put('update/{id}', [SubCategoryController::class, 'update'])->name('update');
             Route::post('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getSubCategoriesData'])->name('yajra');
 

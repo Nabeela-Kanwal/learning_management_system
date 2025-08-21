@@ -13,13 +13,13 @@ class SubCategoryService
         $this->subCategoryRepository = $subCategoryRepository;
     }
 
-    public function saveSubCategory(array $data, $photo = null)
+    public function saveSubCategory(array $data)
     {
-        return $this->subCategoryRepository->createSubCategory($data, $photo);
+        return $this->subCategoryRepository->createSubCategory($data);
     }
 
-    public function updateSubCategory($id, array $data, $photo = null)
+    public function updateSubCategory($id, array $data)
     {
-        return $this->subCategoryRepository->updateSubCategory($id, $data, $photo);
+        return $this->subCategoryRepository->updateSubCategory($id, $data);
     }
 }

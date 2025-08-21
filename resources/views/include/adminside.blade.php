@@ -1,6 +1,6 @@
 <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="{{ route('admin.dashboard') }}" class="app-brand-link">
             <span class="app-brand-logo demo">
                 <x-logos.main-logo />
             </span>
@@ -19,48 +19,29 @@
         <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
             <a href="{{ route('admin.dashboard') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                <div data-i18n="Analytics">Dashboard</div>
+                <div>Dashboard</div>
             </a>
         </li>
 
         {{-- Manage Categories --}}
-        @php
-            $categoryRoutes = ['admin.category*', 'admin.sub-category*'];
-        @endphp
-
-        <li class="menu-item {{ request()->routeIs($categoryRoutes) ? 'open active' : '' }}">
+        <li class="menu-item {{ setSidebar(['admin.category*', 'admin.sub-category*']) }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-category"></i>
-                <div data-i18n="Layouts">Manage Categories</div>
+                <div>Manage Categories</div>
             </a>
             <ul class="menu-sub">
-                <li class="menu-item {{ request()->routeIs('admin.category.index') ? 'active' : '' }}">
+                <li class="menu-item {{ setSidebar(['admin.category*']) }}">
                     <a href="{{ route('admin.category.index') }}" class="menu-link">
-                        <div data-i18n="Without menu">Categories</div>
+                        <div>Categories</div>
                     </a>
                 </li>
-                <li class="menu-item {{ request()->routeIs('admin.sub-category.index') ? 'active' : '' }}">
+                <li class="menu-item {{ setSidebar(['admin.sub-category*']) }}">
                     <a href="{{ route('admin.sub-category.index') }}" class="menu-link">
-                        <div data-i18n="Without navbar">Sub Categories</div>
-                    </a>
-                </li>
-                <!-- Example static links -->
-                <li class="menu-item">
-                    <a href="layouts-container.html" class="menu-link">
-                        <div data-i18n="Container">Container</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-fluid.html" class="menu-link">
-                        <div data-i18n="Fluid">Fluid</div>
-                    </a>
-                </li>
-                <li class="menu-item">
-                    <a href="layouts-blank.html" class="menu-link">
-                        <div data-i18n="Blank">Blank</div>
+                        <div>Sub Categories</div>
                     </a>
                 </li>
             </ul>
         </li>
+
     </ul>
 </aside>

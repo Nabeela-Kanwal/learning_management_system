@@ -7,34 +7,41 @@ use Illuminate\Validation\Rule;
 
 class SubCategoryRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
     public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
     public function rules(): array
     {
-        // When updating, get the subcategory ID from the route
-        $subCategoryId = $this->route('sub_category'); // adjust if your route parameter is named differently
+        // Get the sub-category route parameter
+        $subCategory = $this->route('id'); // matches {id} in your route
+        $subCategoryId = is_object($subCategory) ? $subCategory->id : $subCategory;
 
-        return [
-            'name' => 'required|string|max:255',
-            'slug' => [
+        $rules = [];
+
+        if ($this->isMethod('post')) {
+            // Creating a new sub-category
+            $rules['name'] = 'required|string|max:255';
+            $rules['slug'] = [
                 'required',
                 'string',
                 'max:255',
-                Rule::unique('sub_categories', 'slug')->ignore($subCategoryId),
-            ],
-            'status' => 'required|in:0,1',
-            'category_id' => 'required|exists:categories,id',
-        ];
+                Rule::unique('sub_categories', 'slug'),
+            ];
+            $rules['category_id'] = 'required|exists:categories,id';
+        } else {
+            // Updating an existing sub-category
+            $rules['name'] = 'sometimes|string|max:255';
+            $rules['slug'] = [
+                'sometimes',
+                'string',
+                'max:255',
+                Rule::unique('sub_categories', 'slug')->ignore($subCategoryId, 'id'),
+            ];
+            $rules['category_id'] = 'sometimes|exists:categories,id';
+        }
+
+        return $rules;
     }
 }

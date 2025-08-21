@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\SubCategoryRequest;
+use App\Models\Category;
 use App\Models\SubCategory;
 use App\Services\SubCategoryService;
 use Illuminate\Http\Request;
@@ -24,9 +26,9 @@ class SubCategoryController extends Controller
 
     public function create()
     {
-        return view('backend.admin.sub-categories.create');
+        $categories = Category::where('status', 1)->get(); // only active categories
+        return view('backend.admin.sub-categories.create', compact('categories'));
     }
-
     public function store(SubCategoryRequest $request)
     {
         $this->subCategoryService->saveSubCategory($request->validated(), $request->file('image'));
@@ -36,14 +38,19 @@ class SubCategoryController extends Controller
     public function edit(string $id)
     {
         $category = SubCategory::findOrFail($id);
-        return view('backend.admin.sub-categories.edit', compact('category'));
-    }
+        $categories = Category::where('status', 1)->get(); // fetch all active categories
 
+        return view('backend.admin.sub-categories.edit', compact('category', 'categories'));
+    }
     public function update(SubCategoryRequest $request, string $id)
     {
-        $this->subCategoryService->updateSubCategory($id, $request->validated(), $request->file('image'));
-        return redirect()->route('admin.sub-category.index')->with('success', 'SubCategory updated successfully.');
+        // Pass only the validated data, no image
+        $this->subCategoryService->updateSubCategory($id, $request->validated());
+
+        return redirect()->route('admin.sub-category.index')
+            ->with('success', 'SubCategory updated successfully.');
     }
+
 
     public function destroy(Request $request)
     {
