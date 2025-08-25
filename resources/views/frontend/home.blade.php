@@ -1,10 +1,5 @@
 @extends('layout.frontapp')
-
 @section('content')
-
-    <!--================================
-         START HERO AREA
-=================================-->
     <section class="hero-area">
         <div class="hero-slider owl-action-styled">
             <div class="hero-slider-item hero-bg-1">
@@ -199,13 +194,7 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end feature-area -->
-    <!--======================================
-       END FEATURE AREA
-======================================-->
 
-    <!--======================================
-        START CATEGORY AREA
-======================================-->
     <section class="category-area pb-90px">
         <div class="container">
             <div class="row align-items-center">
