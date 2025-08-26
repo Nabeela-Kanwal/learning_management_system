@@ -56,7 +56,7 @@
                  <div class="row align-items-center">
                      <div class="col-lg-2">
                          <div class="logo-box">
-                             <a href="index.html" class="logo"><img src="{{ asset('frontend/images/logo.png') }}"
+                             <a href="{{ route('home') }}" class="logo"><img src="{{ asset('frontend/images/logo.png') }}"
                                      alt="logo"></a>
                              <div class="user-btn-action">
                                  <div class="search-menu-toggle icon-element icon-element-sm shadow-sm mr-2"
@@ -220,13 +220,7 @@
                              <nav class="main-menu">
                                  <ul>
                                      <li>
-                                         <a href="#">Home <i class="la la-angle-down fs-12"></i></a>
-                                         <ul class="dropdown-menu-item">
-                                             <li><a href="index.html">Home One</a></li>
-                                             <li><a href="home-2.html">Home Two</a></li>
-                                             <li><a href="home-3.html">Home Three</a></li>
-                                             <li><a href="home-4.html">Home four</a></li>
-                                         </ul>
+                                         <a href="{{ route('home') }}">Home </a>
                                      </li>
                                      <li>
                                          <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
@@ -266,7 +260,7 @@
                                                  <li class="col-lg-3">
                                                      <a href="dashboard.html">dashboard <span
                                                              class="ribbon">Hot</span></a>
-                                                     <a href="about.html">about</a>
+                                                     <a href="{{ route('about') }}">about</a>
                                                      <a href="teachers.html">Teachers</a>
                                                      <a href="teacher-detail.html">Teacher detail</a>
                                                      <a href="categories.html">categories</a>
@@ -305,7 +299,7 @@
                                                                  Learning <i
                                                                      class="la la-arrow-right icon ml-1"></i></a>
                                                          </div>
-                                                         <img src="images/menu-banner-img.jpg" alt="menu banner image"
+                                                         <img src="{{ asset('frontend/images/menu-banner-img.jpg') }}" alt="menu banner image"
                                                              class="w-100 h-100 rounded-rounded">
                                                      </div>
                                                  </li>
@@ -334,7 +328,7 @@
                                          <ul class="cart-dropdown-menu">
                                              <li class="media media-card">
                                                  <a href="shopping-cart.html" class="media-img">
-                                                     <img src="images/small-img.jpg" alt="Cart image">
+                                                     <img src="{{ asset('frontend/images/small-img.jpg') }}" alt="Cart image">
                                                  </a>
                                                  <div class="media-body">
                                                      <h5><a href="course-details.html">The Complete JavaScript
@@ -346,7 +340,7 @@
                                              </li>
                                              <li class="media media-card">
                                                  <a href="shopping-cart.html" class="media-img">
-                                                     <img src="images/small-img.jpg" alt="Cart image">
+                                                     <img src="{{ asset('frontend/images/small-img.jpg') }}" alt="Cart image">
                                                  </a>
                                                  <div class="media-body">
                                                      <h5><a href="course-details.html">The Complete JavaScript
@@ -388,12 +382,9 @@
          </div><!-- end off-canvas-menu-close -->
          <ul class="generic-list-item off-canvas-menu-list pt-90px">
              <li>
-                 <a href="#">Home</a>
+                 <a href="{{ route('home') }}">Home</a>
                  <ul class="sub-menu">
-                     <li><a href="index.html">Home One</a></li>
-                     <li><a href="home-2.html">Home Two</a></li>
-                     <li><a href="home-3.html">Home Three</a></li>
-                     <li><a href="home-4.html">Home four</a></li>
+                     <li><a href="{{ route('home') }}">Home </a></li>
                  </ul>
              </li>
              <li>
@@ -429,7 +420,7 @@
                  <a href="#">pages</a>
                  <ul class="sub-menu">
                      <li><a href="dashboard.html">dashboard <span class="ribbon">Hot</span></a></li>
-                     <li><a href="about.html">about</a></li>
+                     <li><a href="{{ route('about') }}">about</a></li>
                      <li><a href="teachers.html">Teachers</a></li>
                      <li><a href="teacher-detail.html">Teacher detail</a></li>
                      <li><a href="careers.html">careers</a></li>
