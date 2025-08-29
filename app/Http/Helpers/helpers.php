@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\File;
-use Illuminate\Support\Str;
+use App\Models\Category;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
+
 
 function upload_image($image, $path)
 {
@@ -36,5 +38,15 @@ if (!function_exists('setSidebar')) {
         }
 
         return '';
+    }
+}
+
+
+if (!function_exists('getCategories')) {
+    function getCategories()
+    {
+        return Category::with('subCategory')
+            ->orderBy('created_at', 'desc')
+            ->get();
     }
 }
