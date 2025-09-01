@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -81,6 +82,40 @@ class YajraController extends Controller
                 ';
                 })
                 ->rawColumns(['category', 'action'])
+                ->make(true);
+        }
+    }
+
+    public function getBannerData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Banner::select(['id', 'title', 'image', 'page', 'sort_order', 'status'])->latest();
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('status', function ($banner) {
+                    return $banner->status == 1
+                        ? '<span class="badge bg-primary">Active</span>'
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+                ->editColumn('image', function ($banner) {
+                    if ($banner->image) {
+                        $url = asset($banner->image);
+                        return '<img src="' . $url . '" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+                    }
+                    return '<span>No Image</span>';
+                })
+                ->addColumn('action', function ($banner) {
+                    $editUrl = route('admin.banner.edit', $banner->id);
+                    return '
+                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                       <i class="bx bxs-show"></i>
+                    </a>
+                    <a href="javascript:;" onclick="deletebanner(this, ' . $banner->id . ')" class="text-danger" title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>';
+                })
+                ->rawColumns(['image', 'status', 'action'])
                 ->make(true);
         }
     }

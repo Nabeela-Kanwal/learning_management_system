@@ -23,6 +23,26 @@
             </a>
         </li>
 
+        {{-- Manage Banners --}}
+        <li class="menu-item {{ setSidebar(['admin.banner*', 'admin.sub-banner*']) }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-photo-album"></i>
+                <div>Manage Banners</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ setSidebar(['admin.banner*']) }}">
+                    <a href="{{ route('admin.banner.index') }}" class="menu-link">
+                        <div>Banner</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item {{ setSidebar(['admin.sub-banner*']) }}">
+                    <a href="{{ route('admin.sub-banner.index') }}" class="menu-link">
+                        <div>Sub Categories</div>
+                    </a>
+                </li> --}}
+            </ul>
+        </li>
+
         {{-- Manage Categories --}}
         <li class="menu-item {{ setSidebar(['admin.category*', 'admin.sub-category*']) }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -42,6 +62,8 @@
                 </li>
             </ul>
         </li>
+
+
 
     </ul>
 </aside>

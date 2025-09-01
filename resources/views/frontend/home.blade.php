@@ -75,7 +75,27 @@
         </section>
 
         <section class="category-area pb-90px">
-            @include('components.category.category')
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-9">
+                        <div class="category-content-wrap">
+                            <div class="section-heading">
+                                <h5 class="ribbon ribbon-lg mb-2">Categories</h5>
+                                <h2 class="section__title">Popular Categories</h2>
+                                <span class="section-divider"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="category-btn-box text-right">
+                            <a href="{{ route('category.index') }}" class="btn theme-btn">All Categories <i
+                                    class="la la-arrow-right icon ml-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @include('components.category.category')
+            </div>
+
         </section>
 
         <section class="course-area pb-120px">
