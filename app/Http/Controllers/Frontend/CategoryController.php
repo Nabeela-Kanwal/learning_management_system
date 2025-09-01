@@ -13,6 +13,6 @@ class CategoryController extends Controller
     public function index()
     {
         $categories = Category::where('status', 1)->get();
-        return view('Frontend.category.index', compact('categories'));
+        return view('frontend.categories.index', compact('categories'));
     }
 }
