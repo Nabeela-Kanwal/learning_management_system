@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\YajraController;
@@ -40,7 +41,6 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [CategoryController::class, 'update'])->name('update');
             Route::delete('destroy', [CategoryController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getCategoriesData'])->name('yajra');
-
         });
 
         Route::prefix('sub-categories')->name('sub-category.')->group(function () {
@@ -51,10 +51,9 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [SubCategoryController::class, 'update'])->name('update');
             Route::post('destroy/{id}', [SubCategoryController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getSubCategoriesData'])->name('yajra');
-
         });
 
-           Route::prefix('banners')->name('banner.')->group(function () {
+        Route::prefix('banners')->name('banner.')->group(function () {
             Route::get('/', [BannerController::class, 'index'])->name('index');
             Route::get('create', [BannerController::class, 'create'])->name('create');
             Route::post('store', [BannerController::class, 'store'])->name('store');
@@ -62,6 +61,12 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [BannerController::class, 'update'])->name('update');
             Route::delete('destroy', [BannerController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getBannerData'])->name('yajra');
+        });
+
+
+        Route::prefix('infoBox')->name('info.')->group(function () {
+            Route::get('/', [InfoController::class, 'index'])->name('index');
+            // Route::put('update/{id}', [InfoController::class, 'update'])->name('update');
 
         });
     });
