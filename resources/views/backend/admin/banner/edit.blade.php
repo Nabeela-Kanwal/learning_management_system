@@ -112,7 +112,7 @@
                                     <div class="col-sm-10">
                                         <div class="input-group input-group-merge">
                                             <span class="input-group-text"><i class="bx bx-text"></i></span>
-                                            <textarea name="description" id="description" class="form-control" placeholder="Description">{{ old('description', $banner->description) }}</textarea>
+                                            <textarea name="description" id="description" class="form-control compose-textarea" placeholder="Description">{{ old('description', $banner->description) }}</textarea>
                                         </div>
                                         @error('description')
                                             <small class="text-danger">{{ $message }}</small>
