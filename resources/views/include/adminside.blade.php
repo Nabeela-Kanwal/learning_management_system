@@ -65,5 +65,27 @@
 
 
 
+        {{-- Manage Instructor --}}
+        <li class="menu-item {{ setSidebar(['admin.category*', 'admin.instructor*']) }}">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-category"></i>
+                <div>Manage Instructor</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item {{ setSidebar(['admin.instructor*']) }}">
+                    <a href="{{ route('admin.instructor.index') }}" class="menu-link">
+                        <div>Instructor</div>
+                    </a>
+                </li>
+                {{-- <li class="menu-item {{ setSidebar(['admin.sub-category*']) }}">
+                    <a href="{{ route('admin.sub-category.index') }}" class="menu-link">
+                        <div>Sub Instructor</div>
+                    </a>
+                </li> --}}
+            </ul>
+        </li>
+
+
+
     </ul>
 </aside>

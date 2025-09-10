@@ -2,8 +2,8 @@
 @section('content')
     <section class="hero-area">
         <div class="hero-slider owl-action-styled">
-            <div class="hero-slider-item hero-bg-1">
-                @foreach ($banners as $banner)
+            @foreach ($banners as $banner)
+                <div class="hero-slider-item" style="background-image: url('{{ asset($banner->image) }}')">
                     <div class="container">
                         <div class="hero-content">
                             <div class="section-heading">
@@ -23,11 +23,11 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
-
-            </div>
+                </div>
+            @endforeach
         </div>
     </section>
+
     <section class="feature-area pb-90px">
         @include('components.featured.feature-section')
     </section>

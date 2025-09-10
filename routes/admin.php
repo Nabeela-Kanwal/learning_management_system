@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InfoController;
+use App\Http\Controllers\Admin\ManageInstructorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\YajraController;
@@ -66,6 +67,12 @@ Route::middleware(['web', 'auth_guard:admin'])
 
         Route::prefix('infoBox')->name('info.')->group(function () {
             Route::get('/', [InfoController::class, 'index'])->name('index');
+            // Route::put('update/{id}', [InfoController::class, 'update'])->name('update');
+
+        });
+
+        Route::prefix('manage-instructor')->name('instructor.')->group(function () {
+            Route::get('/', [ManageInstructorController::class, 'index'])->name('index');
             // Route::put('update/{id}', [InfoController::class, 'update'])->name('update');
 
         });
