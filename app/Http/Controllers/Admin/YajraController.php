@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -112,6 +113,43 @@ class YajraController extends Controller
                        <i class="bx bxs-show"></i>
                     </a>
                     <a href="javascript:;" onclick="deletebanner(this, ' . $banner->id . ')" class="text-danger" title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>';
+                })
+                ->rawColumns(['image', 'status', 'action'])
+                ->make(true);
+        }
+    }
+
+    public function getInstructorData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = User::select(['id', 'name', 'email', 'image', 'phone', 'status',])
+                ->where('role', 'instructor')
+                ->latest();
+
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->editColumn('status', function ($instructor) {
+                    return $instructor->status == 1
+                        ? '<span class="badge bg-primary">Active</span>'
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+                ->editColumn('image', function ($instructor) {
+                    if ($instructor->image) {
+                        $url = asset($instructor->image);
+                        return '<img src="' . $url . '" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+                    }
+                    return '<span>No Image</span>';
+                })
+                ->addColumn('action', function ($instructor) {
+                    $editUrl = route('admin.instructor.edit', $instructor->id);
+                    return '
+                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                       <i class="bx bxs-show"></i>
+                    </a>
+                    <a href="javascript:;" onclick="deleteInstructor(this, ' . $instructor->id . ')" class="text-danger" title="Delete">
                         <i class="bx bx-trash"></i>
                     </a>';
                 })

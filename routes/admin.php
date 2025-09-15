@@ -73,7 +73,11 @@ Route::middleware(['web', 'auth_guard:admin'])
 
         Route::prefix('manage-instructor')->name('instructor.')->group(function () {
             Route::get('/', [ManageInstructorController::class, 'index'])->name('index');
-            // Route::put('update/{id}', [InfoController::class, 'update'])->name('update');
-
+            Route::get('create', [ManageInstructorController::class, 'create'])->name('create');
+            Route::post('store', [ManageInstructorController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [ManageInstructorController::class, 'edit'])->name('edit');
+            Route::put('update/{id}', [ManageInstructorController::class, 'update'])->name('update');
+            Route::delete('destroy', [ManageInstructorController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getInstructorData'])->name('yajra');
         });
     });

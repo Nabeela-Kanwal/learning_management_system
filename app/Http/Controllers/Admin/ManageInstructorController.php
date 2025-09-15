@@ -14,4 +14,14 @@ class ManageInstructorController extends Controller
         // dd($instructor);
         return view('backend.admin.instructor.index', compact('instructor'));
     }
+    public function create()
+    {
+        return view('backend.admin.instructor.create');
+    }
+
+    public function edit($id)
+    {
+        $instructor = User::findOrFail($id);
+        return view('backend.admin.instructor.edit', compact('instructor'));
+    }
 }
