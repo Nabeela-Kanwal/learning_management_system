@@ -17,7 +17,7 @@
                             @method('POST')
 
                             <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
-                                <img src="{{ asset('images/profile/' . $instructor->image) }}" alt="user-avatar"
+                                <img src="{{ asset($instructor->image) }}" alt="user-avatar"
                                     class="d-block rounded" height="100" width="100" id="image-preview" />
 
                                 <div class="button-wrapper">

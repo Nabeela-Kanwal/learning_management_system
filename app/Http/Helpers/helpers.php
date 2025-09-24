@@ -1,12 +1,14 @@
 <?php
 
 use App\Models\Category;
+use App\Models\User;
 use Carbon\Carbon;
 use Carbon\CarbonInterval;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
+
 
 
 function upload_image($image, $path)
@@ -48,5 +50,16 @@ if (!function_exists('getCategories')) {
         return Category::with('subCategory')
             ->orderBy('created_at', 'desc')
             ->get();
+    }
+}
+
+if (!function_exists('isApprovedInstructor')) {
+    function isApprovedInstructor()
+    {
+        $user = Auth::user();
+        return User::where('role', 'instructor')
+            ->where('status', 1)
+            ->where('id', $user->id)
+            ->first();
     }
 }

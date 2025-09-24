@@ -1,12 +1,216 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-     <h1>Create Instructor</h1>
-</body>
-</html>
+@extends('layout.adminapp')
+
+@section('content')
+    <div class="content-wrapper">
+        @include('message')
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4">
+                <span class="text-muted fw-light">
+                    <a href="{{ route('admin.instructor.index') }}" class="text-muted">Instructors</a> /
+                </span>
+                Add Instructor
+            </h4>
+            <div class="row">
+                <div class="col-xxl">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Add Instructor</h5>
+                        </div>
+                        <div class="card-body">
+                            <form id="instructorForm" action="{{ route('admin.instructor.store') }}" method="POST"
+                                enctype="multipart/form-data">
+                                @csrf
+                                <input type="hidden" name="role" value="instructor">
+
+                                {{-- First Name --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">First Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                                            <input type="text" name="first_name" class="form-control"
+                                                value="{{ old('first_name') }}" placeholder="First Name" required>
+                                        </div>
+                                        @error('first_name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Last Name --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Last Name</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-user"></i></span>
+                                            <input type="text" name="last_name" class="form-control"
+                                                value="{{ old('last_name') }}" placeholder="Last Name" required>
+                                        </div>
+                                        @error('last_name')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Email --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Email</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-envelope"></i></span>
+                                            <input type="email" name="email" class="form-control"
+                                                value="{{ old('email') }}" placeholder="Email" required>
+                                        </div>
+                                        @error('email')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Password --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Password</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-lock"></i></span>
+                                            <input type="password" name="password" class="form-control"
+                                                placeholder="Password" required>
+                                        </div>
+                                        @error('password')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Phone --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Phone</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-phone"></i></span>
+                                            <input type="text" name="phone" class="form-control"
+                                                value="{{ old('phone') }}" placeholder="Phone">
+                                        </div>
+                                        @error('phone')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Address --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Address</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-map"></i></span>
+                                            <input type="text" name="address" class="form-control"
+                                                value="{{ old('address') }}" placeholder="Address">
+                                        </div>
+                                        @error('address')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Gender --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Gender</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-male-female"></i></span>
+                                            <select name="gender" class="form-control" required>
+                                                <option value="male" {{ old('gender') == 'male' ? 'selected' : '' }}>Male
+                                                </option>
+                                                <option value="female" {{ old('gender') == 'female' ? 'selected' : '' }}>
+                                                    Female
+                                                </option>
+                                            </select>
+                                        </div>
+                                        @error('gender')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Image --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Image</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
+                                            <input type="file" name="image" class="form-control"
+                                                onchange="checkImage(this)">
+                                        </div>
+                                        <img id="previewImage" src="#" alt="Image Preview"
+                                            style="max-width: 150px; margin-top: 10px; display: none;" />
+                                        @error('image')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Bio --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Bio</label>
+                                    <div class="col-sm-10">
+                                        <div class="input-group input-group-merge">
+                                            <span class="input-group-text"><i class="bx bx-detail"></i></span>
+                                            <textarea name="bio" class="form-control" rows="4" placeholder="Instructor Bio">{{ old('bio') }}</textarea>
+                                        </div>
+                                        @error('bio')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
+                                    </div>
+                                </div>
+
+                                {{-- Status --}}
+                                <div class="row mb-3">
+                                    <label class="col-sm-2 col-form-label">Status</label>
+                                    <div class="col-sm-10">
+                                        <x-logos.status />
+                                    </div>
+                                </div>
+
+
+                                {{-- Hidden Role --}}
+                                <input type="hidden" name="role" value="instructor">
+
+                                {{-- Submit --}}
+                                <div class="row justify-content-end">
+                                    <div class="col-sm-10">
+                                        <button class="btn btn-primary" type="submit" id="submitBtn">
+                                            Save <x-loader-icon />
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('script')
+    <script>
+        // Image preview + validation
+        function checkImage(input) {
+            var file = input.files[0];
+            if (file && validateFile(file, 2, true)) {
+                var preview = document.getElementById("previewImage");
+                preview.src = URL.createObjectURL(file);
+                preview.style.display = 'block';
+            } else {
+                input.value = '';
+                alert('Invalid file. Only images up to 2MB are allowed.');
+            }
+        }
+
+        function validateFile(file, maxSizeMB = 2, onlyImage = true) {
+            var validTypes = ['image/jpeg', 'image/png', 'image/jpg', 'image/gif', 'image/webp'];
+            var maxSizeBytes = maxSizeMB * 1024 * 1024;
+            return (!onlyImage || validTypes.includes(file.type)) && file.size <= maxSizeBytes;
+        }
+    </script>
+@endsection

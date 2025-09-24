@@ -1,10 +1,13 @@
 
 <?php
 
+use App\Http\Controllers\Instructor\YajraController;
 use App\Http\Controllers\Instructor\AuthController;
+use App\Http\Controllers\Instructor\CourseController;
 use App\Http\Controllers\Instructor\DashboardController;
 use App\Http\Controllers\Instructor\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 // Instructor routes
 Route::prefix('instructor')->name('instructor.')->group(function () {
@@ -22,5 +25,15 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
         });
 
         Route::get('logout', [AuthController::class, 'logout'])->name('logout');
+    });
+
+    Route::prefix('courses')->name('course.')->group(function () {
+        Route::get('/', [CourseController::class, 'index'])->name('index');
+        Route::get('create', [CourseController::class, 'create'])->name('create');
+        Route::post('store', [CourseController::class, 'store'])->name('store');
+        Route::get('edit/{id}', [CourseController::class, 'edit'])->name('edit');
+        Route::put('update/{id}', [CourseController::class, 'update'])->name('update');
+        Route::delete('destroy', [CourseController::class, 'destroy'])->name('destroy');
+        Route::get('yajra', [YajraController::class, 'getcoursesData'])->name('yajra');
     });
 });
