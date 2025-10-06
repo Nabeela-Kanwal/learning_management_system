@@ -1,0 +1,267 @@
+/*-------------------------------------------------------------*
+ | ADMIN – Urdu Font + RTL + Readability (scoped to body.be-ur)|
+ *-------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'JameelNooriNastaleeq';
+  src: url('/uploads/fonts/JameelNooriNastaleeq.woff2') format('woff2'),
+       url('/uploads/fonts/JameelNooriNastaleeq.woff')  format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200D, U+0660-0669;
+}
+
+/* Scope EVERYTHING to body.be-ur so English is unaffected */
+body.be-ur {
+  direction: rtl;
+  unicode-bidi: embed;
+}
+
+/* Font swap only under be-ur */
+body.be-ur * {
+  font-family: 'JameelNooriNastaleeq',
+               'Heebo','Open Sans',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif !important;
+  line-height: 1.9;
+}
+
+/* Readability */
+body.be-ur,
+body.be-ur .content-page,
+body.be-ur .container-fluid,
+body.be-ur .table,
+body.be-ur .card-body,
+body.be-ur .form-control {
+  font-size: 1.12em;
+  line-height: 2.05;
+}
+
+/* Headings */
+body.be-ur h1 { font-size: 2.0em; line-height: 1.4; }
+body.be-ur h2 { font-size: 1.7em; line-height: 1.5; }
+body.be-ur h3 { font-size: 1.45em; line-height: 1.6; }
+body.be-ur h4 { font-size: 1.30em; line-height: 1.7; }
+body.be-ur h5 { font-size: 1.18em; line-height: 1.8; }
+body.be-ur h6 { font-size: 1.06em; line-height: 1.9; }
+
+/* Icons/code unaffected */
+body.be-ur .feather,
+body.be-ur .mdi,
+body.be-ur .ti,
+body.be-ur .fa, body.be-ur [class^="fa-"], body.be-ur [class*=" fa-"],
+body.be-ur .material-icons,
+body.be-ur code,
+body.be-ur pre {
+  font-family: inherit !important;
+}
+
+/* Sidebar / topbar */
+body.be-ur .left-side-menu,
+body.be-ur .navbar-custom,
+body.be-ur .content-page {
+  direction: rtl;
+}
+
+/* Tabs strip tidy (scoped) */
+body.be-ur .nav-tabs,
+body.be-ur .tabs,
+body.be-ur .tabbar {
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  gap: .25rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+body.be-ur .nav-tabs .nav-link,
+body.be-ur .nav .nav-link,
+body.be-ur .tabs .tab,
+body.be-ur .tabbar .tab {
+  display: inline-block;
+  padding: .55rem .9rem;
+  line-height: 1.6;
+  font-size: .96em;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Numbers/emails always Latin in backend */
+body.be-ur .email,
+body.be-ur .username,
+body.be-ur .id,
+body.be-ur .count,
+body.be-ur .amount,
+body.be-ur .date,
+body.be-ur .time {
+  font-family: 'Heebo','Open Sans',system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif !important;
+}
+
+/* Small screens */
+@media (max-width: 991px) {
+  body.be-ur { font-size: 1.16em; line-height: 2.15; }
+  body.be-ur .nav-tabs .nav-link { padding: .5rem .75rem; font-size: .95em; }
+  body.be-ur .left-side-menu { font-size: 1.02em; }
+}
+
+/* ===========================
+   ADMIN – universal layout fix
+   (Themes page card dropping too low)
+   =========================== */
+
+/* Keep the content area flowing normally */
+.content-page {
+  position: relative;
+}
+.content-page .content {
+  display: block;
+ // padding-top: 20px;           /* small, consistent top padding
+  min-height: initial;         /* avoid exaggerated min-heights */
+}
+
+/* Trim oversized page-title spacing that pushes content down */
+.page-title-box {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+}
+
+/* Normalize rows and cards spacing just under the title */
+.content-page .content > .container-fluid > .row:first-child {
+  margin-top: 0 !important;
+}
+.content-page .content .card {
+  margin-top: 0 !important;
+}
+
+/* Tabs/filters bars sometimes add extra height—keep compact */
+.content-page .content .nav-tabs,
+.content-page .content .tabbar,
+.content-page .content .filters,
+.content-page .content .toolbar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* In case a floating element in the title bar collapses parent height */
+.page-title-box::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ===============================
+   ADMIN — fix content offset
+   Targets the main wrapper you highlighted: .content-page
+   Works for both EN + UR
+   =============================== */
+
+/* 1) Standardize the topbar height */
+.navbar-custom {
+  min-height: 64px;            /* keep topbar compact & predictable */
+}
+
+/* 2) Make content start right below the topbar */
+.content-page {
+  position: relative;
+  margin-top: 0 !important;
+  /*padding-top: 72px !important; */
+  /* 64px topbar + a little breathing room */
+  min-height: auto !important;
+}
+
+/* 3) Remove any “push down” margins under the page title */
+.page-title-box {
+  margin: 0 0 16px !important;
+  padding: 0 !important;
+}
+.page-title-box::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* 4) First block under the title starts immediately */
+.content-page .content > .container-fluid > *:first-child {
+  margin-top: 0 !important;
+}
+
+/* 5) Kill any accidental mt-auto on the first row (seen in some pages) */
+.content-page .content .mt-auto {
+  margin-top: 0 !important;
+}
+.content-page .content [style*="margin-top:auto"] {
+  margin-top: 0 !important;
+}
+
+/* 6) Tabs/filters bars shouldn’t create extra vertical space */
+.content-page .content .nav-tabs,
+.content-page .content .tabbar,
+.content-page .content .filters,
+.content-page .content .toolbar {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+/* 7) Cards sit tight under the header */
+.content-page .content .card {
+  margin-top: 8px !important;
+}
+
+/* ===============================
+   FIX: Sidebar + Content alignment
+   =============================== */
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  min-height: 100vh; /* stretch full height */
+}
+
+/* Sidebar */
+.left-side-menu {
+  width: 240px;              /* match your sidebar width */
+  flex-shrink: 0;
+  position: relative;        /* ensure it stays in flow */
+  z-index: 1000;
+}
+
+/* Content Area */
+.content-page {
+  flex: 1;
+  margin: 0 !important;
+  padding: 20px;             /* breathing space */
+  position: relative;
+  min-height: auto !important;
+}
+
+/* Content inside content-page */
+.content-page .content {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+  display: block;
+}
+
+/* ===============================
+   Topbar alignment
+   =============================== */
+.navbar-custom {
+  min-height: 64px;
+  position: fixed;
+  top: 0;
+  left: 240px;               /* offset by sidebar width */
+  right: 0;
+  z-index: 999;
+}
+
+/* Push content down by navbar height */
+.content-page {
+  padding-top: 80px !important; /* 64px topbar + spacing */
+}
+
+/* RTL mode fix */
+body.be-ur .navbar-custom {
+  left: 0;
+  right: 240px;
+}
