@@ -10,7 +10,7 @@
 
 <body>
 
-    <form action="{{ route('change-email') }}" method="POST">
+    <form action="  " method="POST">
         @csrf
         <input type="email" name="new_email" required>
         <button type="submit">Change Email</button>
