@@ -35,33 +35,61 @@
                 </div>
             </div>
         </div>
-    </div>
-@endsection
 
-@section('script')
+
+    </div>
+    @endsection
+    @section('script')
     <script>
+        // console.log("Yajra URL:", "{{ route('instructor.course.yajra') }}");
         $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                }
+            });
+
             let courseTable = $('#courseTable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: '{{ route('instructor.course.yajra') }}',
+                ajax: "{{ route('instructor.course.yajra') }}",
                 columns: [{
-                        data: 'image',
-                        name: 'image'
+                        data: 'DT_RowIndex',
+                        name: 'DT_RowIndex',
+                        orderable: false,
+                        searchable: false
                     },
                     {
-                        data: 'name',
-                        name: 'name'
+                        data: 'course_image',
+                        name: 'course_image',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'course_title',
+                        name: 'course_title'
+                    },
+                    {
+                        data: 'category',
+                        name: 'category'
+                    },
+                    {
+                        data: 'subcategory',
+                        name: 'subcategory'
+                    },
+                    {
+                        data: 'selling_price',
+                        name: 'selling_price'
+                    },
+                    {
+                        data: 'discount_price',
+                        name: 'discount_price'
                     },
                     {
                         data: 'status',
                         name: 'status',
                         orderable: false,
                         searchable: false
-                    },
-                    {
-                        data: 'created_at',
-                        name: 'created_at'
                     },
                     {
                         data: 'action',
@@ -77,11 +105,10 @@
                 }
             });
 
-            // Make deletecourse accessible globally
             window.deletecourse = function(itSelf, id) {
                 Swal.fire({
                     title: "Are you sure?",
-                    text: "You won't be able to revert this!",
+                    text: "This action cannot be undone!",
                     icon: "warning",
                     showCancelButton: true,
                     confirmButtonText: "Yes, delete it!",
@@ -89,17 +116,15 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('instructor.course.destroy') }}", // Ensure this route accepts POST or DELETE with id in request
+                            url: "{{ route('instructor.course.destroy') }}",
                             method: "DELETE",
                             data: {
                                 id: id,
                                 _token: "{{ csrf_token() }}"
                             },
                             success: function(response) {
-                                // Refresh the datatable
-                                courseTable.ajax.reload(null,
-                                    false); // false to keep pagination
-                                Swal.fire("Deleted!", "course has been deleted.",
+                                courseTable.ajax.reload(null, false);
+                                Swal.fire("Deleted!", "Course deleted successfully.",
                                     "success");
                             },
                             error: function() {
@@ -108,7 +133,7 @@
                         });
                     }
                 });
-            }
+            };
         });
     </script>
 @endsection
