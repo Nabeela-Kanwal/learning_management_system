@@ -9,7 +9,7 @@ class CourseRepository
     public function createCourse($data, $photo)
     {
         if ($photo && $photo->isValid()) {
-            $data['image'] = upload_image($photo, 'images/courses');
+            $data['course_image'] = upload_image($photo, 'images/courses');
         }
 
         return Course::create($data);
@@ -20,7 +20,7 @@ class CourseRepository
         $course = Course::findOrFail($id);
 
         if ($photo && $photo->isValid()) {
-            $data['image'] = upload_image($photo, 'images/courses');
+            $data['course_image'] = upload_image($photo, 'images/courses');
         }
 
         $course->update($data);

@@ -13,7 +13,7 @@ class ProfileRepository
         }
 
         if (auth()->guard('admin')->check()) {
-            return auth('admin')->user(); 
+            return auth('admin')->user();
         }
 
         return null;

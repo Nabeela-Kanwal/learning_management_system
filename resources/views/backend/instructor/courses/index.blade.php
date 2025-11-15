@@ -26,6 +26,7 @@
                                     <th>Sub Category</th>
                                     <th>Selling Price</th>
                                     <th>Discount Price</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -38,8 +39,8 @@
 
 
     </div>
-    @endsection
-    @section('script')
+@endsection
+@section('script')
     <script>
         // console.log("Yajra URL:", "{{ route('instructor.course.yajra') }}");
         $(function() {
