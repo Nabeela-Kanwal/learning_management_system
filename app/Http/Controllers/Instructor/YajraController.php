@@ -12,44 +12,66 @@ class YajraController extends Controller
 {
     public function getcoursesData(Request $request)
     {
-        if (!$request->ajax()) {
-            abort(404);
+        if ($request->ajax()) {
+
+            // Logged-in instructor ID
+            $instructorId = Auth::guard('instructor')->id();
+
+            // Fetch Instructor Courses
+            $courses = Course::with(['category', 'subcategory'])
+                ->where('instructor_id', $instructorId)
+                ->select('id', 'course_title', 'course_image', 'category_id', 'subcategory_id', 'selling_price', 'discount_price', 'status', 'created_at')
+                ->latest();
+
+            return DataTables::of($courses)
+
+                ->editColumn('created_at', function ($row) {
+                    return $row->created_at ? $row->created_at->format('Y-m-d') : '-';
+                })
+
+                ->addColumn('course_image', function ($row) {
+                    $img = $row->course_image
+                        ? asset($row->course_image)
+                        : asset('images/default-course.png');
+
+                    return '<img src="' . $img . '" width="45" height="45" class="rounded">';
+                })
+
+                ->addColumn('category', function ($row) {
+                    return $row->category
+                        ? $row->category->name
+                        : '<span class="text-muted">N/A</span>';
+                })
+
+                ->addColumn('subcategory', function ($row) {
+                    return $row->subcategory
+                        ? $row->subcategory->name
+                        : '<span class="text-muted">N/A</span>';
+                })
+
+                ->addColumn('status', function ($row) {
+                    return $row->status == 1
+                        ? '<span class="badge bg-primary">Active</span>'
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+
+                ->addColumn('action', function ($row) {
+                    $editUrl = route('instructor.course.edit', $row->id);
+
+                    return '
+                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                        <i class="bx bxs-show"></i>
+                    </a>
+                    <a href="javascript:;" onclick="deletecourse(' . $row->id . ')" class="text-danger" title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>
+                ';
+                })
+
+                ->rawColumns(['course_image', 'category', 'subcategory', 'status', 'action'])
+                ->make(true);
         }
 
-        // Logged-in instructor ID
-        $instructorId = Auth::guard('instructor')->id();
-
-        // Fetch Instructor Courses
-        $courses = Course::with(['category', 'subcategory'])
-            ->where('instructor_id', $instructorId)
-            ->select('courses.*');
-
-        return DataTables::of($courses)
-            ->addIndexColumn()
-            ->addColumn(
-                'course_image',
-                fn($row) =>
-                '<img src="' . ($row->course_image ? asset('uploads/course/' . $row->course_image) : asset('images/default-course.png')) . '" width="60" height="60" class="rounded">'
-            )
-            ->addColumn('course_name', fn($row) => $row->course_name ?? '-')
-            ->addColumn('category', fn($row) => $row->category?->name ?? '-')
-            ->addColumn('subcategory', fn($row) => $row->subcategory?->name ?? '-')
-            ->addColumn('selling_price', fn($row) => $row->selling_price ?? '-')
-            ->addColumn('discount_price', fn($row) => $row->discount_price ?? '-')
-            ->addColumn(
-                'status',
-                fn($row) =>
-                $row->status == 1
-                    ? '<span class="badge bg-success">Active</span>'
-                    : '<span class="badge bg-danger">Inactive</span>'
-            )
-            ->addColumn(
-                'action',
-                fn($row) =>
-                '<a href="' . route('instructor.course.edit', $row->id) . '" class="btn btn-sm btn-primary"><i class="bx bx-edit"></i></a>
-         <button onclick="deletecourse(this, ' . $row->id . ')" class="btn btn-sm btn-danger"><i class="bx bx-trash"></i></button>'
-            )
-            ->rawColumns(['course_image', 'status', 'action'])
-            ->make(true);
+        abort(404);
     }
 }

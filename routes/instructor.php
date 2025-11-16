@@ -41,7 +41,7 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
             Route::post('store', [CourseController::class, 'store'])->name('store');
             Route::get('edit/{id}', [CourseController::class, 'edit'])->name('edit');
             Route::put('update/{id}', [CourseController::class, 'update'])->name('update');
-            Route::delete('destroy', [CourseController::class, 'destroy'])->name('destroy');
+           Route::delete('destroy/{id}', [CourseController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getcoursesData'])->name('yajra');
         });
 

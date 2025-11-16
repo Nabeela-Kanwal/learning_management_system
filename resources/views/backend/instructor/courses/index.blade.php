@@ -8,7 +8,7 @@
 
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Categories</h5>
+                    <h5 class="mb-0">Courses</h5>
                     <a href="{{ route('instructor.course.create') }}" class="btn btn-primary">
                         <i class="bx bx-plus"></i> Add Course
                     </a>
@@ -19,7 +19,6 @@
                         <table id="courseTable" class="table table-bordered">
                             <thead>
                                 <tr>
-                                    <th>No</th>
                                     <th>Thumbnail</th>
                                     <th>Course Name</th>
                                     <th>Category</th>
@@ -55,12 +54,6 @@
                 serverSide: true,
                 ajax: "{{ route('instructor.course.yajra') }}",
                 columns: [{
-                        data: 'DT_RowIndex',
-                        name: 'DT_RowIndex',
-                        orderable: false,
-                        searchable: false
-                    },
-                    {
                         data: 'course_image',
                         name: 'course_image',
                         orderable: false,
@@ -106,7 +99,7 @@
                 }
             });
 
-            window.deletecourse = function(itSelf, id) {
+            window.deletecourse = function(id) {
                 Swal.fire({
                     title: "Are you sure?",
                     text: "This action cannot be undone!",
@@ -117,24 +110,24 @@
                 }).then((result) => {
                     if (result.isConfirmed) {
                         $.ajax({
-                            url: "{{ route('instructor.course.destroy') }}",
-                            method: "DELETE",
+                            url: "/instructor/courses/destroy/" + id,
+                            type: "DELETE",
                             data: {
-                                id: id,
                                 _token: "{{ csrf_token() }}"
                             },
                             success: function(response) {
                                 courseTable.ajax.reload(null, false);
-                                Swal.fire("Deleted!", "Course deleted successfully.",
-                                    "success");
+                                Swal.fire("Deleted!", response.message, "success");
                             },
                             error: function() {
                                 Swal.fire("Error!", "Something went wrong.", "error");
                             }
                         });
+
                     }
                 });
             };
+
         });
     </script>
 @endsection

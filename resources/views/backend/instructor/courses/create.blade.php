@@ -1,4 +1,4 @@
-@extends('layout.adminapp')
+@extends('layout.instructorapp')
 @section('content')
     <div class="content-wrapper">
         @include('message')
