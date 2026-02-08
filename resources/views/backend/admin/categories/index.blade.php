@@ -96,7 +96,7 @@
                             success: function(response) {
                                 // Refresh the datatable
                                 categoryTable.ajax.reload(null,
-                                false); // false to keep pagination
+                                    false); // false to keep pagination
                                 Swal.fire("Deleted!", "Category has been deleted.",
                                     "success");
                             },

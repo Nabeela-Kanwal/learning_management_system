@@ -19,13 +19,13 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
 
 
         Route::get('whoami', function () {
-    return [
-        'guard' => 'instructor',
-        'auth_instructor_id' => auth('instructor')->id(),
-        'auth_default_id' => auth()->id(),
-        'user' => auth('instructor')->user(),
-    ];
-});
+            return [
+                'guard' => 'instructor',
+                'auth_instructor_id' => auth('instructor')->id(),
+                'auth_default_id' => auth()->id(),
+                'user' => auth('instructor')->user(),
+            ];
+        });
 
 
         Route::prefix('profile')->name('profile.')->group(function () {
@@ -41,7 +41,7 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
             Route::post('store', [CourseController::class, 'store'])->name('store');
             Route::get('edit/{id}', [CourseController::class, 'edit'])->name('edit');
             Route::put('update/{id}', [CourseController::class, 'update'])->name('update');
-           Route::delete('destroy/{id}', [CourseController::class, 'destroy'])->name('destroy');
+            Route::delete('destroy/{id}', [CourseController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getcoursesData'])->name('yajra');
         });
 
