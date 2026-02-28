@@ -114,18 +114,10 @@ $categories = getCategories();
                                     <li>
                                         <a href="#">courses <i class="la la-angle-down fs-12"></i></a>
                                         <ul class="dropdown-menu-item">
-                                            <li><a href="course-grid.html">course grid</a></li>
-                                            <li><a href="course-list.html">course list</a></li>
-                                            <li><a href="course-grid-left-sidebar.html">grid left sidebar</a></li>
-                                            <li><a href="course-grid-right-sidebar.html">grid right sidebar</a>
-                                            </li>
-                                            <li><a href="course-list-left-sidebar.html">list left sidebar <span
-                                                        class="ribbon ribbon-blue-bg">New</span></a></li>
-                                            <li><a href="course-list-right-sidebar.html">list right sidebar <span
-                                                        class="ribbon ribbon-blue-bg">New</span></a></li>
-                                            <li><a href="course-details.html">course details</a></li>
-                                            <li><a href="lesson-details.html">lesson details</a></li>
-                                            <li><a href="my-courses.html">My courses</a></li>
+                                            @foreach ($course as $data)
+                                                <li>{{ $data->course_title }}</a></li>
+                                            @endforeach
+
                                         </ul>
                                     </li>
                                     <li>

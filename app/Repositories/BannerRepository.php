@@ -22,5 +22,5 @@ class BannerRepository
         $banner->update($data);
 
         return $banner;
-    }
+    } 
 }
