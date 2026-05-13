@@ -17,7 +17,6 @@ class BannerController extends Controller
         $this->bannerService = $bannerService;
     }
 
-
     public function index()
     {
         return view('backend.admin.banner.index');
