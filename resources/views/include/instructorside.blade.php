@@ -13,35 +13,19 @@
      </div>
 
      <div class="menu-inner-shadow"></div>
-
      <ul class="menu-inner py-1">
-         <!-- Dashboard -->
-         <li class="menu-item active">
+         <li class="menu-item {{ request()->routeIs('instructor.dashboard') ? 'active' : '' }}">
              <a href="{{ route('instructor.dashboard') }}" class="menu-link">
                  <i class="menu-icon tf-icons bx bx-home-circle"></i>
-                 <div data-i18n="Analytics">Dashboard</div>
+                 <div>Dashboard</div>
              </a>
          </li>
 
-         <!-- Layouts -->
-         {{-- Manage Courses --}}
-         <li class="menu-item {{ setSidebar(['instructor.course*', 'instructor.sub-course*']) }}">
-             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                 <i class="menu-icon tf-icons bx bx-photo-album"></i>
-                 <div>Manage Courses</div>
+         <li class="menu-item {{ request()->routeIs('instructor.course.*') ? 'active' : '' }}">
+             <a href="{{ route('instructor.course.index') }}" class="menu-link">
+                 <i class="menu-icon tf-icons bx bx-image"></i>
+                 <div>Course</div>
              </a>
-             <ul class="menu-sub">
-                 <li class="menu-item {{ setSidebar(['instructor.course*']) }}">
-                     <a href="{{ route('instructor.course.index') }}" class="menu-link">
-                         <div>Course List</div>
-                     </a>
-                 </li>
-                 {{-- <li class="menu-item {{ setSidebar(['instructor.sub-course*']) }}">
-                    <a href="{{ route('instructor.sub-course.index') }}" class="menu-link">
-                        <div>Sub Categories</div>
-                    </a>
-                </li> --}}
-             </ul>
          </li>
      </ul>
  </aside>
