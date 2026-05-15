@@ -11,9 +11,7 @@
             <i class="bx bx-chevron-left bx-sm align-middle"></i>
         </a>
     </div>
-
     <div class="menu-inner-shadow"></div>
-
     <ul class="menu-inner py-1">
         {{-- Dashboard --}}
         <li class="menu-item {{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">
@@ -23,24 +21,18 @@
             </a>
         </li>
 
-        {{-- Manage Banners --}}
-        <li class="menu-item {{ setSidebar(['admin.banner*', 'admin.sub-banner*']) }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-photo-album"></i>
-                <div>Manage Banners</div>
+        <li class="menu-item {{ request()->routeIs('admin.banner.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.banner.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-image"></i>
+                <div>Banner</div>
             </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ setSidebar(['admin.banner*']) }}">
-                    <a href="{{ route('admin.banner.index') }}" class="menu-link">
-                        <div>Banner</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item {{ setSidebar(['admin.sub-banner*']) }}">
-                    <a href="{{ route('admin.sub-banner.index') }}" class="menu-link">
-                        <div>Sub Categories</div>
-                    </a>
-                </li> --}}
-            </ul>
+        </li>
+
+        <li class="menu-item {{ request()->routeIs('admin.instructor.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.instructor.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-user"></i>
+                <div>Instructor</div>
+            </a>
         </li>
 
         {{-- Manage Categories --}}
@@ -62,30 +54,5 @@
                 </li>
             </ul>
         </li>
-
-
-
-        {{-- Manage Instructor --}}
-        <li class="menu-item {{ setSidebar(['admin.category*', 'admin.instructor*']) }}">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-category"></i>
-                <div>Manage Instructor</div>
-            </a>
-            <ul class="menu-sub">
-                <li class="menu-item {{ setSidebar(['admin.instructor*']) }}">
-                    <a href="{{ route('admin.instructor.index') }}" class="menu-link">
-                        <div>Instructor</div>
-                    </a>
-                </li>
-                {{-- <li class="menu-item {{ setSidebar(['admin.sub-category*']) }}">
-                    <a href="{{ route('admin.sub-category.index') }}" class="menu-link">
-                        <div>Sub Instructor</div>
-                    </a>
-                </li> --}}
-            </ul>
-        </li>
-
-
-
     </ul>
 </aside>
