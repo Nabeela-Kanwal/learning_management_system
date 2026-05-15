@@ -16,10 +16,6 @@
                             <div class="hero-btn-box d-flex flex-wrap align-items-center pt-1">
                                 <a href="admission.html" class="btn theme-btn mr-4 mb-4">Join with Us <i
                                         class="la la-arrow-right icon ml-1"></i></a>
-                                <a href="#" class="btn-text video-play-btn mb-4" data-fancybox
-                                    data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
-                                    Watch Preview<i class="la la-play icon-btn ml-2"></i>
-                                </a>
                             </div>
                         </div>
                     </div>
@@ -27,11 +23,9 @@
             @endforeach
         </div>
     </section>
-
     <section class="feature-area pb-90px">
         @include('components.featured.feature-section')
     </section>
-
     <section class="category-area pb-90px">
         <div class="container">
             <div class="row align-items-center">
@@ -53,7 +47,6 @@
             </div>
             @include('components.category.category')
         </div>
-
     </section>
 
     <section class="course-area pb-120px">
