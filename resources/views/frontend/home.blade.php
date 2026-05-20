@@ -110,14 +110,14 @@
                                         <span class="la la-user input-icon"></span>
                                     </div>
                                 </div>
-                                <div class="input-box">
+                                {{-- <div class="input-box">
                                     <label class="label-text">Email</label>
                                     <div class="form-group">
                                         <input class="form-control form--control" type="email" name="email"
                                             placeholder="Email Address">
                                         <span class="la la-envelope input-icon"></span>
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="input-box">
                                     <label class="label-text">Phone Number</label>
                                     <div class="form-group">
