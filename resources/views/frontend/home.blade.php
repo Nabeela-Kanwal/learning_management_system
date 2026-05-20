@@ -93,7 +93,7 @@
     </section>
 
     <div class="section-block"></div>
-    <section class="register-area section-padding dot-bg overflow-hidden">
+    {{-- <section class="register-area section-padding dot-bg overflow-hidden">
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
@@ -164,7 +164,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
 
 
     <div class="section-block"></div>
