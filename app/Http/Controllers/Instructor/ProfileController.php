@@ -24,7 +24,7 @@ class ProfileController extends Controller
     public function profile()
     {
         $instructor = auth('instructor')->user();
-        return view('backend.instructor.profile.index', compact('instructor'));
+        return view('instructor.profile.index', compact('instructor'));
     }
 
 
@@ -37,7 +37,7 @@ class ProfileController extends Controller
     public function showPasswordForm()
     {
         $instructor = auth('instructor')->user();
-        return view('backend.instructor.profile.password', compact('instructor'));
+        return view('instructor.profile.password', compact('instructor'));
     }
 
     public function updatePassword(PasswordUpdateRequest $request)

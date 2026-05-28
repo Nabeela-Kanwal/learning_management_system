@@ -27,7 +27,7 @@ class CourseController extends Controller
         $instructorId = Auth::guard('instructor')->id();
         $courses = Course::where('instructor_id', $instructorId)->get();
         // dd($courses);
-        return view('backend.instructor.courses.index', compact('courses'));
+        return view('instructor.courses.index', compact('courses'));
     }
 
 
@@ -38,7 +38,7 @@ class CourseController extends Controller
         $subcategories = SubCategory::all();
         $instructors = User::where('role', 'instructor')->get();
 
-        return view('backend.instructor.courses.create', compact('categories', 'subcategories', 'instructors'));
+        return view('instructor.courses.create', compact('categories', 'subcategories', 'instructors'));
     }
 
     public function edit($id)
@@ -48,7 +48,7 @@ class CourseController extends Controller
         $subcategories = SubCategory::all();
         $instructors = User::where('role', 'instructor')->get();
 
-        return view('backend.instructor.courses.edit', compact('course', 'categories', 'subcategories', 'instructors'));
+        return view('instructor.courses.edit', compact('course', 'categories', 'subcategories', 'instructors'));
     }
 
     public function store(CourseRequest $request)
