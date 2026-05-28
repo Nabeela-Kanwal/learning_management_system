@@ -21,13 +21,13 @@ class SubCategoryController extends Controller
     public function index()
     {
         $allCategories = SubCategory::latest()->get();
-        return view('backend.admin.sub-categories.index', compact('allCategories'));
+        return view('admin.sub-categories.index', compact('allCategories'));
     }
 
     public function create()
     {
         $categories = Category::where('status', 1)->get(); // only active categories
-        return view('backend.admin.sub-categories.create', compact('categories'));
+        return view('admin.sub-categories.create', compact('categories'));
     }
     public function store(SubCategoryRequest $request)
     {
@@ -40,7 +40,7 @@ class SubCategoryController extends Controller
         $category = SubCategory::findOrFail($id);
         $categories = Category::where('status', 1)->get(); // fetch all active categories
 
-        return view('backend.admin.sub-categories.edit', compact('category', 'categories'));
+        return view('admin.sub-categories.edit', compact('category', 'categories'));
     }
     public function update(SubCategoryRequest $request, string $id)
     {

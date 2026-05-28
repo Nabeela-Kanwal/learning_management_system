@@ -31,10 +31,10 @@ class AuthController extends Controller
                 if (auth()->guard('admin')->user()->role == 'admin') {
                     return redirect()->route('admin.dashboard');
                 } else {
-                    return view('backend.admin.login')->with('error', "You are not logged in as Admin");
+                    return view('admin.login')->with('error', "You are not logged in as Admin");
                 }
             }
-            return view('backend.admin.login');
+            return view('admin.login');
         }
     }
 

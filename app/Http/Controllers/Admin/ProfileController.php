@@ -7,9 +7,6 @@ use App\Http\Requests\PasswordUpdateRequest;
 use App\Http\Requests\ProfileRequest;
 use App\Services\PasswordUpdateService;
 use App\Services\ProfileService;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Str;
 
 class ProfileController extends Controller
 {
@@ -24,7 +21,7 @@ class ProfileController extends Controller
     public function profile()
     {
         $admin = auth('admin')->user();
-        return view('backend.admin.profile.index', compact('admin'));
+        return view('admin.profile.index', compact('admin'));
     }
 
 
@@ -37,7 +34,7 @@ class ProfileController extends Controller
     public function showPasswordForm()
     {
         $admin = auth('admin')->user();
-        return view('backend.admin.profile.password', compact('admin'));
+        return view('admin.profile.password', compact('admin'));
     }
 
     public function updatePassword(PasswordUpdateRequest $request)

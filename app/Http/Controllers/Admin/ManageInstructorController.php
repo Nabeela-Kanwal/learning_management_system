@@ -22,17 +22,17 @@ class ManageInstructorController extends Controller
     {
         $instructor = User::where('role', 'instructor')->latest()->get();
         // dd($instructor);
-        return view('backend.admin.instructor.index', compact('instructor'));
+        return view('admin.instructor.index', compact('instructor'));
     }
     public function create()
     {
-        return view('backend.admin.instructor.create');
+        return view('admin.instructor.create');
     }
 
     public function edit($id)
     {
         $instructor = User::findOrFail($id);
-        return view('backend.admin.instructor.edit', compact('instructor'));
+        return view('admin.instructor.edit', compact('instructor'));
     }
     public function store(InstructorRequest $request)
     {

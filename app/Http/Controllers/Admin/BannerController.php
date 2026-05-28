@@ -19,12 +19,12 @@ class BannerController extends Controller
 
     public function index()
     {
-        return view('backend.admin.banner.index');
+        return view('admin.banner.index');
     }
 
     public function create()
     {
-        return view('backend.admin.banner.create');
+        return view('admin.banner.create');
     }
 
     public function store(BannerRequest $request)
@@ -43,7 +43,7 @@ class BannerController extends Controller
     public function edit(string $id)
     {
         $banner = Banner::findOrFail($id);
-        return view('backend.admin.banner.edit', compact('banner'));
+        return view('admin.banner.edit', compact('banner'));
     }
 
 
@@ -52,6 +52,6 @@ class BannerController extends Controller
         $id = $request->id;
         $banner = Banner::findOrFail($id);
         $banner->delete();
-        return view('backend.admin.banner.index');
+        return view('admin.banner.index');
     }
 }
