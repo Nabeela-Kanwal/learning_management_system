@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
+use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CourseController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
+
 
 
 
@@ -23,6 +25,8 @@ Route::prefix('categories')->name('category.')->group(function () {
 Route::prefix('courses')->name('course.')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
 });
+
+Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // User routes
 // Route::prefix('user')->name('user.')->group(function () {
