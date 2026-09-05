@@ -686,56 +686,56 @@ Suggested permissions:
 Required dashboards:
 
 - Super Admin Dashboard:
-  - Total tenants
-  - Active subscriptions
-  - Trial accounts
-  - MRR/ARR
-  - Failed payments
-  - Platform revenue
-  - User growth
-  - Course growth
-  - System health
-  - Recent activity
+    - Total tenants
+    - Active subscriptions
+    - Trial accounts
+    - MRR/ARR
+    - Failed payments
+    - Platform revenue
+    - User growth
+    - Course growth
+    - System health
+    - Recent activity
 
 - Tenant Admin Dashboard:
-  - Total students
-  - Total instructors
-  - Active courses
-  - Enrollments
-  - Revenue
-  - Completion rates
-  - Pending approvals
-  - Recent purchases
-  - Support requests
+    - Total students
+    - Total instructors
+    - Active courses
+    - Enrollments
+    - Revenue
+    - Completion rates
+    - Pending approvals
+    - Recent purchases
+    - Support requests
 
 - Instructor Dashboard:
-  - Assigned courses
-  - Draft courses
-  - Published courses
-  - Enrolled students
-  - Course completion rates
-  - Quiz performance
-  - Pending assignments
-  - Student questions
-  - Earnings, if marketplace revenue sharing is enabled
+    - Assigned courses
+    - Draft courses
+    - Published courses
+    - Enrolled students
+    - Course completion rates
+    - Quiz performance
+    - Pending assignments
+    - Student questions
+    - Earnings, if marketplace revenue sharing is enabled
 
 - Student Dashboard:
-  - Enrolled courses
-  - Continue learning
-  - Progress
-  - Upcoming deadlines
-  - Certificates
-  - Wishlist
-  - Purchase history
-  - Notifications
+    - Enrolled courses
+    - Continue learning
+    - Progress
+    - Upcoming deadlines
+    - Certificates
+    - Wishlist
+    - Purchase history
+    - Notifications
 
 - Finance Dashboard:
-  - Revenue
-  - Invoices
-  - Refunds
-  - Taxes
-  - Instructor payouts
-  - Failed transactions
+    - Revenue
+    - Invoices
+    - Refunds
+    - Taxes
+    - Instructor payouts
+    - Failed transactions
 
 ### 7.11 Ecommerce And Marketplace
 
@@ -1312,4 +1312,3 @@ Recommended next engineering tasks:
 8. Add test coverage for existing admin/instructor flows.
 9. Design the tenant data model before adding payment features.
 10. Choose payment gateway and video hosting provider.
-
