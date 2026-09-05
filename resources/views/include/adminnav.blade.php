@@ -20,7 +20,7 @@
                         $user = auth('admin')->user() ?? auth('instructor')->user();
                     @endphp
                     <div class="avatar avatar-online">
-                        <img src="{{ asset('images/profile/' . $user->image) }}" alt
+                        <img src="{{ asset($user->image) }}" alt
                             class="w-px-40 h-5 rounded-circle" />
                     </div>
                 </a>
