@@ -70,7 +70,7 @@ class YajraController extends Controller
                 ->latest();
 
             return DataTables::of($data)
-                ->editColumn('created_at', fn ($row) => $row->created_at ? $row->created_at->format('Y-m-d') : '-')
+                ->editColumn('created_at', fn ($row) => $row->created_at ? $row->created_at->format('d-m-Y') : '-')
                 ->addColumn('category', fn ($row) => $row->category ? $row->category->name : '<span class="text-muted">N/A</span>')
                 ->addColumn('action', function ($row) {
                     $editUrl = route('admin.sub-category.edit', $row->id);
