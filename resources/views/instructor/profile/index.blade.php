@@ -17,15 +17,15 @@
                             @method('POST')
 
                             <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
-                                <img src="{{ asset($instructor->image) }}" alt="user-avatar"
-                                    class="d-block rounded" height="100" width="100" id="image-preview" />
+                                <img src="{{ $instructor->image ? asset($instructor->image) : asset('assets/img/avatars/1.png') }}"
+                                    alt="user-avatar" class="d-block rounded" height="100" width="100" id="image-preview" />
 
                                 <div class="button-wrapper">
                                     <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                         <span class="d-none d-sm-block">Upload new photo</span>
                                         <i class="bx bx-upload d-block d-sm-none"></i>
-                                        <input type="file" id="upload" name="image" class="account-file-input"
-                                            hidden accept="image/png, image/jpeg" />
+                                        <input type="file" id="upload" name="image" class="account-file-input" hidden
+                                            accept="image/jpeg,image/jpg,image/png,image/webp" />
                                     </label>
 
                                     <button type="button" id="resetImageBtn"
@@ -34,7 +34,7 @@
                                         <span class="d-none d-sm-block">Reset</span>
                                     </button>
 
-                                    <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 800K</p>
+                                    <p class="text-muted mb-0">Allowed JPG, PNG or WEBP. Max size of 2MB</p>
                                 </div>
                             </div>
 
@@ -122,20 +122,58 @@
     </div>
 @endsection
 
-@section('scripts')
+@section('script')
     <script>
-        $(document).ready(function() {
-            $('#upload').on('change', function(event) {
-                const [file] = event.target.files;
-                if (file) {
-                    if (file.size > 800 * 1024) {
-                        alert('File size exceeds 800KB limit.');
-                        $(this).val('');
-                        return;
-                    }
-                    $('#image-preview').attr('src', URL.createObjectURL(file)).css('display', 'block');
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadInput = document.getElementById('upload');
+            const imagePreview = document.getElementById('image-preview');
+            const resetImageBtn = document.getElementById('resetImageBtn');
+            const originalImage = imagePreview ? imagePreview.src : '';
+            let previewUrl = null;
+
+            if (!uploadInput || !imagePreview) {
+                return;
+            }
+
+            uploadInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+
+                if (!file) {
+                    return;
                 }
+
+                if (!file.type.startsWith('image/')) {
+                    alert('Please select a valid image file.');
+                    uploadInput.value = '';
+                    return;
+                }
+
+                if (file.size > 2 * 1024 * 1024) {
+                    alert('File size must not exceed 2MB.');
+                    uploadInput.value = '';
+                    return;
+                }
+
+                if (previewUrl) {
+                    URL.revokeObjectURL(previewUrl);
+                }
+
+                previewUrl = URL.createObjectURL(file);
+                imagePreview.src = previewUrl;
+                imagePreview.style.display = 'block';
             });
+
+            if (resetImageBtn) {
+                resetImageBtn.addEventListener('click', function() {
+                    uploadInput.value = '';
+                    imagePreview.src = originalImage;
+
+                    if (previewUrl) {
+                        URL.revokeObjectURL(previewUrl);
+                        previewUrl = null;
+                    }
+                });
+            }
         });
     </script>
 @endsection
