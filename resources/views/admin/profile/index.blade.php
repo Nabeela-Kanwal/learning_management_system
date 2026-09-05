@@ -6,7 +6,7 @@
             <div class="col-md-12">
                 @include('message')
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    @include('backend.admin.nav')
+                    @include('admin.nav')
                 </ul>
                 <div class="card mb-4">
                     <h5 class="card-header">Profile Details</h5>
@@ -17,8 +17,8 @@
                             @method('POST')
 
                             <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
-                                <img src="{{ asset('images/profile/' . $admin->image) }}" alt="user-avatar"
-                                    class="d-block rounded" height="100" width="100" id="image-preview" />
+                                <img src="{{ asset($admin->image) }}" alt="user-avatar" class="d-block rounded"
+                                    height="100" width="100" id="image-preview" />
 
                                 <div class="button-wrapper">
                                     <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
@@ -108,7 +108,7 @@
                                 <div class="mb-3 col-md-6">
                                     <label for="experience" class="form-label">Experience</label>
                                     <textarea class="form-control" id="experience" name="experience" placeholder="Experience">{{ old('experience', $admin->experience) }}</textarea>
-                               </div>
+                                </div>
                             </div>
                             <div class="mt-2">
                                 <button type="submit" class="btn btn-primary me-2">Save changes</button>
