@@ -29,13 +29,14 @@ class YajraController extends Controller
                 })
 
                 ->editColumn('created_at', function ($category) {
-                    return $category->created_at->format('Y-m-d');
+                    return $category->created_at->format('d-m-Y');
                 })
 
                 ->addColumn('image', function ($category) {
                     if ($category->image) {
                         $url = asset($category->image);
-                        return '<img src="' . $url . '" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+
+                        return '<img src="'.$url.'" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
                     } else {
                         return '<span>No Image</span>';
                     }
@@ -45,10 +46,10 @@ class YajraController extends Controller
                     $editUrl = route('admin.category.edit', $category->id);
 
                     $actions = '
-                    <a href="' . $editUrl . '" class="text-primary me-2" title="View">
+                    <a href="'.$editUrl.'" class="text-primary me-2" title="View">
                         <i class="bx bxs-show"></i>
                     </a>
-                    <a href="javascript:;" onclick="deleteCategory(this, ' . $category->id . ')" class="text-danger" title="Delete">
+                    <a href="javascript:;" onclick="deleteCategory(this, '.$category->id.')" class="text-danger" title="Delete">
                         <i class="bx bx-trash"></i>
                     </a>
                 ';
@@ -69,15 +70,16 @@ class YajraController extends Controller
                 ->latest();
 
             return DataTables::of($data)
-                ->editColumn('created_at', fn($row) => $row->created_at ? $row->created_at->format('Y-m-d') : '-')
-                ->addColumn('category', fn($row) => $row->category ? $row->category->name : '<span class="text-muted">N/A</span>')
+                ->editColumn('created_at', fn ($row) => $row->created_at ? $row->created_at->format('Y-m-d') : '-')
+                ->addColumn('category', fn ($row) => $row->category ? $row->category->name : '<span class="text-muted">N/A</span>')
                 ->addColumn('action', function ($row) {
                     $editUrl = route('admin.sub-category.edit', $row->id);
+
                     return '
-                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                    <a href="'.$editUrl.'" class="text-primary me-2" title="Edit">
                         <i class="bx bxs-show"></i>
                     </a>
-                    <a href="javascript:;" onclick="deleteSubCategory(' . $row->id . ')" class="text-danger" title="Delete">
+                    <a href="javascript:;" onclick="deleteSubCategory('.$row->id.')" class="text-danger" title="Delete">
                         <i class="bx bx-trash"></i>
                     </a>
                 ';
@@ -102,17 +104,20 @@ class YajraController extends Controller
                 ->editColumn('image', function ($banner) {
                     if ($banner->image) {
                         $url = asset($banner->image);
-                        return '<img src="' . $url . '" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+
+                        return '<img src="'.$url.'" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
                     }
+
                     return '<span>No Image</span>';
                 })
                 ->addColumn('action', function ($banner) {
                     $editUrl = route('admin.banner.edit', $banner->id);
+
                     return '
-                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                    <a href="'.$editUrl.'" class="text-primary me-2" title="Edit">
                        <i class="bx bxs-show"></i>
                     </a>
-                    <a href="javascript:;" onclick="deletebanner(this, ' . $banner->id . ')" class="text-danger" title="Delete">
+                    <a href="javascript:;" onclick="deletebanner(this, '.$banner->id.')" class="text-danger" title="Delete">
                         <i class="bx bx-trash"></i>
                     </a>';
                 })
@@ -124,10 +129,9 @@ class YajraController extends Controller
     public function getInstructorData(Request $request)
     {
         if ($request->ajax()) {
-            $data = User::select(['id', 'name', 'email', 'image', 'phone', 'status',])
+            $data = User::select(['id', 'name', 'email', 'image', 'phone', 'status'])
                 ->where('role', 'instructor')
                 ->latest();
-
 
             return DataTables::of($data)
                 ->addIndexColumn()
@@ -139,17 +143,20 @@ class YajraController extends Controller
                 ->editColumn('image', function ($instructor) {
                     if ($instructor->image) {
                         $url = asset($instructor->image);
-                        return '<img src="' . $url . '" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+
+                        return '<img src="'.$url.'" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
                     }
+
                     return '<span>No Image</span>';
                 })
                 ->addColumn('action', function ($instructor) {
                     $editUrl = route('admin.instructor.edit', $instructor->id);
+
                     return '
-                    <a href="' . $editUrl . '" class="text-primary me-2" title="Edit">
+                    <a href="'.$editUrl.'" class="text-primary me-2" title="Edit">
                        <i class="bx bxs-show"></i>
                     </a>
-                    <a href="javascript:;" onclick="deleteInstructor(this, ' . $instructor->id . ')" class="text-danger" title="Delete">
+                    <a href="javascript:;" onclick="deleteInstructor(this, '.$instructor->id.')" class="text-danger" title="Delete">
                         <i class="bx bx-trash"></i>
                     </a>';
                 })
