@@ -22,8 +22,8 @@
                         <li class="mr-1"><a href="#" class="linkedin-bg"><i class="la la-linkedin"></i></a>
                         </li>
                     </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
+                </div>
+            </div>
             <div class="col-lg-3 responsive-column-half">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Company</h3>
@@ -36,8 +36,8 @@
                         <li><a href="#">FAQs</a></li>
                         <li><a href="#">Blog</a></li>
                     </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
+                </div>
+            </div>
             <div class="col-lg-3 responsive-column-half">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Courses</h3>
@@ -50,8 +50,8 @@
                         <li><a href="#">Self-Driving Car</a></li>
                         <li><a href="#">Garbage Collectors</a></li>
                     </ul>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
+                </div>
+            </div>
             <div class="col-lg-3 responsive-column-half">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Download App</h3>
@@ -64,10 +64,10 @@
                                 src="{{ asset('frontend/images/googleplay.png') }}" alt="Google play store"
                                 class="img-fluid"></a>
                     </div>
-                </div><!-- end footer-item -->
-            </div><!-- end col-lg-3 -->
-        </div><!-- end row -->
-    </div><!-- end container -->
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="section-block"></div>
     <div class="copyright-content py-4">
         <div class="container">
@@ -75,22 +75,15 @@
                 <div class="col-lg-6">
                     <p class="copy-desc">&copy; 2021 Aduca. All Rights Reserved. by <a
                             href="https://techydevs.com/">TechyDevs</a></p>
-                </div><!-- end col-lg-6 -->
+                </div>
 
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </div><!-- end copyright-content -->
-</section><!-- end footer-area -->
-<!-- ================================
-          END FOOTER AREA
-================================= -->
-
-<!-- start scroll top -->
+            </div>
+        </div>
+    </div>
+</section>
 <div id="scroll-top">
     <i class="la la-arrow-up" title="Go top"></i>
 </div>
-<!-- end scroll top -->
-
 <div class="tooltip_templates">
     <div id="tooltip_content_1">
         <div class="card card-item">
@@ -125,9 +118,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end card -->
+        </div>
     </div>
-</div><!-- end tooltip_templates -->
+</div>
 <div class="tooltip_templates">
     <div id="tooltip_content_2">
         <div class="card card-item">
@@ -162,9 +155,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end card -->
+        </div>
     </div>
-</div><!-- end tooltip_templates -->
+</div>
 <div class="tooltip_templates">
     <div id="tooltip_content_3">
         <div class="card card-item">
@@ -199,9 +192,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end card -->
+        </div>
     </div>
-</div><!-- end tooltip_templates -->
+</div>
 <div class="tooltip_templates">
     <div id="tooltip_content_4">
         <div class="card card-item">
@@ -236,9 +229,9 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end card -->
+        </div>
     </div>
-</div><!-- end tooltip_templates -->
+</div>
 <div class="tooltip_templates">
     <div id="tooltip_content_5">
         <div class="card card-item">
@@ -273,6 +266,6 @@
                     </div>
                 </div>
             </div>
-        </div><!-- end card -->
+        </div>
     </div>
-</div><!-- end tooltip_templates -->
+</div>
