@@ -1,4 +1,4 @@
-# SaaS LMS Platform Documentation
++# SaaS LMS Platform Documentation
 
 ## 1. Executive Summary
 
