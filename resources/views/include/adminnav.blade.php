@@ -20,8 +20,7 @@
                         $user = auth('admin')->user() ?? auth('instructor')->user();
                     @endphp
                     <div class="avatar avatar-online">
-                        <img src="{{ asset($user->image) }}" alt
-                            class="w-px-40 h-5 rounded-circle" />
+                        <img src="{{ asset($user->image) }}" alt class="w-px-40 h-5 rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -30,14 +29,14 @@
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
                                     <div class="avatar avatar-online">
-                                                        <img src="{{ asset('images/profile/' . auth('admin')->user()->image) }}" alt
-                                                            class="w-px-40 h-5 rounded-circle" />
-                                                    </div>
+                                        <img src="{{ asset(auth('admin')->user()->image) }}" alt
+                                            class="w-px-40 h-5 rounded-circle" />
+                                    </div>
                                 </div>
                                 <div class="flex-grow-1">
-                                                    <span class="fw-semibold d-block">{{ auth('admin')->user()->name }}</span>
-                                                    <small class="text-muted">{{ auth('admin')->user()->role }}</small>
-                                                </div>
+                                    <span class="fw-semibold d-block">{{ auth('admin')->user()->name }}</span>
+                                    <small class="text-muted">{{ auth('admin')->user()->role }}</small>
+                                </div>
                             </div>
                         </a>
                     </li>
