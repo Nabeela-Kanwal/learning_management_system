@@ -4,16 +4,13 @@ use App\Http\Controllers\Frontend\AboutController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CourseController;
+use App\Http\Controllers\Frontend\InstructorController;
 use App\Http\Controllers\Frontend\HomeController;
 use Illuminate\Support\Facades\Route;
-
-
-
 
 Route::get('/', function () {
     return view('welcome');
 });
-
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'index'])->name('about');
@@ -24,6 +21,10 @@ Route::prefix('categories')->name('category.')->group(function () {
 
 Route::prefix('courses')->name('course.')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
+});
+
+Route::prefix('teachers')->name('teacher.')->group(function () {
+    Route::get('/', [InstructorController::class, 'index'])->name('index');
 });
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
