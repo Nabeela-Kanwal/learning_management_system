@@ -1,5 +1,12 @@
 .breadcrumb-content {
+  width: 100%;
+  gap: 24px;
+  .section-heading {
+    max-width: 720px;
+  }
   .section__title {
+    font-size: 38px;
+    line-height: 46px;
     @media #{$tab_device} {
       padding-bottom: 5px;
     }
@@ -20,6 +27,9 @@
     }
   }
   .section__desc {
+    font-size: $font-size-17;
+    line-height: 26px;
+    max-width: 640px;
     @media #{$large_mobile} {
       font-size: $font-size-16;
       line-height: 24px!important;
@@ -27,6 +37,39 @@
     @media #{$small_mobile} {
       font-size: $font-size-16;
       line-height: 24px!important;
+    }
+  }
+  .generic-list-item {
+    flex-shrink: 0;
+  }
+  @media #{$large_mobile} {
+    align-items: flex-start!important;
+    gap: 14px;
+    .section__title {
+      font-size: $font-size-30;
+      line-height: 38px;
+    }
+    .section__desc {
+      font-size: $font-size-15;
+      line-height: 23px!important;
+    }
+    .generic-list-item {
+      width: 100%;
+    }
+  }
+  @media #{$small_mobile} {
+    align-items: flex-start!important;
+    gap: 14px;
+    .section__title {
+      font-size: $font-size-30;
+      line-height: 38px;
+    }
+    .section__desc {
+      font-size: $font-size-15;
+      line-height: 23px!important;
+    }
+    .generic-list-item {
+      width: 100%;
     }
   }
   .media-card {
@@ -82,5 +125,4 @@
     }
   }
 }
-
 

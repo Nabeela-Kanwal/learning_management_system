@@ -318,9 +318,11 @@
 }
 .img-bg-2 {
   background-image: url("../images/breadcrumb-bg.jpg");
+  background-position: center 38%;
 }
 .img-bg-3 {
   background-image: url("../images/breadcrumb-bg-2.jpg");
+  background-position: center 38%;
 }
 .overlay {
   position: absolute;
@@ -331,6 +333,9 @@
   content: "";
   background-color: $black;
   opacity: .8;
+}
+.breadcrumb-area .overlay {
+  opacity: .62;
 }
 .pattern-bg {
   background-image: url("../images/pattern.png");
