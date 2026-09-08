@@ -27,6 +27,8 @@ Route::prefix('teachers')->name('teacher.')->group(function () {
     Route::get('/', [InstructorController::class, 'index'])->name('index');
 });
 
+Route::get('instructors', [InstructorController::class, 'index'])->name('instructor.index');
+
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 
 // User routes

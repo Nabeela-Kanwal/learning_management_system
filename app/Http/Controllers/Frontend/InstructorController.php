@@ -14,7 +14,6 @@ class InstructorController extends Controller
                 $query->where('status', 1);
             }])
             ->where('role', 'instructor')
-            ->where('status', 1)
             ->latest()
             ->get();
 
