@@ -266,28 +266,6 @@ body {
   padding-top: 120px;
   padding-bottom: 120px;
 }
-.breadcrumb-area.section-padding {
-  min-height: 230px;
-  padding-top: 78px;
-  padding-bottom: 78px;
-  display: flex;
-  align-items: center;
-  @media #{$tab_device} {
-    min-height: 210px;
-    padding-top: 65px;
-    padding-bottom: 65px;
-  }
-  @media #{$large_mobile} {
-    min-height: 190px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-  @media #{$small_mobile} {
-    min-height: 190px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-  }
-}
 .section--padding {
   padding-top: 120px;
   padding-bottom: 90px;

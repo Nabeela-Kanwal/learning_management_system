@@ -510,23 +510,6 @@ body {
   padding-top: 120px;
   padding-bottom: 120px; }
 
-.breadcrumb-area.section-padding {
-  min-height: 230px;
-  padding-top: 78px;
-  padding-bottom: 78px;
-  display: flex;
-  align-items: center; }
-  @media only screen and (min-width: 768px) and (max-width: 991px) {
-    .breadcrumb-area.section-padding {
-      min-height: 210px;
-      padding-top: 65px;
-      padding-bottom: 65px; } }
-  @media only screen and (max-width: 767px) {
-    .breadcrumb-area.section-padding {
-      min-height: 190px;
-      padding-top: 50px;
-      padding-bottom: 50px; } }
-
 .section--padding {
   padding-top: 120px;
   padding-bottom: 90px; }
@@ -3791,12 +3774,10 @@ div.datedropper .picker .pick-lg-b li {
   background-image: url(../images/img7.jpg); }
 
 .img-bg-2 {
-  background-image: url("../images/breadcrumb-bg.jpg");
-  background-position: center 38%; }
+  background-image: url("../images/breadcrumb-bg.jpg"); }
 
 .img-bg-3 {
-  background-image: url("../images/breadcrumb-bg-2.jpg");
-  background-position: center 38%; }
+  background-image: url("../images/breadcrumb-bg-2.jpg"); }
 
 .overlay {
   position: absolute;
@@ -3807,9 +3788,6 @@ div.datedropper .picker .pick-lg-b li {
   content: "";
   background-color: #000;
   opacity: .8; }
-
-.breadcrumb-area .overlay {
-  opacity: .62; }
 
 .pattern-bg {
   background-image: url("../images/pattern.png"); }
@@ -6600,33 +6578,6 @@ div.datedropper .picker .pick-lg-b li {
 @media only screen and (min-width: 320px) and (max-width: 479px) {
   .breadcrumb-content .file-upload-wrap {
     margin-top: 20px; } }
-
-.breadcrumb-content {
-  width: 100%;
-  gap: 24px; }
-  .breadcrumb-content .section-heading {
-    max-width: 720px; }
-  .breadcrumb-content .section__title {
-    font-size: 38px;
-    line-height: 46px; }
-  .breadcrumb-content .section__desc {
-    font-size: 17px;
-    line-height: 26px;
-    max-width: 640px; }
-  .breadcrumb-content .generic-list-item {
-    flex-shrink: 0; }
-  @media only screen and (max-width: 767px) {
-    .breadcrumb-content {
-      align-items: flex-start !important;
-      gap: 14px; }
-      .breadcrumb-content .section__title {
-        font-size: 30px;
-        line-height: 38px; }
-      .breadcrumb-content .section__desc {
-        font-size: 15px;
-        line-height: 23px; }
-      .breadcrumb-content .generic-list-item {
-        width: 100%; } }
 
 .breadcrumb-content .video-box {
   position: relative;
