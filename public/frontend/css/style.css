@@ -6391,12 +6391,12 @@ div.datedropper .picker .pick-lg-b li {
 .hero-slider-item {
   position: relative;
   z-index: 2;
-  padding-top: 200px;
-  padding-bottom: 270px; }
+  padding-top: 240px;
+  padding-bottom: 310px; }
   @media (max-width: 480px) {
     .hero-slider-item {
-      padding-top: 120px;
-      padding-bottom: 200px; } }
+      padding-top: 150px;
+      padding-bottom: 230px; } }
   .hero-slider-item:after {
     position: absolute;
     left: 0;
@@ -6531,6 +6531,14 @@ div.datedropper .picker .pick-lg-b li {
   @media only screen and (min-width: 320px) and (max-width: 479px) {
     .hero-category-wrap .category-item {
       margin-bottom: 30px; } }
+
+.breadcrumb-area.section-padding {
+  padding-top: 160px;
+  padding-bottom: 160px; }
+  @media (max-width: 480px) {
+    .breadcrumb-area.section-padding {
+      padding-top: 140px;
+      padding-bottom: 140px; } }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .breadcrumb-content .section__title {
