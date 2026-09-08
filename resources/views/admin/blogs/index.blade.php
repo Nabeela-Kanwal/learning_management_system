@@ -18,7 +18,7 @@
 
                 <div class="card-body">
                     <div class="table-responsive text-nowrap">
-                        <table class="table table-bordered align-middle">
+                        <table class="table table-bordered">
                             <thead>
                                 <tr>
                                     <th>Image</th>
@@ -35,7 +35,8 @@
                                         <td>
                                             @if ($blog->image)
                                                 <img src="{{ asset($blog->image) }}" alt="{{ $blog->title }}"
-                                                    width="60" height="45" style="object-fit: cover; border-radius: 6px;">
+                                                    width="30" height="30" style="object-fit: cover;"
+                                                    class="rounded-circle">
                                             @else
                                                 <span class="text-muted">No Image</span>
                                             @endif
@@ -56,9 +57,9 @@
                                         <td>
                                             <a href="{{ route('admin.blog.edit', $blog->id) }}" class="text-primary me-2"
                                                 title="Edit">
-                                                <i class="bx bx-edit-alt"></i>
+                                                <i class="bx bxs-show"></i>
                                             </a>
-                                            <a href="javascript:;" onclick="deleteBlog({{ $blog->id }})"
+                                            <a href="javascript:;" onclick="deleteBlog(this, {{ $blog->id }})"
                                                 class="text-danger" title="Delete">
                                                 <i class="bx bx-trash"></i>
                                             </a>
@@ -80,7 +81,7 @@
 
 @section('script')
     <script>
-        function deleteBlog(id) {
+        function deleteBlog(itSelf, id) {
             Swal.fire({
                 title: "Are you sure?",
                 text: "This blog will be deleted.",
