@@ -28,6 +28,13 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.blog.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div>Blogs</div>
+            </a>
+        </li>
+
         <li class="menu-item {{ request()->routeIs('admin.instructor.*') ? 'active' : '' }}">
             <a href="{{ route('admin.instructor.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>

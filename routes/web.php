@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Frontend\AboutController;
+use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CourseController;
@@ -28,6 +29,11 @@ Route::prefix('teachers')->name('teacher.')->group(function () {
 });
 
 Route::get('instructors', [InstructorController::class, 'index'])->name('instructor.index');
+
+Route::prefix('blogs')->name('blog.')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+    Route::get('{slug}', [BlogController::class, 'show'])->name('show');
+});
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 

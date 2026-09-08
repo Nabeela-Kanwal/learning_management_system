@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannerController;
+use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InfoController;
@@ -62,6 +63,15 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [BannerController::class, 'update'])->name('update');
             Route::delete('destroy', [BannerController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getBannerData'])->name('yajra');
+        });
+
+        Route::prefix('blogs')->name('blog.')->group(function () {
+            Route::get('/', [BlogController::class, 'index'])->name('index');
+            Route::get('create', [BlogController::class, 'create'])->name('create');
+            Route::post('store', [BlogController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [BlogController::class, 'edit'])->name('edit');
+            Route::put('update/{id}', [BlogController::class, 'update'])->name('update');
+            Route::delete('destroy', [BlogController::class, 'destroy'])->name('destroy');
         });
 
 

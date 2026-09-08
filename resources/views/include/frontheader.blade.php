@@ -124,7 +124,7 @@ $categories = getCategories();
                                         <a href="{{ route('teacher.index') }}">Teachers </a>
                                     </li>
                                     <li>
-                                        <a href="#">Blogs</a>
+                                        <a href="{{ route('blog.index') }}">Blogs</a>
                                     </li>
                                     <li>
                                         <a href="#">Contact Us</a>
@@ -259,13 +259,9 @@ $categories = getCategories();
                 </ul>
             </li>
             <li>
-                <a href="#">blog</a>
+                <a href="{{ route('blog.index') }}">blog</a>
                 <ul class="sub-menu">
-                    <li><a href="blog-full-width.html">blog full width </a></li>
-                    <li><a href="blog-no-sidebar.html">blog no sidebar</a></li>
-                    <li><a href="blog-left-sidebar.html">blog left sidebar</a></li>
-                    <li><a href="blog-right-sidebar.html">blog right sidebar</a></li>
-                    <li><a href="blog-single.html">blog detail</a></li>
+                    <li><a href="{{ route('blog.index') }}">All Blogs</a></li>
                 </ul>
             </li>
         </ul>
