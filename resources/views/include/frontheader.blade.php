@@ -121,7 +121,7 @@ $categories = getCategories();
                                         </ul>
                                     </li>
                                     <li class="mega-menu-has">
-                                        <a href="#">Teachers </a>
+                                        <a href="{{ route('teacher.index') }}">Teachers </a>
                                     </li>
                                     <li>
                                         <a href="#">Blogs</a>
@@ -236,7 +236,7 @@ $categories = getCategories();
                 <ul class="sub-menu">
                     <li><a href="dashboard.html">dashboard <span class="ribbon">Hot</span></a></li>
                     <li><a href="{{ route('about') }}">about</a></li>
-                    <li><a href="teachers.html">Teachers</a></li>
+                    <li><a href="{{ route('teacher.index') }}">Teachers</a></li>
                     <li><a href="teacher-detail.html">Teacher detail</a></li>
                     <li><a href="careers.html">careers</a></li>
                     <li><a href="career-details.html">career details</a></li>
