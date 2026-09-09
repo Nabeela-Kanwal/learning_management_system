@@ -30,28 +30,30 @@ class BannerController extends Controller
     public function store(BannerRequest $request)
     {
         $this->bannerService->saveBanner($request->validated(), $request->file('image'));
+
         return redirect()->route('admin.banner.index')->with('success', 'Banner created successfully.');
     }
 
     public function update(BannerRequest $request, string $id)
     {
         $this->bannerService->updateBanner($id, $request->validated(), $request->file('image'));
+
         return redirect()->route('admin.banner.index')->with('success', 'Banner updated successfully.');
     }
-
 
     public function edit(string $id)
     {
         $banner = Banner::findOrFail($id);
+
         return view('admin.banner.edit', compact('banner'));
     }
-
 
     public function destroy(Request $request)
     {
         $id = $request->id;
         $banner = Banner::findOrFail($id);
         $banner->delete();
+
         return view('admin.banner.index');
     }
 }
