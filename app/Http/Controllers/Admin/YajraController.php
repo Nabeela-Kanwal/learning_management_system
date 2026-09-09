@@ -92,7 +92,8 @@ class YajraController extends Controller
     public function getBannerData(Request $request)
     {
         if ($request->ajax()) {
-            $data = Banner::select(['id', 'title', 'image', 'page', 'sort_order', 'status'])->latest()->orderBy('created_at');
+            $data = Banner::select(['id', 'title', 'image', 'page', 'sort_order', 'status'])
+                ->orderBy('sort_order', 'asc');
 
             return DataTables::of($data)
                 ->addIndexColumn()
