@@ -10,20 +10,21 @@ use Illuminate\Http\Request;
 
 class ManageInstructorController extends Controller
 {
-     protected $instructorService;
+    protected $instructorService;
 
     public function __construct(InstructorService $instructorService)
     {
         $this->instructorService = $instructorService;
     }
 
-
     public function index()
     {
         $instructor = User::where('role', 'instructor')->latest()->get();
+
         // dd($instructor);
         return view('admin.instructor.index', compact('instructor'));
     }
+
     public function create()
     {
         return view('admin.instructor.create');
@@ -32,18 +33,21 @@ class ManageInstructorController extends Controller
     public function edit($id)
     {
         $instructor = User::findOrFail($id);
+
         return view('admin.instructor.edit', compact('instructor'));
     }
+
     public function store(InstructorRequest $request)
     {
         $this->instructorService->saveInstructor($request->validated(), $request->file('image'));
+
         return redirect()->route('admin.instructor.index')->with('success', 'Instructor created successfully.');
     }
-
 
     public function update(InstructorRequest $request, string $id)
     {
         $this->instructorService->updateInstructor($id, $request->validated(), $request->file('image'));
+
         return redirect()->route('admin.instructor.index')->with('success', 'Instructor updated successfully.');
     }
 

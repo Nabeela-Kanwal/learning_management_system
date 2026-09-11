@@ -20,6 +20,7 @@ class CategoryController extends Controller
     public function index()
     {
         $allCategories = Category::latest()->get();
+
         return view('admin.categories.index', compact('allCategories'));
     }
 
@@ -31,18 +32,21 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         $this->categoryService->saveCategory($request->validated(), $request->file('image'));
+
         return redirect()->route('admin.category.index')->with('success', 'Category created successfully.');
     }
 
     public function edit(string $id)
     {
         $category = Category::findOrFail($id);
+
         return view('admin.categories.edit', compact('category'));
     }
 
     public function update(CategoryRequest $request, string $id)
     {
         $this->categoryService->updateCategory($id, $request->validated(), $request->file('image'));
+
         return redirect()->route('admin.category.index')->with('success', 'Category updated successfully.');
     }
 

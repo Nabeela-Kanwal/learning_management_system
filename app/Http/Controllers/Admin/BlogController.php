@@ -72,7 +72,7 @@ class BlogController extends Controller
         $count = 1;
 
         while (Blog::where('slug', $slug)->when($ignoreId, fn ($query) => $query->where('id', '!=', $ignoreId))->exists()) {
-            $slug = $baseSlug . '-' . $count;
+            $slug = $baseSlug.'-'.$count;
             $count++;
         }
 
