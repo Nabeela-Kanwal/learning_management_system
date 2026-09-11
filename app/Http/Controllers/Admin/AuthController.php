@@ -16,7 +16,7 @@ class AuthController extends Controller
                 ->where('role', 'admin')
                 ->first();
 
-            if (!$user || $user->status == 0) {
+            if (! $user || $user->status == 0) {
                 return back()->with('error', 'Login Failure');
             }
 
@@ -31,9 +31,10 @@ class AuthController extends Controller
                 if (auth()->guard('admin')->user()->role == 'admin') {
                     return redirect()->route('admin.dashboard');
                 } else {
-                    return view('admin.login')->with('error', "You are not logged in as Admin");
+                    return view('admin.login')->with('error', 'You are not logged in as Admin');
                 }
             }
+
             return view('admin.login');
         }
     }
@@ -42,6 +43,7 @@ class AuthController extends Controller
     {
         if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->role === 'admin') {
             Auth::guard('admin')->logout();
+
             return redirect()->route('admin.login');
         }
     }
