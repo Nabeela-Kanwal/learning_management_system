@@ -11,6 +11,7 @@ use App\Services\ProfileService;
 class ProfileController extends Controller
 {
     protected $profileService;
+
     protected $passwordUpdateService;
 
     public function __construct(ProfileService $profileService, PasswordUpdateService $passwordUpdateService)
@@ -18,22 +19,25 @@ class ProfileController extends Controller
         $this->profileService = $profileService;
         $this->passwordUpdateService = $passwordUpdateService;
     }
+
     public function profile()
     {
         $admin = auth('admin')->user();
+
         return view('admin.profile.index', compact('admin'));
     }
-
 
     public function updateProfile(ProfileRequest $request)
     {
         $this->profileService->updateUserProfile($request->validated(), $request->file('image'));
+
         return redirect()->back()->with('success', 'Profile Updated Successfully');
     }
 
     public function showPasswordForm()
     {
         $admin = auth('admin')->user();
+
         return view('admin.profile.password', compact('admin'));
     }
 
@@ -41,6 +45,7 @@ class ProfileController extends Controller
     {
         $admin = auth('admin')->user();
         $this->passwordUpdateService->updateUserPassword($admin, $request->validated());
+
         return redirect()->back()->with('success', 'Password Updated Successfully');
     }
 }

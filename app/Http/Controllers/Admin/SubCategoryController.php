@@ -21,17 +21,21 @@ class SubCategoryController extends Controller
     public function index()
     {
         $allCategories = SubCategory::latest()->get();
+
         return view('admin.sub-categories.index', compact('allCategories'));
     }
 
     public function create()
     {
         $categories = Category::where('status', 1)->get(); // only active categories
+
         return view('admin.sub-categories.create', compact('categories'));
     }
+
     public function store(SubCategoryRequest $request)
     {
         $this->subCategoryService->saveSubCategory($request->validated(), $request->file('image'));
+
         return redirect()->route('admin.sub-category.index')->with('success', 'SubCategory created successfully.');
     }
 
@@ -42,6 +46,7 @@ class SubCategoryController extends Controller
 
         return view('admin.sub-categories.edit', compact('category', 'categories'));
     }
+
     public function update(SubCategoryRequest $request, string $id)
     {
         // Pass only the validated data, no image
@@ -50,7 +55,6 @@ class SubCategoryController extends Controller
         return redirect()->route('admin.sub-category.index')
             ->with('success', 'SubCategory updated successfully.');
     }
-
 
     public function destroy(Request $request)
     {
