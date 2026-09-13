@@ -21,7 +21,7 @@ class AuthController extends Controller
             }
 
             $credentials = $request->only('email', 'password');
-            if (Auth::guard('admin')->attempt($credentials)) {
+            if (Auth::guard('admin')->attempt($credentials, $request->boolean('remember'))) {
                 return redirect()->route('admin.dashboard');
             }
 
