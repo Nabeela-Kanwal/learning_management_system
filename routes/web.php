@@ -46,3 +46,5 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 //         Route::get('logout', [User\AuthController::class, 'logout'])->name('logout');
 //     });
 // });
+
+Route::post('/contact', [ContactController::class, 'store'])->middleware('throttle:5,1')->name('contact.store');

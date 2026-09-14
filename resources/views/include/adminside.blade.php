@@ -35,6 +35,11 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->routeIs('admin.contact.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.contact.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-envelope"></i><div>Contact Inquiries</div>
+            </a>
+        </li>
         <li class="menu-item {{ request()->routeIs('admin.instructor.*') ? 'active' : '' }}">
             <a href="{{ route('admin.instructor.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i>

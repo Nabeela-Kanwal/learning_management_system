@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -74,6 +75,14 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::delete('destroy', [BlogController::class, 'destroy'])->name('destroy');
         });
 
+
+        Route::prefix('contacts')->name('contact.')->group(function () {
+            Route::get('/', [ContactController::class, 'index'])->name('index');
+            Route::get('{contact}', [ContactController::class, 'show'])->name('show');
+            Route::patch('{contact}', [ContactController::class, 'update'])->name('update');
+            Route::post('{contact}/reply', [ContactController::class, 'reply'])->name('reply');
+            Route::delete('{contact}', [ContactController::class, 'destroy'])->name('destroy');
+        });
 
         Route::prefix('infoBox')->name('info.')->group(function () {
             Route::get('/', [InfoController::class, 'index'])->name('index');
