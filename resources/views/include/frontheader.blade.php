@@ -127,7 +127,7 @@ $categories = getCategories();
                                         <a href="{{ route('blog.index') }}">Blogs</a>
                                     </li>
                                     <li>
-                                        <a href="#">Contact Us</a>
+                                        <a href="{{ route('contact') }}">Contact Us</a>
                                     </li>
                                 </ul>
                             </nav>
