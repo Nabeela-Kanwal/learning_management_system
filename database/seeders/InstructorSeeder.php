@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Hash;
 class InstructorSeeder extends Seeder
 {
     /**
-     * Seed ten sample instructors with existing local profile images.
+     * Seed ten sample instructors with generated local profile images.
      */
     public function run(): void
     {
@@ -30,9 +30,14 @@ class InstructorSeeder extends Seeder
 
         foreach ($instructors as $index => [$firstName, $lastName, $specialty, $city]) {
             $email = strtolower($firstName.'.'.$lastName).'@example.com';
+            $placeholder = 'frontend/images/team'.($index === 0 ? '' : $index + 1).'.jpg';
+            $image = 'images/instructors/'.strtolower($firstName.'-'.$lastName).'.png';
+            if (! is_file(public_path($image))) {
+                $image = $placeholder;
+            }
 
             // Preserve existing accounts and their credentials when rerunning.
-            User::firstOrCreate(['email' => $email], [
+            $instructor = User::firstOrCreate(['email' => $email], [
                 'first_name' => $firstName,
                 'last_name' => $lastName,
                 'name' => $firstName.' '.$lastName,
@@ -40,7 +45,7 @@ class InstructorSeeder extends Seeder
                 'email_verified_at' => now(),
                 'role' => 'instructor',
                 'status' => '1',
-                'image' => 'frontend/images/team'.($index === 0 ? '' : $index + 1).'.jpg',
+                'image' => $image,
                 'phone' => '030000000'.str_pad((string) ($index + 1), 2, '0', STR_PAD_LEFT),
                 'address' => $city.', Pakistan',
                 'city' => $city,
@@ -49,6 +54,11 @@ class InstructorSeeder extends Seeder
                 'bio' => 'Instructor specializing in '.$specialty.'. Passionate about helping students develop practical skills through hands-on learning.',
                 'experience' => (5 + $index).' years of professional experience in '.$specialty.'.',
             ]);
+
+            // Replace seeded placeholders while preserving uploaded profile photos.
+            if ($instructor->role === 'instructor' && $instructor->image === $placeholder) {
+                $instructor->update(['image' => $image]);
+            }
         }
     }
 }
