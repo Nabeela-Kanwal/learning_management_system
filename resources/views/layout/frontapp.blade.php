@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/page-banner.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/content-motion.css') }}">
     @stack('styles')
 </head>
 
@@ -54,6 +55,7 @@
     <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
     <script src="{{ asset('frontend/js/header.js') }}"></script>
+    <script src="{{ asset('frontend/js/content-motion.js') }}"></script>
 </body>
 
 </html>

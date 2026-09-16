@@ -1,0 +1,49 @@
+/* Blog, course, and instructor interactions follow the site's pink and navy palette. */
+.blog-card,
+.course-area .card-item,
+.instructor-directory .teacher-card {
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+.blog-list-image,
+.course-area .card-image {
+    overflow: hidden;
+}
+.blog-list-image img,
+.course-area .card-image img,
+.instructor-directory .teacher-portrait img {
+    transition: transform 0.45s ease;
+}
+.blog-card:focus-within,
+.course-area .card-item:focus-within,
+.instructor-directory .teacher-card:focus-within {
+    border-color: #e0007b;
+    box-shadow: 0 12px 30px rgba(23, 45, 80, 0.12);
+}
+@media (hover: hover) and (pointer: fine) {
+    .blog-card:hover,
+    .course-area .card-item:hover,
+    .instructor-directory .teacher-card:hover {
+        transform: translateY(-6px);
+        border-color: #e0007b;
+        box-shadow: 0 16px 34px rgba(23, 45, 80, 0.14);
+    }
+    .blog-card:hover .blog-list-image img,
+    .course-area .card-item:hover .card-image img,
+    .instructor-directory .teacher-card:hover .teacher-portrait img {
+        transform: scale(1.045);
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    .blog-card,
+    .course-area .card-item,
+    .instructor-directory .teacher-card,
+    .blog-list-image img,
+    .course-area .card-image img,
+    .instructor-directory .teacher-portrait img {
+        transition: none;
+        transform: none !important;
+    }
+}

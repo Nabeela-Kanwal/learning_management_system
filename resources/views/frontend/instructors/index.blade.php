@@ -71,12 +71,6 @@
             border-radius: 20px;
             background: #fff;
             box-shadow: 0 8px 28px rgba(22, 39, 78, .04);
-            transition: transform .2s ease, box-shadow .2s ease;
-        }
-
-        .teacher-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 18px 40px rgba(22, 39, 78, .1);
         }
 
         .teacher-portrait {
