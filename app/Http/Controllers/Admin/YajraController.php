@@ -9,10 +9,29 @@ use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\User;
 use Illuminate\Http\Request;
+use App\Services\CourseService;
 use Yajra\DataTables\DataTables;
 
 class YajraController extends Controller
 {
+    public function getCourseData(Request $request, CourseService $courseService)
+    {
+        return DataTables::of($courseService->getAdminCourses())
+            ->addColumn('instructor_name', fn ($course) => $course->instructor?->name ?? 'Instructor unavailable')
+            ->addColumn('category_name', fn ($course) => $course->category?->name ?? 'Category unavailable')
+            ->editColumn('course_image', function ($course) {
+                return $course->course_image
+                    ? '<img src="'.e(asset($course->course_image)).'" alt="'.e($course->course_title).'" width="30" height="30" class="rounded-circle" style="object-fit: cover;">'
+                    : '<span class="text-muted">No image</span>';
+            })
+            ->editColumn('status', fn ($course) => $course->status == 1
+                ? '<span class="badge bg-primary">Active</span>'
+                : '<span class="badge bg-danger">Inactive</span>')
+            ->addColumn('action', fn ($course) => '<a href="'.e(route('admin.courses.show', $course->id)).'" class="text-primary me-2" title="View" aria-label="View course"><i class="bx bxs-show" aria-hidden="true"></i></a> <a href="'.e(route('admin.courses.edit', $course->id)).'" class="text-primary me-2" title="Edit" aria-label="Edit course"><i class="bx bx-edit" aria-hidden="true"></i></a>')
+            ->rawColumns(['course_image', 'status', 'action'])
+            ->make(true);
+    }
+
     public function getCategoriesData(Request $request)
     {
         if ($request->ajax()) {

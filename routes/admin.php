@@ -1,25 +1,26 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Admin\CourseController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\ManageInstructorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\YajraController;
 use Illuminate\Support\Facades\Route;
-
 
 
 Route::middleware(['web', 'auth_guard:admin'])
     ->prefix('admin')
     ->as('admin.')
     ->group(function () {
-        Route::get('/', fn() => redirect()->route('admin.dashboard'));
+        Route::get('/', fn () => redirect()->route('admin.dashboard'));
         Route::match(['get', 'post'], 'login', [AuthController::class, 'login'])
             ->name('login')
             ->withoutMiddleware('auth_guard:admin');
@@ -56,6 +57,16 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('yajra', [YajraController::class, 'getSubCategoriesData'])->name('yajra');
         });
 
+        Route::prefix('users')->name('user.')->group(function () {
+            Route::get('/', [UserController::class, 'index'])->name('index');
+            Route::get('create', [UserController::class, 'create'])->name('create');
+            Route::post('store', [UserController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [UserController::class, 'edit'])->name('edit');
+            Route::put('update/{id}', [UserController::class, 'update'])->name('update');
+            Route::delete('destroy', [UserController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getUserData'])->name('yajra');
+        });
+
         Route::prefix('banners')->name('banner.')->group(function () {
             Route::get('/', [BannerController::class, 'index'])->name('index');
             Route::get('create', [BannerController::class, 'create'])->name('create');
@@ -74,6 +85,16 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [BlogController::class, 'update'])->name('update');
             Route::delete('destroy', [BlogController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getBlogData'])->name('yajra');
+        });
+
+         Route::prefix('courses')->name('courses.')->group(function () {
+            Route::get('/', [CourseController::class, 'index'])->name('index');
+            Route::get('yajra', [YajraController::class, 'getCourseData'])->name('yajra');
+            Route::get('create', [CourseController::class, 'create'])->name('create');
+            Route::post('store', [CourseController::class, 'store'])->name('store');
+            Route::get('{id}/edit', [CourseController::class, 'edit'])->whereNumber('id')->name('edit');
+            Route::put('{id}', [CourseController::class, 'update'])->whereNumber('id')->name('update');
+            Route::get('{id}', [CourseController::class, 'show'])->whereNumber('id')->name('show');
         });
 
 

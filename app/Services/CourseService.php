@@ -13,6 +13,21 @@ class CourseService
         $this->courseRepository = $courseRepository;
     }
 
+    public function getAdminFormOptions()
+    {
+        return $this->courseRepository->getAdminFormOptions();
+    }
+
+    public function getAdminCourses()
+    {
+        return $this->courseRepository->getAdminCourses();
+    }
+
+    public function getAdminCourse($id)
+    {
+        return $this->courseRepository->findAdminCourse($id);
+    }
+
     public function saveCourse(array $data, $photo = null)
     {
         return $this->courseRepository->createCourse($data, $photo);
