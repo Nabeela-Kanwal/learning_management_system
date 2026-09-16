@@ -2,6 +2,10 @@
 
 @section('content')
     <style>
+        .instructor-container {
+            max-width: 1680px;
+        }
+
         .teacher-card {
             height: 100%;
         }
@@ -65,7 +69,7 @@
     </section>
 
     <section class="team-member-area section--padding">
-        <div class="container">
+        <div class="container instructor-container">
             <div class="section-heading text-center">
                 <h5 class="ribbon ribbon-lg mb-2">Expert Teachers</h5>
                 <h2 class="section__title">Meet Your Instructors</h2>
@@ -91,7 +95,7 @@
                             $bio = $instructor->bio ?: $instructor->experience;
                         @endphp
 
-                        <div class="col-lg-4 col-md-6 responsive-column-half">
+                        <div class="col-lg-3 col-md-6 responsive-column-half mb-4">
                             <div class="card card-item member-card teacher-card text-center">
                                 <div class="card-image teacher-avatar">
                                     <img src="{{ asset($image) }}" alt="{{ $fullName }}">
