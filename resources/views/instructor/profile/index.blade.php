@@ -6,7 +6,9 @@
             <div class="col-md-12">
                 @include('message')
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    @include('backend.instructor.nav')
+                    @include('components.tabs.nav-items', [
+                        'routePrefix' => 'instructor',
+                    ])
                 </ul>
                 <div class="card mb-4">
                     <h5 class="card-header">Profile Details</h5>
@@ -18,14 +20,15 @@
 
                             <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
                                 <img src="{{ $instructor->image ? asset($instructor->image) : asset('assets/img/avatars/1.png') }}"
-                                    alt="user-avatar" class="d-block rounded" height="100" width="100" id="image-preview" />
+                                    alt="user-avatar" class="d-block rounded" height="100" width="100"
+                                    id="image-preview" />
 
                                 <div class="button-wrapper">
                                     <label for="upload" class="btn btn-primary me-2 mb-4" tabindex="0">
                                         <span class="d-none d-sm-block">Upload new photo</span>
                                         <i class="bx bx-upload d-block d-sm-none"></i>
-                                        <input type="file" id="upload" name="image" class="account-file-input" hidden
-                                            accept="image/jpeg,image/jpg,image/png,image/webp" />
+                                        <input type="file" id="upload" name="image" class="account-file-input"
+                                            hidden accept="image/jpeg,image/jpg,image/png,image/webp" />
                                     </label>
 
                                     <button type="button" id="resetImageBtn"

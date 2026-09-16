@@ -1,5 +1,4 @@
 @extends('layout.adminapp')
-
 @section('content')
     <div class="content-wrapper">
         @include('message')
@@ -241,7 +240,7 @@
             }
 
             statusSwitch.addEventListener('change', updateLabel);
-            updateLabel(); 
+            updateLabel();
         });
     </script>
 @endsection

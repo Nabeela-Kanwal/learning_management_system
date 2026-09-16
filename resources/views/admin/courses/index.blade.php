@@ -1,5 +1,4 @@
 @extends('layout.adminapp')
-
 @section('content')
     <div class="content-wrapper">
         @include('message')
@@ -45,18 +44,51 @@
                 processing: true,
                 serverSide: true,
                 ajax: '{{ route('admin.courses.yajra') }}',
-                order: [[1, 'asc']],
-                columns: [
-                    {data: 'course_image', name: 'course_image', orderable: false, searchable: false},
-                    {data: 'course_title', name: 'course_title'},
-                    {data: 'instructor_name', name: 'instructor.name'},
-                    {data: 'category_name', name: 'category.name'},
-                    {data: 'selling_price', name: 'selling_price', orderable: false},
-                    {data: 'status', name: 'status', orderable: false, searchable: false},
-                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                order: [
+                    [1, 'asc']
+                ],
+                columns: [{
+                        data: 'course_image',
+                        name: 'course_image',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'course_title',
+                        name: 'course_title'
+                    },
+                    {
+                        data: 'instructor_name',
+                        name: 'instructor.name'
+                    },
+                    {
+                        data: 'category_name',
+                        name: 'category.name'
+                    },
+                    {
+                        data: 'selling_price',
+                        name: 'selling_price',
+                        orderable: false
+                    },
+                    {
+                        data: 'status',
+                        name: 'status',
+                        orderable: false,
+                        searchable: false
+                    },
+                    {
+                        data: 'action',
+                        name: 'action',
+                        orderable: false,
+                        searchable: false
+                    }
                 ],
                 responsive: true,
-                language: {searchPlaceholder: 'Search...', search: '', emptyTable: 'No courses available.'}
+                language: {
+                    searchPlaceholder: 'Search...',
+                    search: '',
+                    emptyTable: 'No courses available.'
+                }
             });
         });
     </script>

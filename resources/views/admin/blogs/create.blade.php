@@ -1,5 +1,4 @@
 @extends('layout.adminapp')
-
 @section('content')
     <div class="content-wrapper">
         @include('message')

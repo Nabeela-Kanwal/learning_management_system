@@ -7,30 +7,16 @@
                 @include('message')
 
                 <ul class="nav nav-pills flex-column flex-md-row mb-3">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ route('admin.profile.index') }}"><i
-                                class="bx bx-user me-1"></i> Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('admin.profile.update.password') }}"><i
-                                class="bx bx-cog me-1"></i>
-                            Settings</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages-account-settings-notifications.html"><i class="bx bx-bell me-1"></i>
-                            Notifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="pages-account-settings-connections.html"><i
-                                class="bx bx-link-alt me-1"></i> Connections</a>
-                    </li>
+                    @include('components.tabs.nav-items', [
+                        'routePrefix' => 'admin',
+                    ])
                 </ul>
 
                 <div class="card mb-4">
                     <h5 class="card-header">Update Password</h5>
                     <div class="card-body">
-                        <form id="formAccountSettings" method="POST"
-                            action="{{ route('admin.profile.update.password') }}" enctype="multipart/form-data">
+                        <form id="formAccountSettings" method="POST" action="{{ route('admin.profile.update.password') }}"
+                            enctype="multipart/form-data">
                             @csrf
                             @method('POST')
 

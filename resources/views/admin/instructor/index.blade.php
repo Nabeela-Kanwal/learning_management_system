@@ -27,7 +27,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody></tbody> <!-- Yajra will populate this -->
+                            <tbody></tbody> 
                         </table>
                     </div>
                 </div>
