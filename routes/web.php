@@ -5,8 +5,8 @@ use App\Http\Controllers\Frontend\BlogController;
 use App\Http\Controllers\Frontend\CategoryController;
 use App\Http\Controllers\Frontend\ContactController;
 use App\Http\Controllers\Frontend\CourseController;
-use App\Http\Controllers\Frontend\InstructorController;
 use App\Http\Controllers\Frontend\HomeController;
+use App\Http\Controllers\Frontend\InstructorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,11 +24,11 @@ Route::prefix('courses')->name('course.')->group(function () {
     Route::get('/', [CourseController::class, 'index'])->name('index');
 });
 
-Route::prefix('teachers')->name('teacher.')->group(function () {
+Route::prefix('instructors')->name('instructor.')->group(function () {
     Route::get('/', [InstructorController::class, 'index'])->name('index');
 });
 
-Route::get('instructors', [InstructorController::class, 'index'])->name('instructor.index');
+Route::redirect('teachers', '/instructors', 301)->name('teacher.index');
 
 Route::prefix('blogs')->name('blog.')->group(function () {
     Route::get('/', [BlogController::class, 'index'])->name('index');

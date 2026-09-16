@@ -68,6 +68,9 @@
                                                 </option>
                                                 <option value="about" {{ old('page') == 'about' ? 'selected' : '' }}>About
                                                 </option>
+                                                <option value="instructor"
+                                                    {{ old('page') == 'instructor' ? 'selected' : '' }}>
+                                                    Instructor</option>
                                                 <option value="services" {{ old('page') == 'services' ? 'selected' : '' }}>
                                                     Services</option>
                                                 <option value="blog" {{ old('page') == 'blog' ? 'selected' : '' }}>

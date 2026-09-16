@@ -76,6 +76,9 @@
                                                 <option value="about"
                                                     {{ old('page', $banner->page) == 'about' ? 'selected' : '' }}>About
                                                 </option>
+                                                <option value="instructor"
+                                                    {{ old('page', $banner->page) == 'instructor' ? 'selected' : '' }}>
+                                                    Instructor</option>
                                                 <option value="services"
                                                     {{ old('page', $banner->page) == 'services' ? 'selected' : '' }}>
                                                     Services</option>

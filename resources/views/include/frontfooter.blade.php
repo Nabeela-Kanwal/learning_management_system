@@ -36,7 +36,7 @@
                     <ul class="generic-list-item">
                         <li><a href="{{ route('about') }}">About us</a></li>
                         <li><a href="{{ route('contact') }}">Contact us</a></li>
-                        <li><a href="{{ route('teacher.index') }}">Our teachers</a></li>
+                        <li><a href="{{ route('instructor.index') }}">Our instructors</a></li>
                         <li><a href="{{ route('contact') }}">Support</a></li>
                         <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>

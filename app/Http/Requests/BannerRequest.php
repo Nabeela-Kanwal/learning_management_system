@@ -14,23 +14,23 @@ class BannerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'title'       => 'required|string|max:255',
-            'image'       => 'sometimes|file|image|mimes:jpg,jpeg,png,webp,gif|max:2048',
-            'page'        => 'nullable|in:home,about,services,blog,contact',
-            'sort_order'  => 'nullable|integer|min:0',
+            'title' => 'required|string|max:255',
+            'image' => 'sometimes|file|image|mimes:jpg,jpeg,png,webp,gif|max:2048',
+            'page' => 'nullable|in:home,about,instructor,services,blog,contact',
+            'sort_order' => 'nullable|integer|min:0',
             'description' => 'nullable|string',
-            'status'      => 'required|boolean',
+            'status' => 'required|boolean',
         ];
     }
 
     public function messages(): array
     {
         return [
-            'title.required'  => 'Banner title is required.',
-            'image.image'     => 'The file must be a valid image.',
-            'image.mimes'     => 'Allowed image formats: jpg, jpeg, png, webp, gif.',
-            'image.max'       => 'Image must not be larger than 2MB.',
-            'page.in'         => 'Page must be one of: home, about, services, blog, contact.',
+            'title.required' => 'Banner title is required.',
+            'image.image' => 'The file must be a valid image.',
+            'image.mimes' => 'Allowed image formats: jpg, jpeg, png, webp, gif.',
+            'image.max' => 'Image must not be larger than 2MB.',
+            'page.in' => 'Page must be one of: home, about, instructor, services, blog, contact.',
             'status.required' => 'Status is required.',
         ];
     }

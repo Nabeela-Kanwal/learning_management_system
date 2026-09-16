@@ -3,7 +3,7 @@
     $headerLinks = [
         ['home', 'Home'],
         ['course.index', 'Courses'],
-        ['teacher.index', 'Instructors'],
+        ['instructor.index', 'Instructors'],
         ['blog.index', 'Blog'],
         ['contact', 'Contact'],
     ];
