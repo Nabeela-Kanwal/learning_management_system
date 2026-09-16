@@ -73,6 +73,7 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('edit/{id}', [BlogController::class, 'edit'])->name('edit');
             Route::put('update/{id}', [BlogController::class, 'update'])->name('update');
             Route::delete('destroy', [BlogController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getBlogData'])->name('yajra');
         });
 
 

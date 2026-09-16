@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Banner;
+use App\Models\Blog;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\User;
@@ -123,6 +124,50 @@ class YajraController extends Controller
                     </a>';
                 })
                 ->rawColumns(['image', 'status', 'action'])
+                ->make(true);
+        }
+    }
+
+    public function getBlogData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Blog::select(['id', 'title', 'slug', 'image', 'author', 'status', 'published_at']);
+
+            if (! $request->filled('order')) {
+                $data->latest('id');
+            }
+
+            return DataTables::of($data)
+                ->editColumn('title', function ($blog) {
+                    return '<div class="fw-semibold">'.e($blog->title).'</div>'
+                        .'<small class="text-muted">'.e($blog->slug).'</small>';
+                })
+                ->editColumn('author', fn ($blog) => $blog->author ?: 'Admin')
+                ->editColumn('status', function ($blog) {
+                    return $blog->status
+                        ? '<span class="badge bg-primary">Active</span>'
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+                ->editColumn('published_at', fn ($blog) => $blog->published_at?->format('M d, Y') ?? 'Not set')
+                ->editColumn('image', function ($blog) {
+                    if ($blog->image) {
+                        return '<img src="'.e(asset($blog->image)).'" alt="'.e($blog->title).'" width="30" height="30" style="object-fit: cover;" class="rounded-circle"/>';
+                    }
+
+                    return '<span class="text-muted">No Image</span>';
+                })
+                ->addColumn('action', function ($blog) {
+                    $editUrl = route('admin.blog.edit', $blog->id);
+
+                    return '
+                    <a href="'.e($editUrl).'" class="text-primary me-2" title="Edit">
+                        <i class="bx bxs-show"></i>
+                    </a>
+                    <a href="javascript:;" onclick="deleteBlog(this, '.(int) $blog->id.')" class="text-danger" title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>';
+                })
+                ->rawColumns(['title', 'image', 'status', 'action'])
                 ->make(true);
         }
     }

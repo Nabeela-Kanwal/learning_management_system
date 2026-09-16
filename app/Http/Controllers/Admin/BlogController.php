@@ -18,9 +18,7 @@ class BlogController extends Controller
 
     public function index()
     {
-        $blogs = $this->blogService->getBlogs();
-
-        return view('admin.blogs.index', compact('blogs'));
+        return view('admin.blogs.index');
     }
 
     public function create()
