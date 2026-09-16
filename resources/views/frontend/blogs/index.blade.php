@@ -6,8 +6,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            min-height: 460px;
-            padding: 72px 0;
+
             background-size: cover;
             background-position: center;
         }
@@ -45,8 +44,7 @@
 
         @media (max-width: 767px) {
             .blog-banner {
-                min-height: 360px;
-                padding: 48px 0;
+
             }
 
             .blog-banner::before {
@@ -81,7 +79,7 @@
         }
     </style>
 
-    <section class="breadcrumb-area blog-banner img-bg-2"
+    <section class="breadcrumb-area page-banner blog-banner img-bg-2"
         @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
         <div class="container-fluid px-3 px-lg-4">
             <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">

@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/page-banner.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
 </head>

@@ -6,8 +6,7 @@
             position: relative;
             display: flex;
             align-items: center;
-            min-height: 460px;
-            padding: 72px 0;
+
             background-size: cover;
             background-position: center;
         }
@@ -45,8 +44,7 @@
 
         @media (max-width: 767px) {
             .instructor-banner {
-                min-height: 360px;
-                padding: 48px 0;
+
             }
 
             .instructor-banner::before {
@@ -58,43 +56,142 @@
             }
         }
 
+        .instructor-directory {
+            background: #f7f8fc;
+        }
+
         .instructor-container {
-            max-width: 1680px;
+            max-width: 1920px;
         }
 
         .teacher-card {
             height: 100%;
-        }
-
-        .teacher-card .card-body {
             display: flex;
             flex-direction: column;
-        }
-
-        .teacher-avatar {
-            width: 112px;
-            height: 112px;
-            border-radius: 50%;
-            margin: 0 auto;
             overflow: hidden;
-            background: #f5f7fc;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 30px rgba(35, 61, 99, 0.12);
+            border: 1px solid #e7eaf2;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 8px 28px rgba(22, 39, 78, .04);
+            transition: transform .2s ease, box-shadow .2s ease;
         }
 
-        .teacher-avatar img {
+        .teacher-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 18px 40px rgba(22, 39, 78, .1);
+        }
+
+        .teacher-portrait {
+            position: relative;
+            margin: 12px 12px 0;
+            overflow: hidden;
+            border-radius: 12px;
+            background: #edf0f6;
+            aspect-ratio: 4 / 3;
+        }
+
+        .teacher-portrait img {
+            display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center 25%;
+        }
+
+        .teacher-label {
+            position: absolute;
+            left: 14px;
+            bottom: 14px;
+            padding: 5px 12px;
+            border-radius: 30px;
+            background: #fff;
+            color: #172850;
+            font-size: 12px;
+            font-weight: 600;
+            box-shadow: 0 2px 12px rgba(22, 39, 78, .08);
+        }
+
+        .teacher-label i { color: #ff007f; }
+
+        .teacher-body {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            padding: 24px;
+            overflow-wrap: anywhere;
+        }
+
+        .teacher-name {
+            color: #172850;
+            font-size: 21px;
+            line-height: 1.35;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .teacher-location {
+            color: #718096;
+            font-size: 13px;
+            margin-bottom: 12px;
         }
 
         .teacher-bio {
-            min-height: 72px;
+            color: #667085;
+            font-size: 14px;
+            line-height: 1.75;
+            margin-bottom: 22px;
         }
 
         .teacher-meta {
-            border-top: 1px solid rgba(127, 136, 151, 0.18);
-            border-bottom: 1px solid rgba(127, 136, 151, 0.18);
+            display: flex;
+            gap: 24px;
+            margin-top: auto;
+            padding: 16px 0;
+            border-top: 1px solid #edf0f5;
+        }
+
+        .teacher-meta strong {
+            display: block;
+            color: #172850;
+            font-size: 20px;
+            line-height: 1.4;
+        }
+
+        .teacher-meta span { color: #718096; font-size: 12px; }
+
+        .teacher-contact {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        .teacher-contact a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 7px;
+            padding: 10px 14px;
+            border: 1px solid #e7eaf2;
+            border-radius: 10px;
+            color: #233d63;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .teacher-contact a:first-child {
+            flex: 1;
+            background: #fff0f7;
+            border-color: #ffe0ef;
+            color: #d60069;
+        }
+
+        .teacher-contact a:hover { background: #172850; border-color: #172850; color: #fff; }
+        .teacher-contact a:focus-visible { outline: 3px solid #ff007f; outline-offset: 3px; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .teacher-card { transition: none; }
+            .teacher-card:hover { transform: none; }
         }
 
         .teacher-empty-state {
@@ -108,7 +205,7 @@
         }
     </style>
 
-    <section class="breadcrumb-area instructor-banner img-bg-2"
+    <section class="breadcrumb-area page-banner instructor-banner img-bg-2"
         @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
         <div class="container-fluid px-3 px-lg-4">
             <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">
@@ -120,11 +217,11 @@
         </div>
     </section>
 
-    <section class="team-member-area section--padding">
+    <section class="team-member-area instructor-directory section--padding">
         <div class="container instructor-container">
             <div class="section-heading text-center">
-                <h5 class="ribbon ribbon-lg mb-2">Expert Teachers</h5>
-                <h2 class="section__title">Meet Your Instructors</h2>
+                <h5 class="ribbon ribbon-lg mb-2">Our Instructors</h5>
+                <h2 class="section__title">Learn from People Who Love to Teach</h2>
                 <span class="section-divider"></span>
             </div>
 
@@ -151,57 +248,44 @@
                             $bio = $instructor->bio ?: $instructor->experience;
                         @endphp
 
-                        <div class="col-lg-3 col-md-6 responsive-column-half mb-4">
-                            <div class="card card-item member-card teacher-card text-center">
-                                <div class="card-image teacher-avatar">
-                                    <img src="{{ asset($image) }}" alt="{{ $fullName }}">
+                        <div class="col-xl-3 col-lg-4 col-md-6 mb-4">
+                            <article class="teacher-card">
+                                <div class="teacher-portrait">
+                                    <img src="{{ asset($image) }}" alt="{{ $fullName }}" loading="lazy">
+                                    <span class="teacher-label"><i class="la la-chalkboard-teacher" aria-hidden="true"></i> Instructor</span>
                                 </div>
-                                <div class="card-body">
-                                    <h3 class="card-title fs-20 mb-1">{{ $fullName }}</h3>
-                                    <p class="card-text mb-2">
-                                        <span class="text-color">Instructor</span>
-                                        @if ($location)
-                                            <span class="d-block fs-14 pt-1">
-                                                <i class="la la-map-marker mr-1"></i>{{ $location }}
-                                            </span>
-                                        @endif
-                                    </p>
-
-                                    <p class="card-text teacher-bio">
-                                        {{ \Illuminate\Support\Str::limit(strip_tags($bio ?: 'Dedicated instructor helping learners build practical skills through guided lessons.'), 110) }}
-                                    </p>
-
-                                    <div class="teacher-meta d-flex justify-content-center my-3 py-3">
-                                        <div class="px-3">
-                                            <h4 class="fs-20 font-weight-semi-bold">{{ $instructor->courses_count }}</h4>
-                                            <span class="fs-14">Courses</span>
+                                <div class="teacher-body">
+                                    <h3 class="teacher-name">{{ $fullName }}</h3>
+                                    @if ($location)
+                                        <p class="teacher-location"><i class="la la-map-marker" aria-hidden="true"></i> {{ $location }}</p>
+                                    @endif
+                                    <p class="teacher-bio">{{ \Illuminate\Support\Str::limit(strip_tags($bio ?: 'Dedicated instructor helping learners build practical skills through guided lessons.'), 110) }}</p>
+                                    <div class="teacher-meta">
+                                        <div>
+                                            <strong>{{ $instructor->courses_count }}</strong>
+                                            <span>{{ $instructor->courses_count == 1 ? 'Course' : 'Courses' }}</span>
                                         </div>
-                                        <div class="px-3 border-left border-left-gray">
-                                            <h4 class="fs-20 font-weight-semi-bold">
-                                                {{ $instructor->created_at?->format('Y') ?? date('Y') }}</h4>
-                                            <span class="fs-14">Joined</span>
+                                        <div>
+                                            <strong>{{ $instructor->created_at?->format('Y') ?? date('Y') }}</strong>
+                                            <span>Joined</span>
                                         </div>
                                     </div>
-
-                                    <ul
-                                        class="social-icons social-icons-styled social--icons-styled justify-content-center mt-auto">
-                                        @if ($instructor->email)
-                                            <li>
-                                                <a href="mailto:{{ $instructor->email }}" title="Email">
-                                                    <i class="la la-envelope"></i>
+                                    @if ($instructor->email || $instructor->phone)
+                                        <div class="teacher-contact">
+                                            @if ($instructor->email)
+                                                <a href="mailto:{{ $instructor->email }}" aria-label="Email {{ $fullName }}">
+                                                    <i class="la la-envelope" aria-hidden="true"></i> Get in touch
                                                 </a>
-                                            </li>
-                                        @endif
-                                        @if ($instructor->phone)
-                                            <li>
-                                                <a href="tel:{{ $instructor->phone }}" title="Phone">
-                                                    <i class="la la-phone"></i>
+                                            @endif
+                                            @if ($instructor->phone)
+                                                <a href="tel:{{ $instructor->phone }}" aria-label="Call {{ $fullName }}">
+                                                    <i class="la la-phone" aria-hidden="true"></i> Call
                                                 </a>
-                                            </li>
-                                        @endif
-                                    </ul>
+                                            @endif
+                                        </div>
+                                    @endif
                                 </div>
-                            </div>
+                            </article>
                         </div>
                     @endforeach
                 </div>

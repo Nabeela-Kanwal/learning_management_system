@@ -3,7 +3,7 @@
     <section class="hero-area">
         <div class="hero-slider owl-action-styled">
             @foreach ($banners as $banner)
-                <div class="hero-slider-item" style="background-image: url('{{ asset($banner->image) }}')">
+                <div class="hero-slider-item page-banner" style="background-image: url('{{ asset($banner->image) }}')">
                     <div class="container">
                         <div class="hero-content">
                             <div class="section-heading">

@@ -1,6 +1,6 @@
 @extends('layout.frontapp')
 @section('content')
-    <section class="breadcrumb-area section-padding img-bg-2">
+    <section class="breadcrumb-area page-banner img-bg-2">
         <div class="overlay"></div>
         <div class="container">
             <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">

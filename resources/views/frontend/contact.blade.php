@@ -1,7 +1,7 @@
 @extends('layout.frontapp')
 
 @section('content')
-    <section class="breadcrumb-area py-5 bg-gray">
+    <section class="breadcrumb-area page-banner bg-gray">
         <div class="container">
             <nav aria-label="Breadcrumb" class="mb-3">
                 <ol class="breadcrumb bg-transparent p-0 mb-0">
