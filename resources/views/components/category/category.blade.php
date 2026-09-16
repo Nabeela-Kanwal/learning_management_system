@@ -15,13 +15,14 @@
 
           .category-item {
               margin-bottom: 30px;
+              scroll-margin-top: 120px;
           }
       </style>
       <div class="category-wrapper">
           <div class="row">
               @foreach ($categories as $category)
                   <div class="col-lg-4 responsive-column-half">
-                      <div class="category-item">
+                      <div class="category-item" id="category-{{ $category->id }}">
                           <div class="cat__img-wrapper">
                               <img class="cat__img lazy" src="{{ asset($category->image) }}" alt="Category image">
                           </div>

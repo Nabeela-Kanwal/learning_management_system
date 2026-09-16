@@ -1,44 +1,48 @@
-<section class="footer-area pt-100px">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 responsive-column-half">
+<footer class="lms-footer">
+    <div class="lms-footer-inner">
+        <div class="lms-footer-grid">
+            <div class="lms-footer-column">
                 <div class="footer-item">
-                    <a href="index.html">
-                        <img src="{{ asset('frontend/images/logo.png') }}" alt="footer logo" class="footer__logo">
+                    <a href="{{ route('home') }}" aria-label="LMS home" class="lms-footer-brand">
+                        <img src="{{ asset('frontend/images/logo.png') }}" alt="LMS" class="footer__logo">
                     </a>
-                    <ul class="generic-list-item pt-4">
+                    <p class="lms-footer-about">A little curiosity. A new skill.<br>A world of possibilities.</p>
+                    <ul class="generic-list-item lms-footer-contact">
                         <li><a href="tel:+1631237884">+163 123 7884</a></li>
-                        <li><a href="mailto:support@wbsite.com">support@website.com</a></li>
+                        <li><a href="mailto:support@website.com">support@website.com</a></li>
                         <li>Melbourne, Australia, 105 South Park Avenue</li>
                     </ul>
                     <h3 class="fs-20 font-weight-semi-bold pt-4 pb-2">We are on</h3>
                     <ul class="social-icons social-icons-styled">
-                        <li class="mr-1"><a href="#" class="facebook-bg"><i class="la la-facebook"></i></a>
+                        <li class="mr-1"><a href="#" class="facebook-bg" aria-label="Facebook"><i
+                                    class="la la-facebook"></i></a>
                         </li>
-                        <li class="mr-1"><a href="#" class="twitter-bg"><i class="la la-twitter"></i></a>
+                        <li class="mr-1"><a href="#" class="twitter-bg" aria-label="Twitter"><i
+                                    class="la la-twitter"></i></a>
                         </li>
-                        <li class="mr-1"><a href="#" class="instagram-bg"><i class="la la-instagram"></i></a>
+                        <li class="mr-1"><a href="#" class="instagram-bg" aria-label="Instagram"><i
+                                    class="la la-instagram"></i></a>
                         </li>
-                        <li class="mr-1"><a href="#" class="linkedin-bg"><i class="la la-linkedin"></i></a>
+                        <li class="mr-1"><a href="#" class="linkedin-bg" aria-label="LinkedIn"><i
+                                    class="la la-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 responsive-column-half">
+            <div class="lms-footer-column">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Company</h3>
                     <span class="section-divider section--divider"></span>
                     <ul class="generic-list-item">
-                        <li><a href="#">About us</a></li>
-                        <li><a href="#">Contact us</a></li>
-                        <li><a href="#">Become a Teacher</a></li>
-                        <li><a href="#">Support</a></li>
-                        <li><a href="#">FAQs</a></li>
-                        <li><a href="#">Blog</a></li>
+                        <li><a href="{{ route('about') }}">About us</a></li>
+                        <li><a href="{{ route('contact') }}">Contact us</a></li>
+                        <li><a href="{{ route('teacher.index') }}">Our teachers</a></li>
+                        <li><a href="{{ route('contact') }}">Support</a></li>
+                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 responsive-column-half">
+            <div class="lms-footer-column">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Courses</h3>
                     <span class="section-divider section--divider"></span>
@@ -52,14 +56,52 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-lg-3 responsive-column-half">
+            <div class="lms-footer-column">
+                <div class="footer-item">
+                    <h3 class="fs-20 font-weight-semi-bold">Categories</h3>
+                    <span class="section-divider section--divider"></span>
+                    <ul class="generic-list-item">
+                        @foreach ($footerCategories as $footerCategory)
+                            <li><a
+                                    href="{{ route('category.index') }}#category-{{ $footerCategory->id }}">{{ $footerCategory->name }}</a>
+                            </li>
+                        @endforeach
+                        <li><a href="{{ route('category.index') }}">View all categories</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lms-footer-column">
+                <div class="footer-item">
+                    <h3 class="fs-20 font-weight-semi-bold">Resources</h3>
+                    <span class="section-divider section--divider"></span>
+                    <ul class="generic-list-item">
+                        <li><a href="{{ route('blog.index') }}">Blog</a></li>
+                        <li><a href="#">Learning Tips</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="{{ route('contact') }}">Help Center</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lms-footer-column">
+                <div class="footer-item">
+                    <h3 class="fs-20 font-weight-semi-bold">Legal</h3>
+                    <span class="section-divider section--divider"></span>
+                    <ul class="generic-list-item">
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms &amp; Conditions</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="lms-footer-column">
                 <div class="footer-item">
                     <h3 class="fs-20 font-weight-semi-bold">Download App</h3>
                     <span class="section-divider section--divider"></span>
                     <div class="mobile-app">
                         <p class="pb-3 lh-24">Download our mobile app and learn on the go.</p>
                         <a href="#" class="d-block mb-2 hover-s"><img
-                                src="{{ asset('frontend/images/appstore.png') }}" alt="App store" class="img-fluid"></a>
+                                src="{{ asset('frontend/images/appstore.png') }}" alt="App store"
+                                class="img-fluid"></a>
                         <a href="#" class="d-block hover-s"><img
                                 src="{{ asset('frontend/images/googleplay.png') }}" alt="Google play store"
                                 class="img-fluid"></a>
@@ -68,19 +110,12 @@
             </div>
         </div>
     </div>
-    <div class="section-block"></div>
-    <div class="copyright-content py-4">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6">
-                    <p class="copy-desc">&copy; 2021 Aduca. All Rights Reserved. by <a
-                            href="https://techydevs.com/">TechyDevs</a></p>
-                </div>
-
-            </div>
-        </div>
+    <div class="lms-footer-bottom">
+        <p>&copy; {{ date('Y') }} LMS. All rights reserved.</p>
+        <span>Keep learning. Keep growing.</span>
+        <a href="{{ route('contact') }}">Let’s talk <i class="la la-arrow-right" aria-hidden="true"></i></a>
     </div>
-</section>
+</footer>
 <div id="scroll-top">
     <i class="la la-arrow-up" title="Go top"></i>
 </div>
@@ -93,7 +128,8 @@
                         Course 2021</a></h5>
                 <div class="d-flex align-items-center pb-1">
                     <h6 class="ribbon fs-14 mr-2">Bestseller</h6>
-                    <p class="text-success fs-14 font-weight-medium">Updated<span class="font-weight-bold pl-1">November
+                    <p class="text-success fs-14 font-weight-medium">Updated<span
+                            class="font-weight-bold pl-1">November
                             2020</span></p>
                 </div>
                 <ul

@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Course;
+use App\Models\Category;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 
@@ -23,6 +24,9 @@ class AppServiceProvider extends ServiceProvider
     {
         View::composer('include.frontheader', function ($view) {
             $view->with('course', Course::where('status', 1)->get());
+        });
+        View::composer('include.frontfooter', function ($view) {
+            $view->with('footerCategories', Category::where('status', 1)->orderBy('name')->take(6)->get());
         });
     }
 }

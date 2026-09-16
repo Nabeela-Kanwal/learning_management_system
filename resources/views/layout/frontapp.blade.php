@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
 </head>
 
 <body>
@@ -32,9 +33,9 @@
     </div>
     @include('include.frontheader')
 
-    @yield('content');
+    @yield('content')
 
-    @include('include.frontfooter');
+    @include('include.frontfooter')
 
     <script src="{{ asset('frontend/js/jquery-3.4.1.min.js') }}"></script>
     <script src="{{ asset('frontend/js/bootstrap.bundle.min.js') }}"></script>
