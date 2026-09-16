@@ -2,6 +2,62 @@
 
 @section('content')
     <style>
+        .blog-banner {
+            position: relative;
+            display: flex;
+            align-items: center;
+            min-height: 460px;
+            padding: 72px 0;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .blog-banner::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(90deg, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, .88) 35%, rgba(255, 255, 255, .35) 65%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .blog-banner .section-heading {
+            width: 100%;
+            max-width: 620px;
+            text-align: left;
+            border-left: 4px solid #ec5252;
+            padding-left: 24px;
+            overflow-wrap: anywhere;
+        }
+
+        .blog-banner .section__title {
+            color: #233d63;
+            font-size: clamp(28px, 3vw, 42px);
+            line-height: 1.2;
+        }
+
+        .blog-banner .section__desc {
+            color: #233d63;
+            font-size: 17px;
+            line-height: 1.8;
+            margin: 0;
+            white-space: pre-line;
+        }
+
+        @media (max-width: 767px) {
+            .blog-banner {
+                min-height: 360px;
+                padding: 48px 0;
+            }
+
+            .blog-banner::before {
+                background: rgba(255, 255, 255, .88);
+            }
+
+            .blog-banner .section-heading {
+                padding-left: 16px;
+            }
+        }
+
         .blog-list-image {
             aspect-ratio: 4 / 3;
             overflow: hidden;
@@ -25,19 +81,14 @@
         }
     </style>
 
-    <section class="breadcrumb-area section-padding img-bg-2">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">
-                <div class="section-heading">
-                    <h2 class="section__title text-white">Blogs</h2>
-                    <p class="section__desc text-white pt-2">Read the latest learning tips and platform updates.</p>
+    <section class="breadcrumb-area blog-banner img-bg-2"
+        @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
+        <div class="container-fluid px-3 px-lg-4">
+            <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">
+                <div class="section-heading text-left">
+                    <h2 class="section__title">{{ $banner?->title ?: 'Blogs' }}</h2>
+                    <p class="section__desc pt-3">{{ $banner?->description ?: 'Read the latest learning tips and platform updates.' }}</p>
                 </div>
-                <ul
-                    class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li>Blogs</li>
-                </ul>
             </div>
         </div>
     </section>

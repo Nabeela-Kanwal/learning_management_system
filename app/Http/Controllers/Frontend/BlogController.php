@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Course;
 
@@ -10,13 +11,18 @@ class BlogController extends Controller
 {
     public function index()
     {
+        $banner = Banner::where('page', 'blog')
+            ->where('status', 1)
+            ->orderBy('sort_order')
+            ->latest()
+            ->first();
         $blogs = Blog::where('status', 1)
             ->latest('published_at')
             ->latest()
             ->get();
         $course = Course::where('status', 1)->latest()->get();
 
-        return view('frontend.blogs.index', compact('blogs', 'course'));
+        return view('frontend.blogs.index', compact('banner', 'blogs', 'course'));
     }
 
     public function show(string $slug)

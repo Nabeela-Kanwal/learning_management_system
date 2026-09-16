@@ -1,96 +1,197 @@
 @extends('layout.frontapp')
-
 @section('content')
     <style>
-        .blog-detail-image {
-            max-height: 460px;
+        .blog-detail-page {
+            padding: 32px 16px 64px;
+            background: #f5f7fc;
+            color: #233d63;
+        }
+
+        .blog-detail-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+            gap: 28px;
+            align-items: start;
+        }
+
+        .blog-detail-article {
+            min-width: 0;
             overflow: hidden;
-            border-radius: 8px;
+            background: #fff;
+            border-radius: 0 16px 16px 0;
+            box-shadow: 0 8px 30px rgba(35, 61, 99, .06);
+        }
+
+        .blog-detail-body {
+            padding: clamp(20px, 3vw, 48px);
+            overflow-wrap: anywhere;
+        }
+
+        .blog-detail-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px 24px;
+            color: #526580;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+        .blog-detail-meta i {
+            color: #ec5252;
+        }
+
+        .blog-detail-title {
+            color: #233d63;
+            font-size: clamp(28px, 3vw, 44px);
+            line-height: 1.2;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .blog-detail-summary {
+            padding: 16px 20px;
+            border-left: 4px solid #ec5252;
+            background: #fff5f5;
+            color: #233d63;
+            font-size: 18px;
+            line-height: 1.7;
+            margin-bottom: 28px;
+        }
+
+        .blog-detail-image {
+            overflow: hidden;
             background-color: #f5f7fc;
         }
 
         .blog-detail-image img {
             width: 100%;
-            height: 100%;
+            display: block;
+            height: auto;
+            max-height: 560px;
             object-fit: cover;
         }
 
         .blog-detail-content {
-            font-size: 16px;
-            line-height: 1.8;
+            color: #435570;
+            font-size: 17px;
+            line-height: 1.9;
+        }
+
+        .blog-detail-recent {
+            min-width: 0;
+            padding: 28px 24px;
+            background: #fff;
+            border-top: 4px solid #ec5252;
+            border-radius: 14px 0 0 14px;
+            box-shadow: 0 8px 30px rgba(35, 61, 99, .06);
+        }
+
+        .blog-detail-recent h2 {
+            color: #233d63;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .blog-recent-link {
+            display: flex;
+            align-items: start;
+            gap: 14px;
+            padding: 20px 0;
+            border-bottom: 1px solid #edf0f5;
+            color: #233d63;
+            overflow-wrap: anywhere;
+        }
+
+        .blog-recent-link:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .blog-recent-link img {
+            width: 80px;
+            height: 80px;
+            flex-shrink: 0;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .blog-recent-link strong {
+            display: block;
+            font-size: 15px;
+            line-height: 1.5;
+        }
+
+        .blog-recent-link time {
+            display: block;
+            margin-top: 8px;
+            color: #526580;
+            font-size: 13px;
+        }
+
+        .blog-recent-link:hover,
+        .blog-recent-link:focus-visible {
+            color: #ec5252;
+        }
+
+        @media (max-width: 991px) {
+            .blog-detail-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 24px;
+            }
+
+            .blog-detail-page {
+                padding-top: 0;
+                padding-bottom: 32px;
+            }
+
+            .blog-detail-article,
+            .blog-detail-recent {
+                border-radius: 0;
+            }
         }
     </style>
 
-    <section class="breadcrumb-area section-padding img-bg-2">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-between">
-                <div class="section-heading">
-                    <h2 class="section__title text-white">{{ $blog->title }}</h2>
-                    <p class="section__desc text-white pt-2">
-                        {{ $blog->published_at?->format('M d, Y') ?? $blog->created_at->format('M d, Y') }}
-                    </p>
-                </div>
-                <ul class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
-                    <li><a href="{{ route('home') }}">Home</a></li>
-                    <li><a href="{{ route('blog.index') }}">Blogs</a></li>
-                    <li>Details</li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section class="blog-area section--padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
+    <section class="blog-detail-page">
+        <div class="container-fluid px-0">
+            <div class="blog-detail-layout">
+                <article class="blog-detail-article">
                     @php
                         $image = $blog->image ?: 'frontend/images/img8.jpg';
                     @endphp
-                    <div class="blog-detail-image mb-4">
+                    <div class="blog-detail-image">
                         <img src="{{ asset($image) }}" alt="{{ $blog->title }}">
                     </div>
-                    <div class="d-flex align-items-center pb-3 fs-15">
-                        <span><i class="la la-user mr-1"></i>{{ $blog->author ?: 'Admin' }}</span>
-                        <span class="mx-2">|</span>
-                        <span><i class="la la-calendar mr-1"></i>{{ $blog->published_at?->format('M d, Y') ?? $blog->created_at->format('M d, Y') }}</span>
-                    </div>
-                    <h2 class="section__title fs-32 pb-3">{{ $blog->title }}</h2>
-                    @if ($blog->short_description)
-                        <p class="section__desc text-black pb-3">{{ $blog->short_description }}</p>
-                    @endif
-                    <div class="blog-detail-content">
-                        {!! nl2br(e($blog->description)) !!}
-                    </div>
-                </div>
-
-                <div class="col-lg-4">
-                    <div class="sidebar mb-0">
-                        <div class="card card-item">
-                            <div class="card-body">
-                                <h3 class="fs-20 font-weight-semi-bold pb-3">Recent Blogs</h3>
-                                @forelse ($recentBlogs as $recentBlog)
-                                    <div class="media media-card mb-3">
-                                        <a href="{{ route('blog.show', $recentBlog->slug) }}" class="media-img">
-                                            <img src="{{ asset($recentBlog->image ?: 'frontend/images/small-img.jpg') }}"
-                                                alt="{{ $recentBlog->title }}">
-                                        </a>
-                                        <div class="media-body">
-                                            <h5 class="fs-15">
-                                                <a href="{{ route('blog.show', $recentBlog->slug) }}">
-                                                    {{ \Illuminate\Support\Str::limit($recentBlog->title, 58) }}
-                                                </a>
-                                            </h5>
-                                            <span class="d-block fs-13">{{ $recentBlog->published_at?->format('M d, Y') ?? $recentBlog->created_at->format('M d, Y') }}</span>
-                                        </div>
-                                    </div>
-                                @empty
-                                    <p class="card-text">No other blogs yet.</p>
-                                @endforelse
-                            </div>
+                    <div class="blog-detail-body">
+                        <div class="blog-detail-meta">
+                            <span><i class="la la-user mr-1"></i>{{ $blog->author ?: 'Admin' }}</span>
+                            <span><i class="la la-calendar mr-1"></i>{{ $blog->published_at?->format('M d, Y') ?? $blog->created_at->format('M d, Y') }}</span>
+                        </div>
+                        <h1 class="blog-detail-title">{{ $blog->title }}</h1>
+                        @if ($blog->short_description)
+                            <p class="blog-detail-summary">{{ $blog->short_description }}</p>
+                        @endif
+                        <div class="blog-detail-content">
+                            {!! nl2br(e($blog->description)) !!}
                         </div>
                     </div>
-                </div>
+                </article>
+
+                <aside class="blog-detail-recent" aria-labelledby="recent-blogs-title">
+                    <h2 id="recent-blogs-title">Recent Blogs</h2>
+                    @forelse ($recentBlogs as $recentBlog)
+                        <a href="{{ route('blog.show', $recentBlog->slug) }}" class="blog-recent-link">
+                            <img src="{{ asset($recentBlog->image ?: 'frontend/images/small-img.jpg') }}"
+                                alt="" loading="lazy">
+                            <span>
+                                <strong>{{ $recentBlog->title }}</strong>
+                                <time datetime="{{ ($recentBlog->published_at ?? $recentBlog->created_at)->toDateString() }}">{{ ($recentBlog->published_at ?? $recentBlog->created_at)->format('M d, Y') }}</time>
+                            </span>
+                        </a>
+                    @empty
+                        <p class="card-text">No other blogs yet.</p>
+                    @endforelse
+                </aside>
             </div>
         </div>
     </section>
