@@ -70,6 +70,8 @@
                                                 </option>
                                                 <option value="services" {{ old('page') == 'services' ? 'selected' : '' }}>
                                                     Services</option>
+                                                <option value="blog" {{ old('page') == 'blog' ? 'selected' : '' }}>
+                                                    Blog</option>
                                                 <option value="contact" {{ old('page') == 'contact' ? 'selected' : '' }}>
                                                     Contact</option>
                                             </select>

@@ -33,7 +33,8 @@
                     <h2 class="section__title text-white">Blogs</h2>
                     <p class="section__desc text-white pt-2">Read the latest learning tips and platform updates.</p>
                 </div>
-                <ul class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
+                <ul
+                    class="generic-list-item generic-list-item-white generic-list-item-arrow d-flex flex-wrap align-items-center">
                     <li><a href="{{ route('home') }}">Home</a></li>
                     <li>Blogs</li>
                 </ul>
@@ -47,7 +48,9 @@
                 @forelse ($blogs as $blog)
                     @php
                         $image = $blog->image ?: 'frontend/images/img8.jpg';
-                        $summary = $blog->short_description ?: \Illuminate\Support\Str::limit(strip_tags($blog->description), 140);
+                        $summary =
+                            $blog->short_description ?:
+                            \Illuminate\Support\Str::limit(strip_tags($blog->description), 140);
                     @endphp
                     <div class="col-lg-3 col-md-6 responsive-column-half">
                         <div class="card card-item blog-card">
@@ -58,7 +61,8 @@
                                 <div class="d-flex align-items-center pb-2 fs-14">
                                     <span><i class="la la-user mr-1"></i>{{ $blog->author ?: 'Admin' }}</span>
                                     <span class="mx-2">|</span>
-                                    <span><i class="la la-calendar mr-1"></i>{{ $blog->published_at?->format('M d, Y') ?? $blog->created_at->format('M d, Y') }}</span>
+                                    <span><i
+                                            class="la la-calendar mr-1"></i>{{ $blog->published_at?->format('M d, Y') ?? $blog->created_at->format('M d, Y') }}</span>
                                 </div>
                                 <h5 class="card-title">
                                     <a href="{{ route('blog.show', $blog->slug) }}">{{ $blog->title }}</a>
