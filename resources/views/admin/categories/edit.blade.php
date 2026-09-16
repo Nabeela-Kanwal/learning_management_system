@@ -128,11 +128,6 @@
                 $('#slug').val(slug);
             });
 
-            // Loader display on submit
-            $('#categoryForm').on('submit', function() {
-                $('.loader-icon').removeClass('d-none'); // show loader
-                $('#submitBtn').attr('disabled', true); // prevent multiple submissions
-            });
         });
 
         // Image preview

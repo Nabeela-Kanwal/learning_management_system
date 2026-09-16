@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <button type="submit"
-                            class="btn btn-primary">{{ isset($course) ? 'Update Course' : 'Save Course' }}</button>
+                            class="btn btn-primary">{{ isset($course) ? 'Update Course' : 'Save Course' }} <x-loader-icon /></button>
                         <a href="{{ route('admin.courses.index') }}" class="btn btn-outline-secondary">Cancel</a>
                     </form>
                 </div>
