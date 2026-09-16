@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -22,6 +23,12 @@ class ContactController extends Controller
 
     public function index()
     {
-        return view('frontend.contact');
+        $banner = Banner::where('page', 'contact')
+            ->where('status', 1)
+            ->orderBy('sort_order')
+            ->latest()
+            ->first();
+
+        return view('frontend.contact', compact('banner'));
     }
 }

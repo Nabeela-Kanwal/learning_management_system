@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/page-banner.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
+    @stack('styles')
 </head>
 
 <body>

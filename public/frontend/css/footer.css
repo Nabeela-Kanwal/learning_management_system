@@ -1,6 +1,11 @@
 .lms-footer {
     --footer-pink: #ff008c;
-    background: radial-gradient(ellipse at top right, #304973 0%, #172d50 50%, #122440 100%);
+    background: radial-gradient(
+        ellipse at top right,
+        #304973 0%,
+        #172d50 50%,
+        #122440 100%
+    );
     color: #c5d1e3;
     padding: 0 48px;
     overflow-wrap: anywhere;
@@ -12,7 +17,7 @@
     justify-content: space-between;
     gap: 32px;
     padding: 48px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, .14);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .lms-footer-eyebrow {
@@ -33,7 +38,9 @@
 }
 
 .lms-footer a {
-    transition: color .2s ease, background-color .2s ease;
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
 }
 
 .lms-footer a:focus-visible {
@@ -53,7 +60,7 @@
     background: var(--footer-pink);
     color: #fff;
     font-weight: 600;
-    box-shadow: 0 8px 24px rgba(255, 0, 140, .18);
+    box-shadow: 0 8px 24px rgba(255, 0, 140, 0.18);
 }
 
 .lms-footer .lms-footer-cta:hover {
@@ -62,7 +69,10 @@
 
 .lms-footer-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)) minmax(0, 1.2fr);
+    grid-template-columns: minmax(0, 1.4fr) repeat(5, minmax(0, 1fr)) minmax(
+            0,
+            1.2fr
+        );
     align-items: start;
     gap: 24px;
     padding: 48px 0 40px;
@@ -132,9 +142,9 @@
 }
 
 .lms-footer .social-icons li a {
-    background: rgba(255, 255, 255, .08);
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
-    border: 1px solid rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 10px;
 }
 
@@ -144,8 +154,8 @@
 
 .lms-footer .mobile-app {
     padding: 18px;
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
     border-radius: 12px;
     font-size: 14px;
 }
@@ -162,7 +172,7 @@
     align-items: center;
     gap: 12px 24px;
     padding: 22px 0;
-    border-top: 1px solid rgba(255, 255, 255, .14);
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
     font-size: 13px;
 }
 

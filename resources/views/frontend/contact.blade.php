@@ -1,56 +1,66 @@
 @extends('layout.frontapp')
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/css/contact.css') }}">
+@endpush
+
 @section('content')
-    <section class="breadcrumb-area page-banner bg-gray">
-        <div class="container">
-            <nav aria-label="Breadcrumb" class="mb-3">
-                <ol class="breadcrumb bg-transparent p-0 mb-0">
-                    <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Contact us</li>
-                </ol>
-            </nav>
-            <h1 class="section__title mb-3">Contact Us</h1>
-            <p class="section__desc">Have a question? We’re here to help you keep learning.</p>
+    <section class="breadcrumb-area page-banner blog-banner contact-banner img-bg-2"
+        @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
+        <div class="container-fluid px-3 px-lg-4">
+            <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">
+                <div class="section-heading text-left">
+                    <h1 class="section__title">{{ $banner?->title ?: 'Contact Us' }}</h1>
+                    <p class="section__desc pt-3">{{ $banner?->description ?: 'Have a question? We’re here to help you keep learning.' }}</p>
+                </div>
+            </div>
         </div>
     </section>
 
-    <section class="contact-area section--padding" aria-labelledby="contact-heading">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-5 mb-lg-0">
-                    <span class="ribbon mb-3">Let’s talk</span>
-                    <h2 id="contact-heading" class="fs-30 font-weight-semi-bold mb-3">How can we help?</h2>
-                    <p class="mb-4">Send us your question about a course, your account, or your learning experience. Our
-                        team will reply to the email address you provide.</p>
-                    <div class="d-flex mb-4">
-                        <i class="la la-book-open fs-30 mr-3 text-primary" aria-hidden="true"></i>
-                        <div>
-                            <h3 class="fs-18 font-weight-semi-bold mb-2">Course questions</h3>
-                            <p>Include the course name so we can help you find the right information.</p>
+    <section class="contact-modern" aria-labelledby="contact-heading">
+        <div class="container-fluid px-3 px-lg-4">
+            <div class="contact-intro">
+                <span class="contact-eyebrow">WE’RE HERE FOR YOU</span>
+                <h2 id="contact-heading">A little help. A lot of possibilities.</h2>
+                <p>Questions, ideas, or a little guidance. Let’s take the next step together.</p>
+            </div>
+            <div class="contact-grid">
+                <aside class="contact-sidebar" aria-labelledby="contact-support-heading">
+                    <div class="contact-support">
+                        <span class="contact-support-icon"><i class="la la-comments" aria-hidden="true"></i></span>
+                        <span class="contact-eyebrow">LET’S CONNECT</span>
+                        <h3 id="contact-support-heading">Your learning journey<br>matters to us.</h3>
+                        <p>Tell us what’s on your mind. We’ll reply to the email address you share.</p>
+                        <div class="contact-topics">
+                            <div class="contact-topic">
+                                <i class="la la-book-open" aria-hidden="true"></i>
+                                <div><h4>Find your next course</h4><p>Get guidance on courses and learning paths.</p></div>
+                            </div>
+                            <div class="contact-topic">
+                                <i class="la la-user-circle" aria-hidden="true"></i>
+                                <div><h4>Get account support</h4><p>Ask for help with access or your account.</p></div>
+                            </div>
+                            <div class="contact-topic">
+                                <i class="la la-lightbulb" aria-hidden="true"></i>
+                                <div><h4>Share an idea</h4><p>Help us make learning better for everyone.</p></div>
+                            </div>
                         </div>
+                        <div class="contact-support-note"><span></span>Real questions. Thoughtful answers.</div>
                     </div>
-                    <div class="d-flex mb-4">
-                        <i class="la la-user fs-30 mr-3 text-primary" aria-hidden="true"></i>
-                        <div>
-                            <h3 class="fs-18 font-weight-semi-bold mb-2">Account support</h3>
-                            <p>Tell us what happened and include any error message you saw.</p>
-                        </div>
+                    <a class="contact-explore" href="{{ url('/courses') }}">
+                        <span><strong>Keep your curiosity going</strong><small>Explore something new while you’re here.</small></span>
+                        <i class="la la-arrow-right" aria-hidden="true"></i>
+                    </a>
+                </aside>
+                <div class="contact-form-card">
+                    <div class="contact-form-heading">
+                        <div><span class="contact-eyebrow">DROP US A NOTE</span><h3>Send us a message</h3></div>
+                        <span class="contact-form-icon"><i class="la la-paper-plane" aria-hidden="true"></i></span>
                     </div>
-                    <div class="d-flex">
-                        <i class="la la-comment fs-30 mr-3 text-primary" aria-hidden="true"></i>
-                        <div>
-                            <h3 class="fs-18 font-weight-semi-bold mb-2">Feedback and suggestions</h3>
-                            <p>Share your ideas for improving your learning experience.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-8">
-                    <div class="card shadow-sm p-4 p-md-5">
-                        <h2 class="fs-24 font-weight-semi-bold mb-2">Send us a message</h2>
-                        <p id="contact-required" class="mb-4">All fields are required.</p>
+                    <p id="contact-required" class="contact-form-description">A few details will help us point you in the right direction. All fields are required.</p>
 
                         @if (session('success'))
-                            <div class="alert alert-success" role="status" tabindex="-1" autofocus>
+                            <div id="contact-success" class="alert alert-success" role="status" tabindex="-1" autofocus>
                                 <i class="la la-check-circle mr-1" aria-hidden="true"></i>
                                 {{ session('success') }}
                             </div>
@@ -107,13 +117,27 @@
                                 <small id="contact-message-help" class="form-text text-muted">Up to 10,000 characters.
                                     Please don’t include passwords or payment details.</small>
                             </div>
-                            <button class="btn theme-btn" type="submit">
+                            <button class="btn contact-submit" type="submit">
                                 Send message <i class="la la-paper-plane ml-1" aria-hidden="true"></i>
                             </button>
                         </form>
-                    </div>
+                </div>
+            </div>
+            <div class="contact-faq" aria-labelledby="contact-faq-heading">
+                <div><span class="contact-eyebrow">GOOD TO KNOW</span><h2 id="contact-faq-heading">Before you hit send.</h2><p>A little context helps us help you.</p></div>
+                <div class="contact-faq-items">
+                    <details><summary>What should I include in my message?</summary><p>Share the course name or account issue, what you were trying to do, and any error message you saw. Please leave out passwords and payment details.</p></details>
+                    <details><summary>How will I receive a reply?</summary><p>Our team will respond to the email address you enter in the form. Double-check it before sending so we can reach you.</p></details>
+                    <details><summary>Can I share feedback or suggest a course?</summary><p>Absolutely. Tell us what you would like to learn or how we could improve your experience. We welcome your ideas.</p></details>
                 </div>
             </div>
         </div>
     </section>
+    @if (session('success'))
+        <script>
+            window.setTimeout(function () {
+                document.getElementById('contact-success')?.remove();
+            }, 5000);
+        </script>
+    @endif
 @endsection

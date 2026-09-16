@@ -2,58 +2,6 @@
 
 @section('content')
     <style>
-        .blog-banner {
-            position: relative;
-            display: flex;
-            align-items: center;
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .blog-banner::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, rgba(255, 255, 255, .96) 0%, rgba(255, 255, 255, .88) 35%, rgba(255, 255, 255, .35) 65%, transparent 100%);
-            pointer-events: none;
-        }
-
-        .blog-banner .section-heading {
-            width: 100%;
-            max-width: 620px;
-            text-align: left;
-            border-left: 4px solid #ec5252;
-            padding-left: 24px;
-            overflow-wrap: anywhere;
-        }
-
-        .blog-banner .section__title {
-            color: #233d63;
-            font-size: clamp(28px, 3vw, 42px);
-            line-height: 1.2;
-        }
-
-        .blog-banner .section__desc {
-            color: #233d63;
-            font-size: 17px;
-            line-height: 1.8;
-            margin: 0;
-            white-space: pre-line;
-        }
-
-        @media (max-width: 767px) {
-            .blog-banner {}
-
-            .blog-banner::before {
-                background: rgba(255, 255, 255, .88);
-            }
-
-            .blog-banner .section-heading {
-                padding-left: 16px;
-            }
-        }
-
         .blog-list-image {
             aspect-ratio: 4 / 3;
             overflow: hidden;
