@@ -43,9 +43,7 @@
         }
 
         @media (max-width: 767px) {
-            .blog-banner {
-
-            }
+            .blog-banner {}
 
             .blog-banner::before {
                 background: rgba(255, 255, 255, .88);
@@ -85,13 +83,19 @@
             <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">
                 <div class="section-heading text-left">
                     <h2 class="section__title">{{ $banner?->title ?: 'Blogs' }}</h2>
-                    <p class="section__desc pt-3">{{ $banner?->description ?: 'Read the latest learning tips and platform updates.' }}</p>
+                    <p class="section__desc pt-3">
+                        {{ $banner?->description ?: 'Read the latest learning tips and platform updates.' }}</p>
                 </div>
             </div>
         </div>
     </section>
 
     <section class="blog-area section--padding">
+        <div class="section-heading text-center">
+            <h5 class="ribbon ribbon-lg mb-2">Our Blog</h5>
+            <h2 class="section__title">Insights, Ideas & Inspiration to Help You Learn</h2>
+            <span class="section-divider"></span>
+        </div>
         <div class="container-fluid px-3 px-lg-4">
             <div class="row">
                 @forelse ($blogs as $blog)

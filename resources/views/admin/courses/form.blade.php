@@ -1,20 +1,12 @@
 @extends('layout.adminapp')
 @section('content')
     <div class="content-wrapper">
+        @include('message')
         <div class="container-xxl flex-grow-1 container-p-y">
             <h4 class="fw-bold py-3 mb-4">{{ isset($course) ? 'Edit Course' : 'Add Course' }}</h4>
-            @if ($errors->any())
-                <div class="alert alert-danger" role="alert">
-                    <ul class="mb-0">
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
             <div class="card">
                 <div class="card-body">
-                    <form
+                    <form novalidate
                         action="{{ isset($course) ? route('admin.courses.update', $course->id) : route('admin.courses.store') }}"
                         method="POST" enctype="multipart/form-data">
                         @csrf
@@ -36,6 +28,9 @@
                                             </option>
                                         @endforeach
                                     </select>
+                                    @error($field)
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             @endforeach
                             @foreach (['course_title' => 'Course Title', 'course_slug' => 'Course Slug', 'course_name' => 'Course Name', 'video_url' => 'Video URL', 'label' => 'Level', 'resources' => 'Resources', 'certificate' => 'Certificate', 'selling_price' => 'Selling Price', 'discount_price' => 'Discount Price'] as $field => $label)
@@ -46,16 +41,17 @@
                                         type="{{ str_ends_with($field, '_price') ? 'number' : ($field === 'video_url' ? 'url' : 'text') }}"
                                         @if (str_ends_with($field, '_price')) min="0" step="0.01" @else maxlength="{{ $field === 'label' ? 100 : 255 }}" @endif
                                         @required($field === 'course_title')>
+                                    @error($field)
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             @endforeach
                             <div class="col-12 mb-3">
                                 <label for="course_image" class="form-label">Course Image</label>
-                                @if (!empty($course->course_image))
-                                    <div><img src="{{ asset($course->course_image) }}" alt="Current course image"
-                                            class="rounded mb-2" style="max-width: 180px;"></div>
-                                @endif
-                                <input type="file" id="course_image" name="course_image" class="form-control"
-                                    accept="image/jpeg,image/png,image/webp">
+                                <x-course-image-input :image="$course->course_image ?? null" />
+                                @error('course_image')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                                 <div class="form-text">JPG, PNG or WebP, up to 2 MB. Leave empty to keep the current image.
                                 </div>
                             </div>
@@ -64,6 +60,9 @@
                                     <label for="{{ $field }}" class="form-label">{{ $label }}</label>
                                     <textarea id="{{ $field }}" name="{{ $field }}" class="form-control" rows="4"
                                         @if ($field === 'prerequisites') maxlength="500" @endif>{{ old($field, $course->$field ?? '') }}</textarea>
+                                    @error($field)
+                                        <small class="text-danger">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             @endforeach
                             <div class="col-12 mb-3">
@@ -74,6 +73,9 @@
                                             value="1" class="form-check-input" @checked(old($field, $course->$field ?? 0) == 1)>
                                         <label for="{{ $field }}"
                                             class="form-check-label">{{ $label }}</label>
+                                        @error($field)
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 @endforeach
                             </div>
@@ -83,6 +85,9 @@
                                     <option value="1" @selected(old('status', $course->status ?? 1) == 1)>Active</option>
                                     <option value="0" @selected(old('status', $course->status ?? 1) == 0)>Inactive</option>
                                 </select>
+                                @error('status')
+                                    <small class="text-danger">{{ $message }}</small>
+                                @enderror
                             </div>
                         </div>
                         <button type="submit"
@@ -95,6 +100,7 @@
     </div>
 @endsection
 @section('script')
+    <script src="{{ asset('assets/js/course-image-preview.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const category = document.getElementById('category_id');

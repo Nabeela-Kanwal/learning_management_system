@@ -16,7 +16,7 @@
                             <h5 class="mb-0">Edit Instructor</h5>
                         </div>
                         <div class="card-body">
-                            <form id="instructorForm" action="{{ route('admin.instructor.update', $instructor->id) }}"
+                            <form novalidate id="instructorForm" action="{{ route('admin.instructor.update', $instructor->id) }}"
                                 method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')

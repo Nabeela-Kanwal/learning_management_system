@@ -16,7 +16,7 @@
                             <h5 class="mb-0">Add Instructor</h5>
                         </div>
                         <div class="card-body">
-                            <form id="instructorForm" action="{{ route('admin.instructor.store') }}" method="POST"
+                            <form novalidate id="instructorForm" action="{{ route('admin.instructor.store') }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 <input type="hidden" name="role" value="instructor">

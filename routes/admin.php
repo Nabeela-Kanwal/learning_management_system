@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\AppSettingController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BlogController;
@@ -36,6 +37,11 @@ Route::middleware(['web', 'auth_guard:admin'])
 
             Route::get('logout', [AuthController::class, 'logout'])->name('logout');
         });
+
+        Route::prefix('settings')->name('setting.')->group(function () {
+            Route::get('/', [AppSettingController::class, 'index'])->name('index');
+        });
+
 
         Route::prefix('categories')->name('category.')->group(function () {
             Route::get('/', [CategoryController::class, 'index'])->name('index');
@@ -87,7 +93,7 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('yajra', [YajraController::class, 'getBlogData'])->name('yajra');
         });
 
-         Route::prefix('courses')->name('courses.')->group(function () {
+        Route::prefix('courses')->name('courses.')->group(function () {
             Route::get('/', [CourseController::class, 'index'])->name('index');
             Route::get('yajra', [YajraController::class, 'getCourseData'])->name('yajra');
             Route::get('create', [CourseController::class, 'create'])->name('create');
@@ -96,7 +102,6 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('{id}', [CourseController::class, 'update'])->whereNumber('id')->name('update');
             Route::get('{id}', [CourseController::class, 'show'])->whereNumber('id')->name('show');
         });
-
 
         Route::prefix('contacts')->name('contact.')->group(function () {
             Route::get('/', [ContactController::class, 'index'])->name('index');

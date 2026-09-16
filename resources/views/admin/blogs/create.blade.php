@@ -18,13 +18,17 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{ route('admin.blog.store') }}" method="POST" enctype="multipart/form-data">
+                            <form novalidate action="{{ route('admin.blog.store') }}" method="POST"
+                                enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
+
+                                        <img id="previewImage" src="#" alt="Image Preview"
+                                            style="max-width: 180px; margin-top: 10px; display: none;" />
+                                        <div class="input-group input-group-merge mt-3">
                                             <span class="input-group-text"><i class="bx bx-image"></i></span>
                                             <input type="file" name="image" class="form-control"
                                                 onchange="checkImage(this)" />
@@ -32,8 +36,6 @@
                                         @error('image')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
-                                        <img id="previewImage" src="#" alt="Image Preview"
-                                            style="max-width: 180px; margin-top: 10px; display: none;" />
                                     </div>
                                 </div>
 

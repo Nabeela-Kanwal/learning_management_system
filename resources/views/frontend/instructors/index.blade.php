@@ -43,9 +43,7 @@
         }
 
         @media (max-width: 767px) {
-            .instructor-banner {
-
-            }
+            .instructor-banner {}
 
             .instructor-banner::before {
                 background: rgba(255, 255, 255, .88);
@@ -111,7 +109,9 @@
             box-shadow: 0 2px 12px rgba(22, 39, 78, .08);
         }
 
-        .teacher-label i { color: #ff007f; }
+        .teacher-label i {
+            color: #ff007f;
+        }
 
         .teacher-body {
             display: flex;
@@ -157,7 +157,10 @@
             line-height: 1.4;
         }
 
-        .teacher-meta span { color: #718096; font-size: 12px; }
+        .teacher-meta span {
+            color: #718096;
+            font-size: 12px;
+        }
 
         .teacher-contact {
             display: flex;
@@ -186,12 +189,25 @@
             color: #d60069;
         }
 
-        .teacher-contact a:hover { background: #172850; border-color: #172850; color: #fff; }
-        .teacher-contact a:focus-visible { outline: 3px solid #ff007f; outline-offset: 3px; }
+        .teacher-contact a:hover {
+            background: #172850;
+            border-color: #172850;
+            color: #fff;
+        }
+
+        .teacher-contact a:focus-visible {
+            outline: 3px solid #ff007f;
+            outline-offset: 3px;
+        }
 
         @media (prefers-reduced-motion: reduce) {
-            .teacher-card { transition: none; }
-            .teacher-card:hover { transform: none; }
+            .teacher-card {
+                transition: none;
+            }
+
+            .teacher-card:hover {
+                transform: none;
+            }
         }
 
         .teacher-empty-state {
@@ -211,7 +227,8 @@
             <div class="breadcrumb-content d-flex flex-wrap align-items-center justify-content-start text-left">
                 <div class="section-heading text-left">
                     <h2 class="section__title">{{ $banner?->title ?: 'Our Instructors' }}</h2>
-                    <p class="section__desc pt-3">{{ $banner?->description ?: 'Learn from active teachers across our course catalog.' }}</p>
+                    <p class="section__desc pt-3">
+                        {{ $banner?->description ?: 'Learn from active teachers across our course catalog.' }}</p>
                 </div>
             </div>
         </div>
@@ -252,14 +269,18 @@
                             <article class="teacher-card">
                                 <div class="teacher-portrait">
                                     <img src="{{ asset($image) }}" alt="{{ $fullName }}" loading="lazy">
-                                    <span class="teacher-label"><i class="la la-chalkboard-teacher" aria-hidden="true"></i> Instructor</span>
+                                    <span class="teacher-label"><i class="la la-chalkboard-teacher" aria-hidden="true"></i>
+                                        Instructor</span>
                                 </div>
                                 <div class="teacher-body">
                                     <h3 class="teacher-name">{{ $fullName }}</h3>
                                     @if ($location)
-                                        <p class="teacher-location"><i class="la la-map-marker" aria-hidden="true"></i> {{ $location }}</p>
+                                        <p class="teacher-location"><i class="la la-map-marker" aria-hidden="true"></i>
+                                            {{ $location }}</p>
                                     @endif
-                                    <p class="teacher-bio">{{ \Illuminate\Support\Str::limit(strip_tags($bio ?: 'Dedicated instructor helping learners build practical skills through guided lessons.'), 110) }}</p>
+                                    <p class="teacher-bio">
+                                        {{ \Illuminate\Support\Str::limit(strip_tags($bio ?: 'Dedicated instructor helping learners build practical skills through guided lessons.'), 110) }}
+                                    </p>
                                     <div class="teacher-meta">
                                         <div>
                                             <strong>{{ $instructor->courses_count }}</strong>
@@ -273,12 +294,14 @@
                                     @if ($instructor->email || $instructor->phone)
                                         <div class="teacher-contact">
                                             @if ($instructor->email)
-                                                <a href="mailto:{{ $instructor->email }}" aria-label="Email {{ $fullName }}">
+                                                <a href="mailto:{{ $instructor->email }}"
+                                                    aria-label="Email {{ $fullName }}">
                                                     <i class="la la-envelope" aria-hidden="true"></i> Get in touch
                                                 </a>
                                             @endif
                                             @if ($instructor->phone)
-                                                <a href="tel:{{ $instructor->phone }}" aria-label="Call {{ $fullName }}">
+                                                <a href="tel:{{ $instructor->phone }}"
+                                                    aria-label="Call {{ $fullName }}">
                                                     <i class="la la-phone" aria-hidden="true"></i> Call
                                                 </a>
                                             @endif

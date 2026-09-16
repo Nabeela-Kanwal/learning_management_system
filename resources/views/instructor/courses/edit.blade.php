@@ -26,13 +26,9 @@
                                 @method('PUT')
                                 {{-- Course Image --}}
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Course Image</label>
+                                    <label for="course_image" class="col-sm-2 col-form-label">Course Image</label>
                                     <div class="col-sm-10">
-                                        <img id="previewImage"
-                                            src="{{ $course->course_image ? asset($course->course_image) : asset('images/default-course.png') }}"
-                                            style="max-width:150px;margin-bottom:10px;display:block;" />
-                                        <input type="file" name="course_image" class="form-control"
-                                            onchange="checkImage(this)" />
+                                        <x-course-image-input :image="$course->course_image ?? null" />
                                     </div>
                                 </div>
 
@@ -239,6 +235,7 @@
 @endsection
 
 @section('script')
+    <script src="{{ asset('assets/js/course-image-preview.js') }}"></script>
     <script>
         // Generate slug automatically
         $('#course_title').on('input', function() {
@@ -248,14 +245,5 @@
             $('#course_slug').val(slug);
         });
 
-        // Preview uploaded image
-        function checkImage(input) {
-            var file = input.files[0];
-            if (!file) return;
-
-            var preview = document.getElementById('previewImage');
-            preview.src = URL.createObjectURL(file);
-            preview.style.display = 'block';
-        }
     </script>
 @endsection

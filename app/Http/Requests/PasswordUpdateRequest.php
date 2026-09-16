@@ -28,20 +28,21 @@ class PasswordUpdateRequest extends FormRequest
         ];
     }
 
-  protected function withValidator($validator)
-{
-    $validator->after(function ($validator) {
-        // Get authenticated user from either guard, fallback to default auth
-        $user = auth('instructor')->user() ?? auth('admin')->user() ?? auth()->user();
+    protected function withValidator($validator)
+    {
+        $validator->after(function ($validator) {
+            // Get authenticated user from either guard, fallback to default auth
+            $user = auth('instructor')->user() ?? auth('admin')->user() ?? auth()->user();
 
-        if (!$user) {
-            $validator->errors()->add('current_password', 'User not authenticated.');
-            return;
-        }
+            if (! $user) {
+                $validator->errors()->add('current_password', 'User not authenticated.');
 
-        if (!Hash::check($this->current_password, $user->password)) {
-            $validator->errors()->add('current_password', 'Current password is incorrect.');
-        }
-    });
-}
+                return;
+            }
+
+            if (! Hash::check($this->current_password, $user->password)) {
+                $validator->errors()->add('current_password', 'Current password is incorrect.');
+            }
+        });
+    }
 }

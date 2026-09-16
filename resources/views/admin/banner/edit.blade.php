@@ -22,20 +22,10 @@
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-
-
-                                {{-- Image --}}
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
-                                            <input type="file" name="image" class="form-control"
-                                                onchange="checkImage(this)" />
-                                        </div>
-                                        @error('image')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+
                                         @if ($banner->image)
                                             <img id="previewImage" src="{{ asset($banner->image) }}" alt="Image Preview"
                                                 style="max-width: 150px; margin-top: 10px; display: block;" />
@@ -43,6 +33,14 @@
                                             <img id="previewImage" src="#" alt="Image Preview"
                                                 style="max-width: 150px; margin-top: 10px; display: none;" />
                                         @endif
+                                        <div class="input-group input-group-merge mt-3">
+                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
+                                            <input type="file" name="image" class="form-control"
+                                                onchange="checkImage(this)" />
+                                        </div>
+                                        @error('image')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
 

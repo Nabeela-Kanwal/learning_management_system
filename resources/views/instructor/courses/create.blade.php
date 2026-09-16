@@ -106,15 +106,13 @@
 
                                 {{-- Course Image --}}
                                 <div class="row mb-3">
-                                    <label class="col-sm-2 col-form-label">Course Image</label>
+                                    <label for="course_image" class="col-sm-2 col-form-label">Course Image</label>
                                     <div class="col-sm-10">
-                                        <input type="file" name="course_image" class="form-control"
-                                            onchange="checkImage(this)" />
+                                        <x-course-image-input :image="$course->course_image ?? null" />
                                         @error('course_image')
                                             <small class="text-danger">{{ $message }}</small>
                                         @enderror
-                                        <img id="previewImage" src="#" alt="Image Preview"
-                                            style="max-width:150px;margin-top:10px;display:none;" />
+
                                     </div>
                                 </div>
 
@@ -240,6 +238,7 @@
 
 
 @section('script')
+    <script src="{{ asset('assets/js/course-image-preview.js') }}"></script>
     <script>
         $(document).ready(function() {
             // Slug auto-generation
@@ -255,22 +254,5 @@
             });
         });
 
-        // Image preview
-        function checkImage(input) {
-            var file = input.files[0];
-            if (file && validateFile(file, 2)) {
-                var preview = document.getElementById('previewImage');
-                preview.src = URL.createObjectURL(file);
-                preview.style.display = 'block';
-            } else {
-                alert('Only image files up to 2MB are allowed');
-                input.value = '';
-            }
-        }
-
-        function validateFile(file, maxMB) {
-            const types = ['image/jpeg', 'image/png', 'image/webp'];
-            return types.includes(file.type) && file.size <= maxMB * 1024 * 1024;
-        }
     </script>
 @endsection

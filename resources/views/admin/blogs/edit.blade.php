@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="card-body">
-                            <form action="{{ route('admin.blog.update', $blog->id) }}" method="POST"
+                            <form novalidate action="{{ route('admin.blog.update', $blog->id) }}" method="POST"
                                 enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
@@ -26,14 +26,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Image</label>
                                     <div class="col-sm-10">
-                                        <div class="input-group input-group-merge">
-                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
-                                            <input type="file" name="image" class="form-control"
-                                                onchange="checkImage(this)" />
-                                        </div>
-                                        @error('image')
-                                            <small class="text-danger">{{ $message }}</small>
-                                        @enderror
+
                                         @if ($blog->image)
                                             <img id="previewImage" src="{{ asset($blog->image) }}" alt="Image Preview"
                                                 style="max-width: 180px; margin-top: 10px; display: block;" />
@@ -41,6 +34,14 @@
                                             <img id="previewImage" src="#" alt="Image Preview"
                                                 style="max-width: 180px; margin-top: 10px; display: none;" />
                                         @endif
+                                        <div class="input-group input-group-merge mt-3">
+                                            <span class="input-group-text"><i class="bx bx-image"></i></span>
+                                            <input type="file" name="image" class="form-control"
+                                                onchange="checkImage(this)" />
+                                        </div>
+                                        @error('image')
+                                            <small class="text-danger">{{ $message }}</small>
+                                        @enderror
                                     </div>
                                 </div>
 

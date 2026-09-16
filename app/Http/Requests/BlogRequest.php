@@ -27,4 +27,16 @@ class BlogRequest extends FormRequest
             'status' => ['nullable', 'in:1,0'],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'title.required' => 'Blog title is required.',
+            'description.required' => 'Blog description is required.',
+            'slug.unique' => 'This blog slug is already in use.',
+            'image.image' => 'The file must be a valid image.',
+            'image.mimes' => 'Allowed image formats: jpg, jpeg, png, webp, gif.',
+            'image.max' => 'Image must not be larger than 2MB.',
+        ];
+    }
 }
