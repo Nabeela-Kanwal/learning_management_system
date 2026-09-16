@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/fancybox.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/tooltipster.bundle.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/header.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
 </head>
 
@@ -50,6 +51,7 @@
     <script src="{{ asset('frontend/js/tooltipster.bundle.min.js') }}"></script>
     <script src="{{ asset('frontend/js/jquery.lazy.min.js') }}"></script>
     <script src="{{ asset('frontend/js/main.js') }}"></script>
+    <script src="{{ asset('frontend/js/header.js') }}"></script>
 </body>
 
 </html>
