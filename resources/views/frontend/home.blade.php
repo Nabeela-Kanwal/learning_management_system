@@ -20,24 +20,17 @@
     <section class="feature-area pb-90px">
         @include('components.featured.feature-section')
     </section>
-    <section class="category-area pb-90px">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-9">
-                    <div class="category-content-wrap">
-                        <div class="section-heading">
-                            <h5 class="ribbon ribbon-lg mb-2">Categories</h5>
-                            <h2 class="section__title">Popular Categories</h2>
-                            <span class="section-divider"></span>
-                        </div>
-                    </div>
+    <section class="category-area home-categories pb-90px" aria-labelledby="popular-categories-title">
+        <div class="container-fluid px-3 px-lg-4">
+            <div class="category-section-heading">
+                <div>
+                    <span class="category-eyebrow">FIND YOUR NEXT CHAPTER</span>
+                    <h2 id="popular-categories-title">Popular Categories</h2>
+                    <p>Follow your curiosity. Find a subject that inspires you.</p>
                 </div>
-                <div class="col-lg-3">
-                    <div class="category-btn-box text-right">
-                        <a href="{{ route('category.index') }}" class="btn theme-btn">All Categories <i
-                                class="la la-arrow-right icon ml-1"></i></a>
-                    </div>
-                </div>
+                <a href="{{ route('category.index') }}" class="category-browse-link">
+                    All categories <i class="la la-arrow-right" aria-hidden="true"></i>
+                </a>
             </div>
             @include('components.category.category')
         </div>

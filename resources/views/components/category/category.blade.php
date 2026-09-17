@@ -1,42 +1,32 @@
-      <style>
-          .cat__img-wrapper {
-              width: 100%;
-              height: 250px;
-              overflow: hidden;
-              border-radius: 8px;
+@once
+    @push('styles')
+        <link rel="stylesheet" href="{{ asset('frontend/css/category-cards.css') }}">
+    @endpush
+@endonce
 
-          }
-
-          .cat__img-wrapper img {
-              width: 100%;
-              height: 100%;
-              object-fit: cover;
-          }
-
-          .category-item {
-              margin-bottom: 30px;
-              scroll-margin-top: 120px;
-          }
-      </style>
-      <div class="category-wrapper">
-          <div class="row">
-              @foreach ($categories as $category)
-                  <div class="col-lg-4 responsive-column-half">
-                      <div class="category-item" id="category-{{ $category->id }}">
-                          <div class="cat__img-wrapper">
-                              <img class="cat__img lazy" src="{{ asset($category->image) }}" alt="Category image">
-                          </div>
-                          <div class="category-content">
-                              <div class="category-inner">
-                                  <h3 class="cat__title"><a href="#">{{ $category->name }}</a></h3>
-                                  <p class="cat__meta">9 courses</p>
-                                  <a href="#" class="btn theme-btn theme-btn-sm theme-btn-white">
-                                      Explore<i class="la la-arrow-right icon ml-1"></i>
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              @endforeach
-          </div>
-      </div>
+<div class="subject-grid">
+    @foreach ($categories as $category)
+        <article class="subject-card" id="category-{{ $category->id }}">
+            <div class="subject-card__image">
+                @if ($category->image)
+                    <img src="{{ asset($category->image) }}" alt="" loading="lazy" decoding="async">
+                @else
+                    <i class="la la-book-open subject-card__placeholder" aria-hidden="true"></i>
+                @endif
+                <span class="subject-card__label">Discover &amp; learn</span>
+            </div>
+            <div class="subject-card__body">
+                <div>
+                    <span class="subject-card__eyebrow">EXPLORE YOUR INTERESTS</span>
+                    <h3>{{ $category->name }}</h3>
+                </div>
+                @if (!request()->routeIs('category.index'))
+                    <a href="{{ route('category.index') }}#category-{{ $category->id }}"
+                        class="subject-card__link" aria-label="Explore {{ $category->name }}">
+                        <i class="la la-arrow-up" aria-hidden="true"></i>
+                    </a>
+                @endif
+            </div>
+        </article>
+    @endforeach
+</div>
