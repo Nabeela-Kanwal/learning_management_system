@@ -8,11 +8,18 @@ use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Course;
 use App\Services\InfoService;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
-    public function index(InfoService $infoService)
+    public function index(InfoService $infoService, Request $request)
     {
+        $filters = $request->validate(['category' => ['nullable', 'integer']]);
+        $courseCategory = $filters['category'] ?? null;
+        $homeCourses = Course::with(['category', 'instructor'])
+            ->where('status', 1)
+            ->when($courseCategory, fn ($query) => $query->where('category_id', $courseCategory))
+            ->latest()->orderByDesc('id')->take(6)->get();
         $categories = Category::withPublishedCourses()->orderBy('name')->get();
         $banners = Banner::where('page', 'home')->where('status', 1)->orderBy('sort_order')->latest()->get();
         $course = Course::where('status', 1)->get();
@@ -23,6 +30,8 @@ class HomeController extends Controller
             'banners' => $banners,
             'course' => $course,
             'blogs' => $blogs,
+            'homeCourses' => $homeCourses,
+            'courseCategory' => $courseCategory,
         ]);
     }
 }

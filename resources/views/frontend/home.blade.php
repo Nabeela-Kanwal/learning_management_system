@@ -1,4 +1,8 @@
 @extends('layout.frontapp')
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('frontend/css/course-catalog.css') }}">
+@endpush
+
 @section('content')
     <section class="hero-area" aria-label="Featured learning opportunities">
         <div class="hero-slider owl-action-styled">
@@ -36,7 +40,7 @@
         </div>
     </section>
 
-    <section id="home-courses" class="course-area pb-120px">
+    <section id="home-courses" class="course-area course-catalog py-5">
         @include('components.courses.course-section')
     </section>
 
