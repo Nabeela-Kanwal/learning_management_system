@@ -17,6 +17,11 @@
 
         .blog-card {
             height: 100%;
+            margin-bottom: 0;
+        }
+
+        .blog-column {
+            margin-bottom: 30px;
         }
 
         .blog-card .card-body {
@@ -53,7 +58,7 @@
                             $blog->short_description ?:
                             \Illuminate\Support\Str::limit(strip_tags($blog->description), 140);
                     @endphp
-                    <div class="col-lg-3 col-md-6 responsive-column-half">
+                    <div class="col-lg-3 col-md-6 responsive-column-half blog-column">
                         <div class="card card-item blog-card">
                             <a href="{{ route('blog.show', $blog->slug) }}" class="blog-list-image d-block">
                                 <img src="{{ asset($image) }}" alt="{{ $blog->title }}">

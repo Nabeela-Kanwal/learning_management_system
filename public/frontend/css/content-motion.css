@@ -1,4 +1,8 @@
 /* Blog, course, and instructor interactions follow the site's pink and navy palette. */
+.card-item.blog-card {
+    border: 1px solid #e7eaf2;
+}
+
 .blog-card,
 .course-area .card-item,
 .instructor-directory .teacher-card {

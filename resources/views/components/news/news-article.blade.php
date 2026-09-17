@@ -11,7 +11,7 @@
                 $image = $blog->image ?: 'frontend/images/img8.jpg';
                 $summary = $blog->short_description ?: \Illuminate\Support\Str::limit(strip_tags($blog->description), 120);
             @endphp
-            <div class="card card-item">
+            <div class="card card-item blog-card">
                 <div class="card-image">
                     <a href="{{ route('blog.show', $blog->slug) }}" class="d-block">
                         <img class="card-img-top lazy" src="{{ asset('frontend/images/img-loading.png') }}"
