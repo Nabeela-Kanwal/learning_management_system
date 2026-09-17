@@ -21,6 +21,6 @@ class featureSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.featured.feature-section');
+        return view('components.featured.feature-section', ['infos' => app(\App\Services\InfoService::class)->getActiveInfos()]);
     }
 }

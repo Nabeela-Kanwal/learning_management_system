@@ -113,7 +113,11 @@ Route::middleware(['web', 'auth_guard:admin'])
 
         Route::prefix('infoBox')->name('info.')->group(function () {
             Route::get('/', [InfoController::class, 'index'])->name('index');
-            // Route::put('update/{id}', [InfoController::class, 'update'])->name('update');
+            Route::get('create', [InfoController::class, 'create'])->name('create');
+            Route::post('store', [InfoController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [InfoController::class, 'edit'])->whereNumber('id')->name('edit');
+            Route::put('update/{id}', [InfoController::class, 'update'])->whereNumber('id')->name('update');
+            Route::delete('destroy/{id}', [InfoController::class, 'destroy'])->whereNumber('id')->name('destroy');
 
         });
 

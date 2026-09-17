@@ -60,6 +60,11 @@
             </a>
         </li>
 
+        <li class="menu-item {{ request()->routeIs('admin.info.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.info.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-info-circle"></i><div>Info Cards</div>
+            </a>
+        </li>
         {{-- Blogs --}}
         <li class="menu-item {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
             <a href="{{ route('admin.blog.index') }}" class="menu-link">
