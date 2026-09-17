@@ -457,7 +457,7 @@
 .catalog-search { max-width: 720px; margin: 0 auto 18px; border-radius: 30px; }
 .catalog-search input { font-size: 14px; padding: 12px 0; }
 .catalog-search button { font-size: 14px; padding: 13px 22px; }
-.catalog-category-tabs { justify-content: flex-start; }
+.catalog-category-tabs { justify-content: center; flex-wrap: wrap; }
 .catalog-category-tabs a { border-radius: 30px; font-size: 14px; }
 .catalog-category-tabs a.is-active, .catalog-category-tabs a:hover { background: var(--accent); border-color: var(--accent); }
 .catalog-toolbar > p, .catalog-controls select, .catalog-controls button, .catalog-reset { font-size: 14px; }
