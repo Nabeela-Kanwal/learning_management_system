@@ -38,8 +38,7 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text"><i class="bx bx-text" aria-hidden="true"></i></span>
-                                    <textarea id="info-description" name="description" class="form-control"
-                                        rows="4">{{ old('description', $info->description) }}</textarea>
+                                    <textarea id="info-description" name="description" class="form-control" rows="4">{{ old('description', $info->description) }}</textarea>
                                 </div>
                                 @error('description')
                                     <small class="text-danger">{{ $message }}</small>
@@ -51,11 +50,11 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text"><i class="bx bx-image" aria-hidden="true"></i></span>
-                                    <select id="info-icon" name="icon"
-                                        class="form-select">
+                                    <select id="info-icon" name="icon" class="form-select">
                                         @foreach ($icons as $value => $label)
-                                        <option value="{{ $value }}" @selected(old('icon', $info->icon) === $value)>{{ $label }}
-                                        </option>
+                                            <option value="{{ $value }}" @selected(old('icon', $info->icon) === $value)>
+                                                {{ $label }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -69,8 +68,7 @@
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
                                     <span class="input-group-text"><i class="bx bx-sort" aria-hidden="true"></i></span>
-                                    <input id="info-order" type="number" name="sort_order"
-                                        class="form-control"
+                                    <input id="info-order" type="number" name="sort_order" class="form-control"
                                         value="{{ old('sort_order', $info->sort_order) }}">
                                 </div>
                                 <small class="text-muted">Lower numbers appear first.</small>
@@ -83,9 +81,9 @@
                             <label for="info-status" class="col-sm-2 col-form-label">Status</label>
                             <div class="col-sm-10">
                                 <div class="input-group input-group-merge">
-                                    <span class="input-group-text"><i class="bx bx-check-circle" aria-hidden="true"></i></span>
-                                    <select id="info-status" name="status"
-                                        class="form-select">
+                                    <span class="input-group-text"><i class="bx bx-check-circle"
+                                            aria-hidden="true"></i></span>
+                                    <select id="info-status" name="status" class="form-select">
                                         <option value="1" @selected((string) old('status', (int) $info->status) === '1')>Active</option>
                                         <option value="0" @selected((string) old('status', (int) $info->status) === '0')>Inactive</option>
                                     </select>
@@ -98,7 +96,8 @@
                         <div class="row justify-content-end">
                             <div class="col-sm-10">
                                 <button class="btn btn-primary"
-                                    type="submit">{{ $info->exists ? 'Save Changes' : 'Create Card' }} <x-loader-icon /></button>
+                                    type="submit">{{ $info->exists ? 'Save Changes' : 'Create Card' }}
+                                    <x-loader-icon /></button>
                                 <a href="{{ route('admin.info.index') }}" class="btn btn-outline-secondary">Cancel</a>
                             </div>
                         </div>

@@ -58,7 +58,8 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center py-5">No info cards yet. Add your first card to
+                                        <td colspan="6" class="text-center py-5">No info cards yet. Add your first card
+                                            to
                                             show it on Home.</td>
                                     </tr>
                                 @endforelse
