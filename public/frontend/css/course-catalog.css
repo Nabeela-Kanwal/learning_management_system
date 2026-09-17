@@ -370,17 +370,24 @@
 
 .catalog-pagination a,.catalog-pagination>span {
     padding:9px 15px;
-    border:1px solid #e0e5ea;
-    border-radius:7px;
-    background:white;
+    border:1px solid var(--accent);
+    border-radius:30px;
+    background:var(--accent);
 }
 
 .catalog-pagination>span {
-    color:#9aA2ac;
+    color:var(--accent);
+    background:#fff0f7;
+    border-color:#f3c6df;
 }
 
 .catalog-pagination a {
-    color:var(--ink);
+    color:white;
+}
+
+.catalog-pagination a:hover {
+    background:#a6005b;
+    border-color:#a6005b;
 }
 
 .catalog-pagination p {
