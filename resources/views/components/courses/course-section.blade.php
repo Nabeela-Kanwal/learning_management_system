@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid px-3 px-lg-4">
     <div class="section-heading text-center catalog-section-heading">
         <h5 class="ribbon ribbon-lg mb-2">Choose your desired courses</h5>
         <h2 class="section__title">Find your next learning adventure</h2>
