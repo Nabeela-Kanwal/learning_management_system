@@ -1,5 +1,5 @@
 .lms-footer {
-    --footer-pink: #ff008c;
+    --footer-pink: #c9006e;
     background: radial-gradient(
         ellipse at top right,
         #304973 0%,
@@ -22,7 +22,7 @@
 
 .lms-footer-eyebrow {
     display: block;
-    color: #ff8dcc;
+    color: #c9006e;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -44,7 +44,7 @@
 }
 
 .lms-footer a:focus-visible {
-    outline: 2px solid #ff8dcc;
+    outline: 2px solid #c9006e;
     outline-offset: 5px;
     border-radius: 4px;
 }
@@ -60,11 +60,11 @@
     background: var(--footer-pink);
     color: #fff;
     font-weight: 600;
-    box-shadow: 0 8px 24px rgba(255, 0, 140, 0.18);
+    box-shadow: 0 8px 24px rgba(201, 0, 110, 0.18);
 }
 
 .lms-footer .lms-footer-cta:hover {
-    background: #d60076;
+    background: #c9006e;
 }
 
 .lms-footer-grid {
@@ -134,7 +134,7 @@
 
 .lms-footer .generic-list-item a:hover,
 .lms-footer-bottom a:hover {
-    color: #ff8dcc;
+    color: #c9006e;
 }
 
 .lms-footer-contact {

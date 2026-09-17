@@ -23,7 +23,7 @@
 .blog-card:focus-within,
 .course-area .card-item:focus-within,
 .instructor-directory .teacher-card:focus-within {
-    border-color: #e0007b;
+    border-color: #c9006e;
     box-shadow: 0 12px 30px rgba(23, 45, 80, 0.12);
 }
 @media (hover: hover) and (pointer: fine) {
@@ -31,7 +31,7 @@
     .course-area .card-item:hover,
     .instructor-directory .teacher-card:hover {
         transform: translateY(-6px);
-        border-color: #e0007b;
+        border-color: #c9006e;
         box-shadow: 0 16px 34px rgba(23, 45, 80, 0.14);
     }
     .blog-card:hover .blog-list-image img,

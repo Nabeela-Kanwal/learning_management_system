@@ -1,0 +1,16 @@
+/* Keep button corners consistent across public pages and dashboards. */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+.btn,
+.theme-btn,
+.video-play-btn,
+.lms-header-cta,
+.lms-footer-cta,
+.contact-explore,
+.teacher-contact a,
+.subject-card__link {
+    border-radius: 30px !important;
+}

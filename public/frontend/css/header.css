@@ -33,10 +33,10 @@
     color: #fff;
 }
 .lms-header-top a:hover {
-    color: #ff8dcc;
+    color: #c9006e;
 }
 .lms-header-top .la-graduation-cap {
-    color: #ff8dcc;
+    color: #c9006e;
     font-size: 19px;
 }
 .lms-header-main {
@@ -76,7 +76,7 @@
 }
 .lms-header-explore summary:hover,
 .lms-header-explore[open] summary {
-    color: #d60076;
+    color: #c9006e;
 }
 .lms-header-explore .lms-header-dropdown {
     top: calc(100% - 8px);
@@ -104,37 +104,38 @@
     white-space: nowrap;
 }
 .lms-header-nav > a[aria-current] {
-    color: #d60076;
+    color: #c9006e;
 }
 .lms-header-nav > a[aria-current]::after {
     content: "";
     position: absolute;
     height: 3px;
-    background: #ed0084;
+    background: #c9006e;
     border-radius: 3px;
     bottom: 20px;
     left: 0;
     right: 0;
 }
 .lms-header a:hover {
-    color: #d60076;
+    color: #c9006e;
 }
 .lms-header .lms-header-cta {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 16px;
-    background: #e0007b;
+    background: #c9006e;
     color: #fff;
     border-radius: 10px;
     padding: 13px 20px;
     font-size: 14px;
     font-weight: 600;
     white-space: nowrap;
-    box-shadow: 0 5px 14px rgba(224, 0, 123, 0.14);
+    box-shadow: 0 5px 14px rgba(201, 0, 110, 0.14);
 }
 .lms-header .lms-header-cta:hover {
-    background: #bb0067;
+    color: #fff;
+    background: #c9006e;
 }
 .lms-header a,
 .lms-header summary {
@@ -144,7 +145,7 @@
 }
 .lms-header a:focus-visible,
 .lms-header summary:focus-visible {
-    outline: 3px solid #e0007b;
+    outline: 3px solid #c9006e;
     outline-offset: 4px;
     border-radius: 5px;
 }
@@ -186,15 +187,18 @@
 .lms-header-dropdown a:hover,
 .lms-header-mobile-panel a:hover,
 .lms-header-mobile-panel a[aria-current] {
-    background: #fff0f7;
-    color: #bc0068;
+    background: #c9006e;
+    color: #fff;
 }
 .lms-header-dropdown .lms-header-all {
     margin-top: 8px;
     border-top: 1px solid #e9edf3;
     border-radius: 0;
-    color: #bc0068;
+    color: #c9006e;
     font-weight: 600;
+}
+.lms-header-dropdown .lms-header-all:hover {
+    color: #fff;
 }
 .lms-header-mobile {
     display: none;
@@ -309,7 +313,7 @@
 }
 .lms-header-student summary:hover,
 .lms-header-student[open] summary {
-    color: #ff8dcc;
+    color: #c9006e;
 }
 .lms-header-student .lms-header-dropdown {
     z-index: 2;

@@ -67,10 +67,10 @@
 
 /* Home and About share the site's navy and pink banner palette. */
 .brand-banner > .container-fluid { position: relative; z-index: 1; }
-.brand-banner .section-heading { border-left-color: #e0007b; max-width: 720px; }
+.brand-banner .section-heading { border-left-color: #c9006e; max-width: 720px; }
 .brand-banner .section__title { color: #172d50; font-size: clamp(30px, 3.4vw, 52px); }
 .brand-banner .section__desc { color: #45536b; }
-.brand-banner-eyebrow { display: block; color: #bb0067; font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 18px; }
-.brand-banner .brand-banner-button { padding: 14px 24px; border-radius: 10px; background: #e0007b; color: #fff; font-weight: 600; }
-.brand-banner .brand-banner-button:hover { background: #bb0067; }
-.brand-banner .brand-banner-button:focus-visible { outline: 3px solid #e0007b; outline-offset: 4px; }
+.brand-banner-eyebrow { display: block; color: #c9006e; font-size: 12px; font-weight: 700; letter-spacing: 2px; margin-bottom: 18px; }
+.brand-banner .brand-banner-button { padding: 14px 24px; border-radius: 10px; background: #c9006e; color: #fff; font-weight: 600; }
+.brand-banner .brand-banner-button:hover { background: #c9006e; }
+.brand-banner .brand-banner-button:focus-visible { outline: 3px solid #c9006e; outline-offset: 4px; }

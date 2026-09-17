@@ -44,9 +44,9 @@
     gap: 12px;
     min-height: 46px;
     padding: 10px 20px;
-    border: 1px solid #e0007b;
+    border: 1px solid #c9006e;
     border-radius: 12px;
-    background: #e0007b;
+    background: #c9006e;
     color: #fff;
     font-size: 14px;
     font-weight: 600;
@@ -88,7 +88,7 @@
     overflow: hidden;
     margin: 10px 10px 0;
     border-radius: 11px;
-    background: linear-gradient(135deg, #e9eefb, #fce6f1);
+    background: #c9006e;
 }
 
 .subject-card__image img {
@@ -152,8 +152,8 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #fff0f7;
-    color: #c9006e;
+    background: #c9006e;
+    color: #fff;
     font-size: 23px;
     transition:
         background 0.2s ease,
@@ -172,19 +172,19 @@
 
 .subject-card:focus-within,
 .subject-card:target {
-    border-color: #d00073;
-    box-shadow: 0 0 0 3px rgba(208, 0, 115, 0.12);
+    border-color: #c9006e;
+    box-shadow: 0 0 0 3px rgba(201, 0, 110, 0.12);
 }
 
 .category-browse-link:focus-visible {
-    outline: 3px solid #d00073;
+    outline: 3px solid #c9006e;
     outline-offset: 4px;
 }
 
 @media (hover: hover) and (pointer: fine) {
     .subject-card:hover {
         transform: translateY(-5px);
-        border-color: #edc7dc;
+        border-color: #c9006e;
         box-shadow: 0 16px 32px rgba(25, 44, 81, 0.1);
     }
 

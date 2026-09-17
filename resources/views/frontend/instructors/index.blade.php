@@ -104,7 +104,7 @@
         }
 
         .teacher-label i {
-            color: #ff007f;
+            color: #c9006e;
         }
 
         .teacher-body {
@@ -178,9 +178,9 @@
 
         .teacher-contact a:first-child {
             flex: 1;
-            background: #fff0f7;
-            border-color: #ffe0ef;
-            color: #d60069;
+            background: #c9006e;
+            border-color: #c9006e;
+            color: #fff;
         }
 
         .teacher-contact a:hover {
@@ -190,7 +190,7 @@
         }
 
         .teacher-contact a:focus-visible {
-            outline: 3px solid #ff007f;
+            outline: 3px solid #c9006e;
             outline-offset: 3px;
         }
 

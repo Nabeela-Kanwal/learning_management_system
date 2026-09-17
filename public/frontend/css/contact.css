@@ -1,7 +1,7 @@
 .contact-modern {
     --contact-ink: #172d50;
     --contact-muted: #45536b;
-    --contact-accent: #e0007b;
+    --contact-accent: #c9006e;
     padding: 88px 0;
     background: #f7f8fb;
     color: var(--contact-ink);
@@ -58,7 +58,7 @@
     margin-bottom: 32px;
 }
 .contact-support .contact-eyebrow {
-    color: #ff8dcc;
+    color: #c9006e;
 }
 .contact-support h3 {
     color: #fff;
@@ -90,7 +90,7 @@
     justify-content: center;
     border-radius: 11px;
     background: #ffffff0d;
-    color: #ff8dcc;
+    color: #c9006e;
     font-size: 23px;
 }
 .contact-topic h4 {
@@ -116,7 +116,7 @@
     width: 6px;
     height: 6px;
     border-radius: 50%;
-    background: #ff8dcc;
+    background: #c9006e;
     flex-shrink: 0;
 }
 .contact-explore {
@@ -177,8 +177,8 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background: #fff0f7;
-    color: var(--contact-accent);
+    background: #c9006e;
+    color: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -215,7 +215,7 @@
 .contact-modern .form-control:focus {
     background: #fff;
     border-color: var(--contact-accent);
-    box-shadow: 0 0 0 3px #e0007b18;
+    box-shadow: 0 0 0 3px #c9006e18;
 }
 .contact-modern .form-control.is-invalid {
     border-color: #dc3545;
@@ -247,7 +247,7 @@
     transition: background 0.2s;
 }
 .contact-modern .contact-submit:hover {
-    background: #bb0067;
+    background: #c9006e;
 }
 .contact-modern a:focus-visible,
 .contact-modern button:focus-visible,
@@ -359,5 +359,5 @@
     }
 }
 
-.contact-banner .section-heading { border-left-color: #e0007b; }
+.contact-banner .section-heading { border-left-color: #c9006e; }
 .contact-banner .section__title, .contact-banner .section__desc { color: #172d50; }

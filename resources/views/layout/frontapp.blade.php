@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/footer.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/content-motion.css') }}">
     @stack('styles')
+    <link rel="stylesheet" href="{{ asset('assets/css/buttons.css') }}">
 </head>
 
 <body>
