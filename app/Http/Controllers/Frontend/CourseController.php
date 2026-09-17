@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Course;
 use Illuminate\Http\Request;
@@ -45,7 +46,12 @@ class CourseController extends Controller
         }
 
         $courses = $query->orderBy('id')->paginate(9)->withQueryString();
+        $banner = Banner::where('page', 'course')
+            ->where('status', 1)
+            ->orderBy('sort_order')
+            ->latest()
+            ->first();
 
-        return view('frontend.courses.index', compact('courses', 'categories', 'totalCourses', 'filters'));
+        return view('frontend.courses.index', compact('courses', 'categories', 'totalCourses', 'filters', 'banner'));
     }
 }

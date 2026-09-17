@@ -16,7 +16,7 @@ class BannerRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'image' => 'sometimes|file|image|mimes:jpg,jpeg,png,webp,gif|max:2048',
-            'page' => 'nullable|in:home,about,instructor,services,blog,contact',
+            'page' => 'nullable|in:home,about,course,instructor,services,blog,contact',
             'sort_order' => 'nullable|integer|min:0',
             'description' => 'nullable|string',
             'status' => 'required|boolean',
@@ -30,7 +30,7 @@ class BannerRequest extends FormRequest
             'image.image' => 'The file must be a valid image.',
             'image.mimes' => 'Allowed image formats: jpg, jpeg, png, webp, gif.',
             'image.max' => 'Image must not be larger than 2MB.',
-            'page.in' => 'Page must be one of: home, about, instructor, services, blog, contact.',
+            'page.in' => 'Page must be one of: home, about, course, instructor, services, blog, contact.',
             'status.required' => 'Status is required.',
         ];
     }

@@ -6,13 +6,14 @@
 
 @section('content')
 <main class="course-catalog">
-    <section class="breadcrumb-area page-banner blog-banner brand-banner img-bg-2">
+    <section class="breadcrumb-area page-banner blog-banner brand-banner img-bg-2"
+        @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
         <div class="container-fluid px-3 px-lg-4">
             <div class="breadcrumb-content">
                 <div class="section-heading">
                     <span class="brand-banner-eyebrow">EXPLORE OUR COURSES</span>
-                    <h1 class="section__title">Build your skills.<br>Discover your next chapter.</h1>
-                    <p class="section__desc pt-3">Explore courses that inspire you, learn from passionate instructors, and take the next step toward your goals.</p>
+                    <h1 class="section__title">@if ($banner?->title){{ $banner->title }}@else Build your skills.<br>Discover your next chapter.@endif</h1>
+                    <p class="section__desc pt-3">{{ $banner?->description ?: 'Explore courses that inspire you, learn from passionate instructors, and take the next step toward your goals.' }}</p>
                     <a href="#browse-courses" class="btn brand-banner-button mt-4">Explore courses <i class="la la-arrow-right ml-2" aria-hidden="true"></i></a>
                 </div>
             </div>
