@@ -1,22 +1,16 @@
 @extends('layout.frontapp')
 @section('content')
-    <section class="hero-area">
+    <section class="hero-area" aria-label="Featured learning opportunities">
         <div class="hero-slider owl-action-styled">
-            @foreach ($banners as $banner)
-                <div class="hero-slider-item page-banner" style="background-image: url('{{ asset($banner->image) }}')">
-                    <div class="container">
-                        <div class="hero-content">
-                            <div class="section-heading">
-                                <h2 class="section__title text-white fs-65 lh-80 pb-3">{{ $banner->title }}
-                                </h2>
-                                <p class="section__desc text-white pb-4">
-                                    {{ $banner->description }}
-                                </p>
-                            </div>
-                            <div class="hero-btn-box d-flex flex-wrap align-items-center pt-1">
-                                <a href="admission.html" class="btn theme-btn mr-4 mb-4">Join with Us <i
-                                        class="la la-arrow-right icon ml-1"></i></a>
-                            </div>
+            @foreach ($banners->isNotEmpty() ? $banners : [null] as $banner)
+                <div class="page-banner blog-banner brand-banner img-bg-2"
+                    @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
+                    <div class="container-fluid px-3 px-lg-4">
+                        <div class="section-heading">
+                            <span class="brand-banner-eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+                            <h2 class="section__title">{{ $banner?->title ?: 'Build your skills. Open new doors.' }}</h2>
+                            <p class="section__desc pt-3">{{ $banner?->description ?: 'Discover new interests, learn from passionate instructors, and move closer to your goals.' }}</p>
+                            <a href="#home-courses" class="btn brand-banner-button mt-4">Explore courses <i class="la la-arrow-right ml-2" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -49,7 +43,7 @@
         </div>
     </section>
 
-    <section class="course-area pb-120px">
+    <section id="home-courses" class="course-area pb-120px">
         @include('components.courses.course-section')
     </section>
 

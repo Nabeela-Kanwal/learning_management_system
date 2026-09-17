@@ -14,7 +14,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = Category::where('status', 1)->get();
-        $banners = Banner::where('page', 'home')->where('status', 1)->latest()->get();
+        $banners = Banner::where('page', 'home')->where('status', 1)->orderBy('sort_order')->latest()->get();
         $course = Course::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->latest('published_at')->latest()->take(6)->get();
         return view('frontend.home', [

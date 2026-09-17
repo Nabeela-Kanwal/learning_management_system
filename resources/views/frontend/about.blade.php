@@ -1,19 +1,14 @@
 @extends('layout.frontapp')
 @section('content')
-    <section class="breadcrumb-area page-banner img-bg-3">
-        <div class="overlay z-index-n1"></div>
-        <div class="container">
+    <section class="breadcrumb-area page-banner blog-banner brand-banner img-bg-3"
+        @if ($banner?->image) style="background-image: url('{{ asset($banner->image) }}')" @endif>
+        <div class="container-fluid px-3 px-lg-4">
             <div class="breadcrumb-content">
                 <div class="section-heading">
-                    <h5 class="ribbon ribbon-lg ribbon-white mb-2">Welcome to aduca</h5>
-                    <h2 class="section__title fs-45 lh-60 text-white">Improve Your Lives <br> With Learning</h2>
-                </div>
-                <div class="breadcrumb-btn-box pt-40px pl-3">
-                    <a href="#" class="btn-text text-white video-play-btn d-inline-flex align-items-center"
-                        data-fancybox data-src="https://www.youtube.com/watch?v=cRXm1p-CNyk">
-                        <span class="icon-element icon-element-md pulse-btn mr-3"><i class="la la-play"></i></span>Watch the
-                        Video
-                    </a>
+                    <span class="brand-banner-eyebrow">ABOUT US</span>
+                    <h1 class="section__title">{{ $banner?->title ?: 'A world of learning. A future of possibilities.' }}</h1>
+                    <p class="section__desc pt-3">{{ $banner?->description ?: 'We bring curious minds and passionate instructors together to help you build skills and take your next step.' }}</p>
+                    <a href="{{ route('instructor.index') }}" class="btn brand-banner-button mt-4">Meet our instructors <i class="la la-arrow-right ml-2" aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
