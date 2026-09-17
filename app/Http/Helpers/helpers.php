@@ -47,8 +47,8 @@ if (!function_exists('setSidebar')) {
 if (!function_exists('getCategories')) {
     function getCategories()
     {
-        return Category::with('subCategory')
-            ->orderBy('created_at', 'desc')
+        return Category::withPublishedCourses()
+            ->orderBy('name')
             ->get();
     }
 }

@@ -8,6 +8,18 @@ class Category extends Model
 {
     protected $guarded = [];
 
+    public function courses()
+    {
+        return $this->hasMany(Course::class, 'category_id');
+    }
+
+    public function scopeWithPublishedCourses($query)
+    {
+        return $query->where('status', 1)
+            ->whereHas('courses', fn ($courses) => $courses->where('status', 1))
+            ->withCount(['courses' => fn ($courses) => $courses->where('status', 1)]);
+    }
+
     public function subCategory()
     {
         return $this->hasMany(SubCategory::class, 'category_id', 'id');

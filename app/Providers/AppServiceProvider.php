@@ -26,7 +26,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('course', Course::where('status', 1)->get());
         });
         View::composer('include.frontfooter', function ($view) {
-            $view->with('footerCategories', Category::where('status', 1)->orderBy('name')->take(6)->get());
+            $view->with('footerCategories', Category::withPublishedCourses()->orderBy('name')->take(6)->get());
         });
     }
 }

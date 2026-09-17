@@ -72,7 +72,10 @@
     background: #fff;
     box-shadow: 0 6px 20px rgba(25, 44, 81, 0.04);
     scroll-margin-top: 120px;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .subject-card__image {
@@ -152,7 +155,9 @@
     background: #fff0f7;
     color: #c9006e;
     font-size: 23px;
-    transition: background 0.2s ease, color 0.2s ease;
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
 }
 
 .subject-card__link i {
@@ -222,4 +227,40 @@
     .subject-card:hover img {
         transform: none;
     }
+}
+
+.subject-card__subcategories {
+    list-style: none;
+    margin: 0 23px 24px;
+    padding: 16px 0 0;
+    border-top: 1px solid #e6e9f1;
+}
+
+.subject-card__subcategories li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+
+.subject-card__subcategories li:last-child {
+    margin-bottom: 0;
+}
+
+.subject-card__subcategories img {
+    flex-shrink: 0;
+    border-radius: 9px;
+    object-fit: cover;
+}
+
+.subject-card__subcategories h4 {
+    margin: 0 0 3px;
+    color: #192c51;
+    font-size: 14px;
+    line-height: 1.4;
+}
+
+.subject-card__subcategories span {
+    color: #647089;
+    font-size: 12px;
 }

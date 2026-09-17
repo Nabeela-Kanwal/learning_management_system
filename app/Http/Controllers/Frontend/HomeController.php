@@ -13,7 +13,7 @@ class HomeController extends Controller
 {
     public function index(InfoService $infoService)
     {
-        $categories = Category::where('status', 1)->get();
+        $categories = Category::withPublishedCourses()->orderBy('name')->get();
         $banners = Banner::where('page', 'home')->where('status', 1)->orderBy('sort_order')->latest()->get();
         $course = Course::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->latest('published_at')->latest()->take(6)->get();

@@ -13,7 +13,7 @@
                 @else
                     <i class="la la-book-open subject-card__placeholder" aria-hidden="true"></i>
                 @endif
-                <span class="subject-card__label">Discover &amp; learn</span>
+                <span class="subject-card__label">{{ $category->courses_count }} {{ $category->courses_count == 1 ? 'course' : 'courses' }}</span>
             </div>
             <div class="subject-card__body">
                 <div>
@@ -27,6 +27,21 @@
                     </a>
                 @endif
             </div>
+            @if (request()->routeIs('category.index') && $category->subCategory->isNotEmpty())
+                <ul class="subject-card__subcategories">
+                    @foreach ($category->subCategory as $subcategory)
+                        <li>
+                            @if ($subcategory->image)
+                                <img src="{{ asset($subcategory->image) }}" alt="" loading="lazy" width="48" height="48">
+                            @endif
+                            <div>
+                                <h4>{{ $subcategory->name }}</h4>
+                                <span>{{ $subcategory->courses_count }} {{ $subcategory->courses_count == 1 ? 'course' : 'courses' }}</span>
+                            </div>
+                        </li>
+                    @endforeach
+                </ul>
+            @endif
         </article>
     @endforeach
 </div>
