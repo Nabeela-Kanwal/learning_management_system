@@ -295,8 +295,8 @@
     align-items:center;
     justify-content:space-between;
     cursor:pointer;
-    color:var(--ink);
-    background:#f5f7f9;
+    color:white;
+    background:var(--accent);
     padding:10px 13px;
     border-radius:7px;
     font-size:11px;
@@ -309,8 +309,8 @@
 }
 
 .catalog-details summary:hover,.catalog-details[open] summary {
-    background:#fff0f7;
-    color:#a6005b;
+    background:#a6005b;
+    color:white;
 }
 
 .catalog-details>div {
