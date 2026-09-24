@@ -231,11 +231,17 @@ Author Email:   contact@techydevs.com
                 margin: 30,
                 navText: ["<i class='la la-arrow-left'></i>", "<i class='la la-arrow-right'></i>"],
                 responsive:{
-                    320:{
+                    0:{
                         items: 1,
+                    },
+                    768:{
+                        items: 2,
                     },
                     992:{
                         items: 3,
+                    },
+                    1200:{
+                        items: courseCarousel.closest('.home-page').length ? 4 : 3,
                     }
                 }
             });
