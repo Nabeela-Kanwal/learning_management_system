@@ -392,11 +392,17 @@ Author Email:   contact@techydevs.com
                 autoplay: false,
                 margin: 30,
                 responsive:{
-                    320:{
+                    0:{
                         items:1,
+                    },
+                    768:{
+                        items:2,
                     },
                     992:{
                         items:3,
+                    },
+                    1200:{
+                        items: blogPostCarousel.closest('.home-page').length ? 4 : 3,
                     }
                 }
             });
