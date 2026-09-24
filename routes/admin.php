@@ -73,6 +73,9 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('yajra', [YajraController::class, 'getUserData'])->name('yajra');
         });
 
+        Route::resource('testimonials', \App\Http\Controllers\Admin\TestimonialController::class)
+            ->except('show')->names('testimonial');
+
         Route::prefix('banners')->name('banner.')->group(function () {
             Route::get('/', [BannerController::class, 'index'])->name('index');
             Route::get('create', [BannerController::class, 'create'])->name('create');

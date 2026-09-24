@@ -52,6 +52,11 @@
             </ul>
         </li>
 
+        <li class="menu-item {{ request()->routeIs('admin.testimonial.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.testimonial.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment-detail"></i><div>Testimonials</div>
+            </a>
+        </li>
         {{-- Banner --}}
         <li class="menu-item {{ request()->routeIs('admin.banner.*') ? 'active' : '' }}">
             <a href="{{ route('admin.banner.index') }}" class="menu-link">

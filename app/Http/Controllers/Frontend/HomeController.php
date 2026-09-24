@@ -25,6 +25,7 @@ class HomeController extends Controller
         $course = Course::where('status', 1)->get();
         $blogs = Blog::where('status', 1)->latest('published_at')->latest()->take(6)->get();
         return view('frontend.home', [
+            'testimonials' => \App\Models\Testimonial::where('status', true)->orderBy('sort_order')->orderByDesc('id')->get(),
             'infos' => $infoService->getActiveInfos(),
             'categories' => $categories,
             'banners' => $banners,

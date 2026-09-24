@@ -1,0 +1,39 @@
+/* Carry the established hero gutters through every homepage section. */
+.home-page .container {
+    width: 100%;
+    max-width: none;
+    padding-right: 16px;
+    padding-left: 16px;
+}
+.home-page > section:not(.hero-area):not(.feature-area) {
+    padding-top: 64px !important;
+    padding-bottom: 64px !important;
+}
+.home-page > .feature-area { padding-bottom: 32px; }
+.home-page .testimonial-area { background: #f7f8fc; }
+.home-page .testimonial-carousel { margin-top: 24px; }
+.home-page .testimonial-carousel .owl-stage { display: flex; }
+.home-page .testimonial-carousel .owl-item { display: flex; float: none; }
+.home-page .testimonial-card {
+    width: 100%;
+    margin: 0 0 16px;
+    border: 1px solid #e8eaf0;
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(24, 47, 80, .04);
+}
+.home-page .testimonial-card .card-body { display: flex; flex-direction: column; padding: 28px; min-width: 0; }
+.home-page .testimonial-quote { font-size: 16px; line-height: 1.8; color: #4f5b70; margin: 0; white-space: pre-line; overflow-wrap: anywhere; }
+.home-page .testimonial-card .media-body { min-width: 0; overflow-wrap: anywhere; }
+.home-page .testimonial-card .media-img { flex-shrink: 0; }
+.home-page .testimonial-card img { object-fit: cover; }
+.home-page .testimonial-initial { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: #fbeaf0; color: #ce4871; font-size: 22px; font-weight: 700; }
+.home-page .testimonial-carousel .owl-dots { margin-top: 16px; }
+.home-page .testimonial-carousel .owl-dot:focus-visible { outline: 2px solid #ce4871; outline-offset: 4px; }
+@media (min-width: 992px) {
+    .home-page .container { padding-left: 24px; padding-right: 24px; }
+}
+@media (max-width: 767px) {
+    .home-page > section:not(.hero-area):not(.feature-area) { padding-top: 40px !important; padding-bottom: 40px !important; }
+    .home-page .testimonial-card .card-body { padding: 24px; }
+    .home-page .section__title.fs-45 { font-size: 30px !important; line-height: 1.3 !important; }
+}

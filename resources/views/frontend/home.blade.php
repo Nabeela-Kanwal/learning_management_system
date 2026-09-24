@@ -1,9 +1,11 @@
 @extends('layout.frontapp')
 @push('styles')
     <link rel="stylesheet" href="{{ asset('frontend/css/course-catalog.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/home.css') }}">
 @endpush
 
 @section('content')
+<main class="home-page">
     <section class="hero-area" aria-label="Featured learning opportunities">
         <div class="hero-slider owl-action-styled">
             @foreach ($banners->isNotEmpty() ? $banners : [null] as $banner)
@@ -73,9 +75,11 @@
         </div>
     </section>
 
-    <section class="testimonial-area section-padding">
+    @if($testimonials->isNotEmpty())
+    <section class="testimonial-area section-padding" aria-labelledby="testimonials-title">
         @include('components.testimonial.testimonial-section')
     </section>
+    @endif
 
     <div class="section-block"></div>
 
@@ -192,7 +196,7 @@
                         <h2 class="section__title mb-1">Subscribe to newsletter</h2>
                         <p class="section__desc">Stay in the know on new free e-book</p>
                     </div>
-                    < </div>
+                    </div>
                         <div class="col-lg-5 ml-auto">
                             <form method="post" class="subscriber-form">
                                 <div class="input-group">
@@ -212,4 +216,5 @@
                 </div>
             </div>
     </section>
+</main>
 @endsection

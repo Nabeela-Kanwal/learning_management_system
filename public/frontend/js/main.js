@@ -276,35 +276,28 @@ Author Email:   contact@techydevs.com
             });
         }
         /*==== Testimonial carousel =====*/
-        if ($(testimonialCarousel).length) {
-            $(testimonialCarousel).owlCarousel({
-                loop: true,
-                items: 5,
+        testimonialCarousel.each(function () {
+            var count = $(this).children().length;
+            $(this).owlCarousel({
+                loop: false,
+                rewind: false,
                 nav: false,
                 dots: true,
-                smartSpeed: 500,
+                smartSpeed: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 500,
                 autoplay: false,
-                margin: 30,
-                autoHeight: true,
-                responsive:{
-                    320:{
-                        items: 1,
-                    },
-                    767:{
-                        items: 2,
-                    },
-                    992:{
-                        items: 3,
-                    },
-                    1025:{
-                        items: 4,
-                    },
-                    1441:{
-                        items: 5,
-                    }
+                margin: 24,
+                responsive: {
+                    0: { items: 1 },
+                    768: { items: Math.min(count, 2) },
+                    1200: { items: Math.min(count, 3) }
+                },
+                onInitialized: function (event) {
+                    $(event.target).find('.owl-dot').each(function (index) {
+                        $(this).attr('aria-label', 'Show testimonial page ' + (index + 1));
+                    });
                 }
             });
-        }
+        });
         /*==== testimonial-carousel 2 =====*/
         if ($(testimonialCarouselTwo).length) {
             $(testimonialCarouselTwo).owlCarousel({

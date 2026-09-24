@@ -21,6 +21,9 @@ class testimonialSection extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.testimonial.testimonial-section');
+        return view('components.testimonial.testimonial-section', [
+            'testimonials' => \App\Models\Testimonial::where('status', true)
+                ->orderBy('sort_order')->orderByDesc('id')->get(),
+        ]);
     }
 }
