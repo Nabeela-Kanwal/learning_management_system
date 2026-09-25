@@ -16,7 +16,6 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\YajraController;
 use Illuminate\Support\Facades\Route;
 
-
 Route::middleware(['web', 'auth_guard:admin'])
     ->prefix('admin')
     ->as('admin.')
@@ -41,7 +40,6 @@ Route::middleware(['web', 'auth_guard:admin'])
         Route::prefix('settings')->name('setting.')->group(function () {
             Route::get('/', [AppSettingController::class, 'index'])->name('index');
         });
-
 
         Route::prefix('categories')->name('category.')->group(function () {
             Route::get('/', [CategoryController::class, 'index'])->name('index');

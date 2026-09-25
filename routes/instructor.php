@@ -12,11 +12,8 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
         ->name('login')
         ->withoutMiddleware('auth_guard:instructor');
 
-
-
     Route::middleware('auth_guard:instructor')->group(function () {
         Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 
         Route::get('whoami', function () {
             return [
@@ -26,7 +23,6 @@ Route::prefix('instructor')->name('instructor.')->group(function () {
                 'user' => auth('instructor')->user(),
             ];
         });
-
 
         Route::prefix('profile')->name('profile.')->group(function () {
             Route::get('/', [ProfileController::class, 'profile'])->name('index');
