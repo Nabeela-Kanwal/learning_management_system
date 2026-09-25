@@ -7,9 +7,10 @@ use App\Models\Banner;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\SubCategory;
+use App\Models\Testimonial;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Services\CourseService;
+use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
 class YajraController extends Controller
@@ -226,6 +227,87 @@ class YajraController extends Controller
                     </a>';
                 })
                 ->rawColumns(['image', 'status', 'action'])
+                ->make(true);
+        }
+    }
+
+    public function getTestimonialData(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Testimonial::select([
+                'id',
+                'name',
+                'role',
+                'quote',
+                'rating',
+                'image',
+                'sort_order',
+                'status',
+            ])
+                ->orderBy('sort_order', 'asc');
+
+            return DataTables::of($data)
+                ->addIndexColumn()
+
+                ->editColumn('status', function ($testimonial) {
+                    return $testimonial->status == 1
+                        ? '<span class="badge bg-primary">Active</span>'
+                        : '<span class="badge bg-danger">Inactive</span>';
+                })
+
+                ->editColumn('image', function ($testimonial) {
+                    if ($testimonial->image) {
+                        $url = asset($testimonial->image);
+
+                        return '<img src="'.$url.'"
+                        width="40"
+                        height="40"
+                        style="object-fit: cover;"
+                        class="rounded-circle"/>';
+                    }
+
+                    return '<span>No Image</span>';
+                })
+
+                ->editColumn('quote', function ($testimonial) {
+                    return \Illuminate\Support\Str::limit($testimonial->quote, 80);
+                })
+
+                ->editColumn('rating', function ($testimonial) {
+                    return str_repeat(
+                        '<i class="bx bxs-star text-warning"></i>',
+                        $testimonial->rating
+                    );
+                })
+
+                ->addColumn('action', function ($testimonial) {
+                    $editUrl = route(
+                        'admin.testimonial.edit',
+                        $testimonial->id
+                    );
+
+                    return '
+                    <a href="'.$editUrl.'"
+                       class="text-primary me-2"
+                       title="Edit">
+                        <i class="bx bxs-edit"></i>
+                    </a>
+
+                    <a href="javascript:;"
+                       onclick="deletetestimonial(this, '.$testimonial->id.')"
+                       class="text-danger"
+                       title="Delete">
+                        <i class="bx bx-trash"></i>
+                    </a>';
+                })
+
+                ->rawColumns([
+                    'image',
+                    'status',
+                    'rating',
+                    'action',
+                ])
+
                 ->make(true);
         }
     }

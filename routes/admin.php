@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\ManageInstructorController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\YajraController;
 use Illuminate\Support\Facades\Route;
@@ -130,5 +131,15 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::put('update/{id}', [ManageInstructorController::class, 'update'])->name('update');
             Route::delete('destroy', [ManageInstructorController::class, 'destroy'])->name('destroy');
             Route::get('yajra', [YajraController::class, 'getInstructorData'])->name('yajra');
+        });
+
+        Route::prefix('testimonials')->name('testimonial.')->group(function () {
+            Route::get('/', [TestimonialController::class, 'index'])->name('index');
+            Route::get('create', [TestimonialController::class, 'create'])->name('create');
+            Route::post('store', [TestimonialController::class, 'store'])->name('store');
+            Route::get('edit/{id}', [TestimonialController::class, 'edit'])->name('edit');
+            Route::put('update/{id}', [TestimonialController::class, 'update'])->name('update');
+            Route::delete('destroy', [TestimonialController::class, 'destroy'])->name('destroy');
+            Route::get('yajra', [YajraController::class, 'getTestimonialData'])->name('yajra');
         });
     });
