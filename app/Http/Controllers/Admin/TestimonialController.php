@@ -22,6 +22,7 @@ class TestimonialController extends Controller
     public function store(TestimonialRequest $request)
     {
         $this->save($request, new Testimonial);
+
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial created successfully.');
     }
 
@@ -33,6 +34,7 @@ class TestimonialController extends Controller
     public function update(TestimonialRequest $request, Testimonial $testimonial)
     {
         $this->save($request, $testimonial);
+
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial updated successfully.');
     }
 
@@ -59,6 +61,7 @@ class TestimonialController extends Controller
         if ($image) {
             Storage::disk('public')->delete($image);
         }
+
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial deleted successfully.');
     }
 }
