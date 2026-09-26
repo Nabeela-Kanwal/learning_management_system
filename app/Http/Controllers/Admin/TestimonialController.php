@@ -10,11 +10,11 @@ use Illuminate\Http\Request;
 
 class TestimonialController extends Controller
 {
-    protected $TestimonialService;
+    protected $testimonialService;
 
-    public function __construct(TestimonialService $TestimonialService)
+    public function __construct(TestimonialService $testimonialService)
     {
-        $this->TestimonialService = $TestimonialService;
+        $this->testimonialService = $testimonialService;
     }
 
     public function index()
@@ -29,31 +29,31 @@ class TestimonialController extends Controller
 
     public function store(TestimonialRequest $request)
     {
-        $this->TestimonialService->saveTestimonial($request->validated(), $request->file('image'));
+        $this->testimonialService->saveTestimonial($request->validated(), $request->file('image'));
 
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial created successfully.');
     }
 
     public function update(TestimonialRequest $request, string $id)
     {
-        $this->TestimonialService->updateTestimonial($id, $request->validated(), $request->file('image'));
+        $this->testimonialService->updateTestimonial($id, $request->validated(), $request->file('image'));
 
         return redirect()->route('admin.testimonial.index')->with('success', 'Testimonial updated successfully.');
     }
 
     public function edit(string $id)
     {
-        $Testimonial = Testimonial::findOrFail($id);
+        $testimonial = Testimonial::findOrFail($id);
 
-        return view('admin.testimonial.edit', compact('Testimonial'));
+        return view('admin.testimonial.edit', compact('testimonial'));
     }
 
     public function destroy(Request $request)
     {
         $id = $request->id;
-        $Testimonial = Testimonial::findOrFail($id);
-        $Testimonial->delete();
+        $testimonial = Testimonial::findOrFail($id);
+        $this->testimonialService->deleteTestimonial($testimonial);
 
-        return view('admin.testimonial.index');
+        return redirect()->route('admin.testimonial.index');
     }
 }

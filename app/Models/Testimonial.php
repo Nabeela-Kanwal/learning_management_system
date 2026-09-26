@@ -12,4 +12,15 @@ class Testimonial extends Model
     {
         return ['status' => 'boolean', 'rating' => 'integer', 'sort_order' => 'integer'];
     }
+    public function getImageUrlAttribute(): ?string
+    {
+        if (!$this->image) {
+            return null;
+        }
+
+        // Keep portraits uploaded with the previous storage method accessible.
+        return str_starts_with($this->image, 'testimonials/')
+            ? \Illuminate\Support\Facades\Storage::disk('public')->url($this->image)
+            : asset($this->image);
+    }
 }

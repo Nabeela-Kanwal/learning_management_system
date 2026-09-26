@@ -257,7 +257,7 @@ class YajraController extends Controller
 
                 ->editColumn('image', function ($testimonial) {
                     if ($testimonial->image) {
-                        $url = asset($testimonial->image);
+                        $url = $testimonial->image_url;
 
                         return '<img src="'.$url.'"
                         width="40"

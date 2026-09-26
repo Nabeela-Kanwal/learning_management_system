@@ -31,32 +31,36 @@ class TestimonialTest extends TestCase
         $this->get(route('admin.testimonial.edit', $testimonial))->assertRedirect(route('admin.login'));
         $this->post(route('admin.testimonial.store'), $this->payload())->assertRedirect(route('admin.login'));
         $this->put(route('admin.testimonial.update', $testimonial), $this->payload())->assertRedirect(route('admin.login'));
-        $this->delete(route('admin.testimonial.destroy', $testimonial))->assertRedirect(route('admin.login'));
+        $this->delete(route('admin.testimonial.destroy'), ['id' => $testimonial->id])->assertRedirect(route('admin.login'));
         $this->assertDatabaseHas('testimonials', ['id' => $testimonial->id]);
     }
 
     public function test_admin_can_manage_testimonials_and_portraits(): void
     {
         Storage::fake('public');
+        $this->app->usePublicPath(Storage::disk('public')->path('test-public'));
         $this->admin();
         $this->get(route('admin.testimonial.index'))->assertOk();
-        $this->get(route('admin.testimonial.create'))->assertOk();
+        $this->get(route('admin.testimonial.create'))->assertOk()->assertSee('testimonialForm')->assertSee('Sort Order');
+        $this->get(route('admin.testimonial.yajra'), ['X-Requested-With' => 'XMLHttpRequest'])->assertOk()->assertJsonStructure(['data']);
         $this->post(route('admin.testimonial.store'), $this->payload(['image' => UploadedFile::fake()->image('portrait.jpg')]))->assertRedirect(route('admin.testimonial.index'));
         $testimonial = Testimonial::latest('id')->firstOrFail();
         $original = $testimonial->image;
-        Storage::disk('public')->assertExists($original);
+        $this->assertStringStartsWith('images/testimonial/', $original);
+        $this->assertFileExists(public_path($original));
+        $this->assertSame(asset($original), $testimonial->image_url);
         $this->get(route('admin.testimonial.edit', $testimonial))->assertOk()->assertSee('Test student');
         $this->put(route('admin.testimonial.update', $testimonial), $this->payload(['status' => 0]))->assertRedirect();
         $this->assertSame($original, $testimonial->fresh()->image);
         $this->assertFalse($testimonial->fresh()->status);
         $this->put(route('admin.testimonial.update', $testimonial), $this->payload(['image' => UploadedFile::fake()->image('new.jpg')]))->assertRedirect();
-        Storage::disk('public')->assertMissing($original);
+        $this->assertFileDoesNotExist(public_path($original));
         $replacement = $testimonial->fresh()->image;
-        Storage::disk('public')->assertExists($replacement);
+        $this->assertFileExists(public_path($replacement));
         $this->put(route('admin.testimonial.update', $testimonial), $this->payload(['remove_image' => 1]))->assertRedirect();
-        Storage::disk('public')->assertMissing($replacement);
+        $this->assertFileDoesNotExist(public_path($replacement));
         $this->assertNull($testimonial->fresh()->image);
-        $this->delete(route('admin.testimonial.destroy', $testimonial))->assertRedirect(route('admin.testimonial.index'));
+        $this->delete(route('admin.testimonial.destroy'), ['id' => $testimonial->id])->assertRedirect(route('admin.testimonial.index'));
         $this->assertDatabaseMissing('testimonials', ['id' => $testimonial->id]);
     }
 

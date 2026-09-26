@@ -17,7 +17,7 @@
                     <div class="media media-card align-items-center mt-auto pt-4">
                         <div class="media-img avatar-md">
                             @if($testimonial->image)
-                                <img src="{{ Storage::disk('public')->url($testimonial->image) }}" alt="" class="rounded-full" loading="lazy" width="50" height="50">
+                                <img src="{{ $testimonial->image_url }}" alt="" class="rounded-full" loading="lazy" width="50" height="50">
                             @else
                                 <span class="testimonial-initial" aria-hidden="true">{{ mb_substr($testimonial->name, 0, 1) }}</span>
                             @endif
