@@ -26,7 +26,7 @@
                                     <th>Image</th>
                                     <th>Name</th>
                                     <th>Role</th>
-                                    <th>Quote</th>
+                                    {{-- <th>Quote</th> --}}
                                     <th>Rating</th>
                                     <th>Sort Order</th>
                                     <th>Status</th>
@@ -65,10 +65,6 @@
                     {
                         data: 'role',
                         name: 'role'
-                    },
-                    {
-                        data: 'quote',
-                        name: 'quote'
                     },
                     {
                         data: 'rating',
