@@ -52,11 +52,7 @@
             </ul>
         </li>
 
-        <li class="menu-item {{ request()->routeIs('admin.testimonial.*') ? 'active' : '' }}">
-            <a href="{{ route('admin.testimonial.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-comment-detail"></i><div>Testimonials</div>
-            </a>
-        </li>
+
         {{-- Banner --}}
         <li class="menu-item {{ request()->routeIs('admin.banner.*') ? 'active' : '' }}">
             <a href="{{ route('admin.banner.index') }}" class="menu-link">
@@ -64,28 +60,6 @@
                 <div>Banner</div>
             </a>
         </li>
-
-        <li class="menu-item {{ request()->routeIs('admin.info.*') ? 'active' : '' }}">
-            <a href="{{ route('admin.info.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-info-circle"></i><div>Info Cards</div>
-            </a>
-        </li>
-        {{-- Blogs --}}
-        <li class="menu-item {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
-            <a href="{{ route('admin.blog.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-news"></i>
-                <div>Blogs</div>
-            </a>
-        </li>
-
-        {{-- Courses --}}
-        <li class="menu-item {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}">
-            <a href="{{ route('admin.courses.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-open"></i>
-                <div>Courses</div>
-            </a>
-        </li>
-
         {{-- Manage Categories --}}
         <li class="menu-item {{ setSidebar(['admin.category*', 'admin.sub-category*']) }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
@@ -113,7 +87,35 @@
 
             </ul>
         </li>
+        <li class="menu-item {{ request()->routeIs('admin.info.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.info.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-info-circle"></i>
+                <div>Info Cards</div>
+            </a>
+        </li>
+        {{-- Blogs --}}
+        <li class="menu-item {{ request()->routeIs('admin.blog.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.blog.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-news"></i>
+                <div>Blogs</div>
+            </a>
+        </li>
 
+        {{-- Courses --}}
+        <li class="menu-item {{ request()->routeIs('admin.courses.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.courses.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-open"></i>
+                <div>Courses</div>
+            </a>
+        </li>
+
+
+        <li class="menu-item {{ request()->routeIs('admin.testimonial.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.testimonial.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-comment-detail"></i>
+                <div>Testimonials</div>
+            </a>
+        </li>
         {{-- Contact Inquiries --}}
         <li class="menu-item {{ request()->routeIs('admin.contact.*') ? 'active' : '' }}">
             <a href="{{ route('admin.contact.index') }}" class="menu-link">
