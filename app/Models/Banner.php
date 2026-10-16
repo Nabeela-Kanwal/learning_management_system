@@ -12,6 +12,6 @@ class Banner extends Model
         'page',
         'sort_order',
         'description',
-        'status'
+        'status',
     ];
 }
