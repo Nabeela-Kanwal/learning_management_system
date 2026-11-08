@@ -109,6 +109,15 @@
             </a>
         </li>
 
+             {{-- role --}}
+        <li class="menu-item {{ request()->routeIs('admin.role.*') ? 'active' : '' }}">
+            <a href="{{ route('admin.role.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-book-open"></i>
+                <div>Role & Permission</div>
+            </a>
+        </li>
+
+
 
         <li class="menu-item {{ request()->routeIs('admin.testimonial.*') ? 'active' : '' }}">
             <a href="{{ route('admin.testimonial.index') }}" class="menu-link">
