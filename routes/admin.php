@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\InfoController;
 use App\Http\Controllers\Admin\ManageInstructorController;
 use App\Http\Controllers\Admin\ProfileController;
+use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\UserController;
@@ -100,6 +101,16 @@ Route::middleware(['web', 'auth_guard:admin'])
             Route::get('{id}/edit', [CourseController::class, 'edit'])->whereNumber('id')->name('edit');
             Route::put('{id}', [CourseController::class, 'update'])->whereNumber('id')->name('update');
             Route::get('{id}', [CourseController::class, 'show'])->whereNumber('id')->name('show');
+        });
+
+        Route::prefix('role')->name('role.')->group(function () {
+            Route::get('/', [RoleController::class, 'index'])->name('index');
+            Route::get('yajra', [YajraController::class, 'getCourseData'])->name('yajra');
+            Route::get('create', [RoleController::class, 'create'])->name('create');
+            Route::post('store', [RoleController::class, 'store'])->name('store');
+            Route::get('{id}/edit', [RoleController::class, 'edit'])->whereNumber('id')->name('edit');
+            Route::put('{id}', [RoleController::class, 'update'])->whereNumber('id')->name('update');
+            Route::get('{id}', [RoleController::class, 'show'])->whereNumber('id')->name('show');
         });
 
         Route::prefix('contacts')->name('contact.')->group(function () {
