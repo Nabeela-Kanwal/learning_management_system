@@ -1,7 +1,7 @@
 @extends('layout.adminapp')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="fw-bold py-3">Contact Inquiries</h4>
+        <h4 class="fw-bold py-3 d-flex align-items-center gap-2"><i class="bx bx-envelope" aria-hidden="true"></i> Contact Inquiries</h4>
         @include('message')
         <div class="card">
             <div class="card-body">
@@ -21,11 +21,18 @@
                             @endforeach
                         </select>
                     </div>
-                    <div class="col-md-3 align-self-end"><button class="btn btn-primary">Filter</button> <a
-                            href="{{ route('admin.contact.index') }}" class="btn btn-outline-secondary">Reset</a></div>
+                    <div class="col-md-3 align-self-end d-flex flex-wrap gap-2">
+                        <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-1">
+                            <i class="bx bx-filter-alt" aria-hidden="true"></i> Filter
+                        </button>
+                        <a href="{{ route('admin.contact.index') }}"
+                            class="btn btn-outline-secondary d-inline-flex align-items-center gap-1">
+                            <i class="bx bx-reset" aria-hidden="true"></i> Reset
+                        </a>
+                    </div>
                 </form>
                 <div class="table-responsive">
-                    <table class="table">
+                    <table class="table table-hover align-middle">
                         <thead>
                             <tr>
                                 <th>Sender</th>
@@ -38,14 +45,26 @@
                         <tbody>
                             @forelse ($contacts as $contact)
                                 <tr>
-                                    <td>{{ $contact->name }}<br><small>{{ $contact->email }}</small></td>
+                                    <td>{{ $contact->name }}<br><small class="text-muted">{{ $contact->email }}</small></td>
                                     <td>{{ $contact->subject }}</td>
                                     <td><span
                                             class="badge bg-{{ $contact->status === 'new' ? 'primary' : ($contact->status === 'resolved' ? 'success' : 'warning') }}">{{ ucfirst(str_replace('_', ' ', $contact->status)) }}</span>
                                     </td>
                                     <td>{{ $contact->created_at->format('M d, Y H:i') }}</td>
-                                    <td><a href="{{ route('admin.contact.show', $contact) }}"
-                                            class="btn btn-sm btn-outline-primary">View</a></td>
+                                    <td class="text-nowrap"><a href="{{ route('admin.contact.show', $contact) }}"
+                                            class="text-primary me-2" title="View inquiry" aria-label="View inquiry">
+                                            <i class="bx bx-show" aria-hidden="true"></i>
+                                        </a>
+                                        <form method="POST" action="{{ route('admin.contact.destroy', $contact) }}"
+                                            class="d-inline" data-contact-delete>
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="border-0 bg-transparent text-danger p-0"
+                                                title="Delete inquiry" aria-label="Delete inquiry">
+                                                <i class="bx bx-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @empty
                                 <tr>
@@ -59,4 +78,8 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.contact.delete-script')
 @endsection

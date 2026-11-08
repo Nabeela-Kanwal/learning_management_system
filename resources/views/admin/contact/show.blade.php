@@ -1,7 +1,9 @@
 @extends('layout.adminapp')
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <a href="{{ route('admin.contact.index') }}" class="btn btn-outline-secondary mb-3">Back to inquiries</a>
+        <a href="{{ route('admin.contact.index') }}" class="btn btn-outline-secondary mb-3 d-inline-flex align-items-center gap-1">
+            <i class="bx bx-arrow-back" aria-hidden="true"></i> Back to inquiries
+        </a>
         @include('message')
         <div class="card mb-4">
             <div class="card-body">
@@ -20,7 +22,9 @@
                             @endforeach
                         </select>
                     </div>
-                    <button class="btn btn-primary">Update status</button>
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-1">
+                        <i class="bx bx-check-circle" aria-hidden="true"></i> Update status
+                    </button>
                 </form>
                 @error('status')
                     <p class="text-danger">{{ $message }}</p>
@@ -40,14 +44,22 @@
                     @error('reply')
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
-                    <button class="btn btn-primary">Send reply and resolve</button>
+                    <button type="submit" class="btn btn-primary d-inline-flex align-items-center gap-1">
+                        <i class="bx bx-send" aria-hidden="true"></i> Send reply and resolve
+                    </button>
                 </form>
             </div>
         </div>
         <form method="POST" action="{{ route('admin.contact.destroy', $contact) }}"
-            onsubmit="return confirm('Permanently delete this inquiry?');">
+            data-contact-delete>
             @csrf @method('DELETE')
-            <button class="btn btn-danger">Delete inquiry</button>
+            <button type="submit" class="btn btn-danger d-inline-flex align-items-center gap-1">
+                        <i class="bx bx-trash" aria-hidden="true"></i> Delete inquiry
+                    </button>
         </form>
     </div>
+@endsection
+
+@section('script')
+    @include('admin.contact.delete-script')
 @endsection
