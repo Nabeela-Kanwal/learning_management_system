@@ -112,7 +112,7 @@
              {{-- role --}}
         <li class="menu-item {{ request()->routeIs('admin.role.*') ? 'active' : '' }}">
             <a href="{{ route('admin.role.index') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-book-open"></i>
+                <i class="menu-icon tf-icons bx bx-shield-quarter"></i>
                 <div>Role & Permission</div>
             </a>
         </li>
